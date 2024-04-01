@@ -5,21 +5,12 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # ./main-user.nix
-      inputs.home-manager.nixosModules.default
-    ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 15;
-  boot.loader.timeout = 1;
-  # boot.plymouth.enable = true; # Enable plymouth
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.consoleLogLevel = 0;
-  boot.kernelParams = [ "quiet" "udev.log_level=3" ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # ./main-user.nix
+    inputs.home-manager.nixosModules.default
+    ./system/hardware/bootloader.nix
+  ];
 
   # main-user.enable = true;
   # main-user.userName = "zvasoup";
@@ -72,9 +63,7 @@
       default = {
         ids = [ "*" ];
         settings = {
-          main = {
-            capslock = "overload(caps_layer, esc)";
-          };
+          main = { capslock = "overload(caps_layer, esc)"; };
           caps_layer = {
             m = "left";
             n = "down";
@@ -114,17 +103,16 @@
     isNormalUser = true;
     description = "zvasoup";
     extraGroups = [ "networkmanager" "wheel" "keyd" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        firefox
+        #  thunderbird
+      ];
   };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = {
-      "zvasoup" = import ./home.nix;
-    };
+    users = { "zvasoup" = import ./home.nix; };
   };
 
   # Allow unfree packages
@@ -133,31 +121,31 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  wget
-  git
-  lf 
-  neovim
-  kitty
-  rofi 
-  wofi
-  firefox
-  gnome-extension-manager
-  gnome.gnome-tweaks
-  gnome.dconf-editor
-  dart-sass
-  nodejs_21
-  python3
-  bun
-  cargo
-  rustup
-  gcc
-  cl
-  zig
-  unzip
-  ripgrep
-  fd
-  tree-sitter
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    git
+    lf
+    neovim
+    kitty
+    rofi
+    wofi
+    firefox
+    gnome-extension-manager
+    gnome.gnome-tweaks
+    gnome.dconf-editor
+    dart-sass
+    nodejs_21
+    python3
+    bun
+    cargo
+    rustup
+    gcc
+    cl
+    zig
+    unzip
+    ripgrep
+    fd
+    tree-sitter
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -186,28 +174,27 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
- 
+
   # nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # programs.hyprland = {
-    # Install the packages from nixpkgs
+  # Install the packages from nixpkgs
   #   enable = true;
-    # Whether to enable XWayland
+  # Whether to enable XWayland
   #   xwayland.enable = true;
   # };
 
   # programs.git = {
-    # enable = true;
-    # userName = "zvasoup";
-    # userEmail = "zulfa.plank@proton.me"; 
-    # config = {
-      # init = { 
-        # defaultBranch = "main";
-      # };
-    # };
+  # enable = true;
+  # userName = "zvasoup";
+  # userEmail = "zulfa.plank@proton.me"; 
+  # config = {
+  # init = { 
+  # defaultBranch = "main";
   # };
-
+  # };
+  # };
 
   # environment.etc."gitconfig".text = ''
   #   [user]
