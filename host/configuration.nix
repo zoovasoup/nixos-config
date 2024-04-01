@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     # ./main-user.nix
     inputs.home-manager.nixosModules.default
-    ./system/hardware/bootloader.nix
+    ./../system/hardware/bootloader.nix
   ];
 
   # main-user.enable = true;
