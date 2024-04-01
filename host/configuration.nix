@@ -10,7 +10,7 @@
     # ./main-user.nix
     inputs.home-manager.nixosModules.default
     ./../system/hardware/bootloader.nix
-    ./../system/hardware/location-and-time.nix.nix
+    ./../system/hardware/location-and-time.nix
   ];
 
   # main-user.enable = true;
