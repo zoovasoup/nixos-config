@@ -12,6 +12,7 @@
     ./../system/hardware/bootloader.nix
     ./../system/hardware/location-and-time.nix
     ./../system/hardware/audio.nix
+    ./../system/hardware/keyboard.nix
   ];
 
   # main-user.enable = true;
