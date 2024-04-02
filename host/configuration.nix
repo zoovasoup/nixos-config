@@ -16,6 +16,7 @@
     ./../system/hardware/network.nix
     ./../system/hardware/user.nix
     ./../system/wm/xserver.nix
+    ./../home/pakages.nix
   ];
 
   # main-user.enable = true;
