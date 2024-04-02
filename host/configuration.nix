@@ -16,6 +16,7 @@
     ./../system/hardware/network.nix
     ./../system/hardware/user.nix
     ./../system/wm/xserver.nix
+    ./../system/security/nextdns.nix
     ./../home/pakages.nix
   ];
 
