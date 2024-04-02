@@ -13,20 +13,12 @@
     ./../system/hardware/location-and-time.nix
     ./../system/hardware/audio.nix
     ./../system/hardware/keyboard.nix
+    ./../system/hardware/network.nix
+    ./../system/hardware/user.nix
   ];
 
   # main-user.enable = true;
   # main-user.userName = "zvasoup";
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -41,18 +33,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.zvasoup = {
-    isNormalUser = true;
-    description = "zvasoup";
-    extraGroups = [ "networkmanager" "wheel" "keyd" ];
-    packages = with pkgs;
-      [
-        firefox
-        #  thunderbird
-      ];
-  };
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = { "zvasoup" = import ./home.nix; };
@@ -61,8 +41,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
