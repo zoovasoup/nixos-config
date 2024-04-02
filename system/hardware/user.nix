@@ -4,6 +4,6 @@
     isNormalUser = true;
     description = "zvasoup";
     extraGroups = [ "networkmanager" "wheel" "keyd" ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [ firefox ];
   };
 }
