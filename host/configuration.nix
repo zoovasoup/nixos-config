@@ -61,17 +61,6 @@
   #   xwayland.enable = true;
   # };
 
-  # programs.git = {
-  # enable = true;
-  # userName = "zvasoup";
-  # userEmail = "zulfa.plank@proton.me"; 
-  # config = {
-  # init = { 
-  # defaultBranch = "main";
-  # };
-  # };
-  # };
-
   # environment.etc."gitconfig".text = ''
   #   [user]
   #     name = zvasoup
