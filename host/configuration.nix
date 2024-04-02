@@ -15,6 +15,7 @@
     ./../system/hardware/keyboard.nix
     ./../system/hardware/network.nix
     ./../system/hardware/user.nix
+    ./../system/wm/xserver.nix
   ];
 
   # main-user.enable = true;
