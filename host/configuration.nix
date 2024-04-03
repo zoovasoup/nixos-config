@@ -18,13 +18,9 @@
     ./../system/wm/xserver.nix
     ./../system/security/nextdns.nix
     ./../home/pakages.nix
+    ./../modules/cups-print.nix
+
   ];
-
-  # main-user.enable = true;
-  # main-user.userName = "zvasoup";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
