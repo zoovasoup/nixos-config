@@ -58,7 +58,6 @@
     gnome.gnome-tweaks
     gnome.dconf-editor
     dart-sass
-    nodejs_21
     python3
     bun
     cargo
