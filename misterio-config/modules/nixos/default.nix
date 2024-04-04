@@ -9,7 +9,6 @@
     ./hardware/location-and-time.nix
     ./wm/xserver.nix
     ./cups-print.nix
-    ./pakages.nix
   ];
 
 }
