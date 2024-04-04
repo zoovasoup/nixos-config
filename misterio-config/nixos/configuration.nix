@@ -69,7 +69,12 @@
   networking.networkmanager.enable = true;
 
   # TODO: This is just an example, be sure to use whatever bootloader you prefer
-  # boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 15;
+  boot.loader.timeout = 1;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.consoleLogLevel = 0;
+  boot.kernelParams = [ "quiet" "udev.log_level=3" ];
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
