@@ -42,6 +42,46 @@
     };
   };
 
+  # move this later ========
+
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    git
+    lf
+    neovim
+    kitty
+    rofi
+    wofi
+    firefox
+    gnome-extension-manager
+    gnome.gnome-tweaks
+    gnome.dconf-editor
+    dart-sass
+    nodejs_21
+    python3
+    bun
+    cargo
+    rustup
+    gcc
+    cl
+    zig
+    unzip
+    ripgrep
+    fd
+    tree-sitter
+    tree
+    vscodium
+  ];
+
+  services.xserver.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # until this =======
+
   # This will add each flake input as a registry
   # To make nix3 commands consistent with your flake
   nix.registry = (lib.mapAttrs (_: flake: { inherit flake; }))
