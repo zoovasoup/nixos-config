@@ -12,13 +12,13 @@
 
       clipboard.register = "unnamedplus"; # use system clipboard instead of internal registers
 
-      colorschemes = {
-        gruvbox = {
-          enable = true;
-          contrastDark = "medium";
+      # colorschemes = {
+       #  gruvbox = {
+       #    enable = true;
+        #   contrastDark = "medium";
 # transparentBg = "true";
-        };
-      };
+        # };
+      # };
     options = {
       number = true;
       relativenumber = true;

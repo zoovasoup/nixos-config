@@ -4,7 +4,7 @@
 
   #{ action = '"_x"'; key = "x"; }
 
-  { action = ":Explore<CR>"; key = "<leader>pv"; } # -- increment
+  { action = ":Oil<CR>"; key = "<leader>pv"; } # -- increment
   # -- increment/decrement numbers
   { action = "<C-a>"; key = "<leader>+"; } # -- increment
   { action = "<C-x>"; key = "<leader>-"; } # -- decrement

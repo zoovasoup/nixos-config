@@ -1,16 +1,21 @@
 { ... } : {
   programs.nixvim.plugins = {
-    lazy.enable = true;
+    # lazy.enable = true;
 
     lualine.enable = true; 
     treesitter.enable = true;
-    comment.enable = true;
+    # comment.enable = true;
     surround.enable = true; 
-    harpoon.enable = true; 
+    # harpoon.enable = true; 
 
     telescope = {
       enable = true; 
-      extension.fzy-native.enable = true;
+      # extension.fzf-native.enable = true;
+      keymaps = {
+        "<leader>pf" = "find_files";
+        "<leader>pg" = "live_grep";
+        "<leader>ph" = "help_tags";
+      };
     };
 
     undotree.enable = true;
@@ -26,6 +31,19 @@
       };
     };
     
+    lspkind = {
+      enable = true;
+      mode = "text";
+      cmp = {
+        enable = true;
+        menu = {
+          buffer = "[buffer]";
+          nvim_lsp = "[LSP]";
+          luasnip = "[Luanip}";
+          nvim_lua = "[Lua}";
+        };
+      };
+    };
     nvim-cmp = {
       enable = true;
       autoEnableSources = true;
