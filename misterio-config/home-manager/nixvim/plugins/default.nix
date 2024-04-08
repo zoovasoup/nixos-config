@@ -1,7 +1,7 @@
 { ... } : {
   programs.nixvim.plugins = {
     lualine.enable = true; 
-    tresitter.enable = true;
+    treesitter.enable = true;
     lsp = {
       enable = true;
       servers = {
