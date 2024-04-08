@@ -3,6 +3,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
   ./core
+  ./plugins
   ];
 
   programs.nixvim = {
