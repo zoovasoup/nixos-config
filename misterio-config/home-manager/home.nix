@@ -1,6 +1,13 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -10,10 +17,12 @@
     # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+    #inputs.nixvim.homeManagerModules.nixvim
+    ./nixvim
   ];
 
   nixpkgs = {
+    # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
@@ -30,12 +39,16 @@
       #   });
       # })
     ];
+    # Configure your nixpkgs instance
     config = {
+      # Disable if you don't want unfree packages
       allowUnfree = true;
+      # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
     };
   };
 
+  # TODO: Set your username
   home = {
     username = "zvasoup";
     homeDirectory = "/home/zvasoup";
@@ -43,26 +56,9 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  home.packages = with pkgs; [
-    typescript
-    nodePackages.typescript-language-server
-    eslint_d
-    nodePackages.prettier
+  # home.packages = with pkgs; [ steam ];
 
-    # lua
-    lua-language-server
-    lua54Packages.luacheck
-    stylua
-
-    # nix
-    nil
-    nixfmt
-    nixpkgs-fmt
-    xz
-
-    yazi
-  ];
-
+  # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git = {
     enable = true;
@@ -70,8 +66,12 @@
     userEmail = "zulfa.plank@proton.me";
     extraConfig = { init.defaultBranch = "main"; };
   };
+  
+  programs.nixvim.enable = true;
 
+  # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = "23.05";
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  home.stateVersion = "23.11";
 }
