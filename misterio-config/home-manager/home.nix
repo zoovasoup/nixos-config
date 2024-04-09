@@ -88,6 +88,20 @@
     extraConfig = { init.defaultBranch = "main"; };
   };
 
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        font = "JetBrains Mono:size=11";
+        dpi-aware = "yes";
+        };
+
+      mouse = {
+        hide-when-typing = "yes";
+      };
+    };
+  };
+
   programs.ripgrep = {
     enable = true;
   };
