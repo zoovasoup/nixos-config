@@ -58,18 +58,13 @@
   # home.packages = with pkgs; [ steam ];
   programs.fish = {
     enable = true; 
-    # plugins = [
-    #   {
-    #     name = "oh-my-fish";
-    #     src = pkgs.fetchFromGitHub {
-    #       owner = "oh-my-fish";
-    #       repo = "oh-my-fish";
-    #       rev = "92a572d8cdfdf5b219269d59210b8a28f6cd6616";
-    #       sha256 = "12qin0i6z7g6kyb3cahazd024jy3smmm161pich7zpmpb5sma8vq";
-    #     };
-    #   }
-    # ];
   };
+
+  home.file.".config" = {
+    source = ./config;
+    target = ".config";
+  };
+
 
   programs.fzf = {
     enable = true; 
@@ -90,17 +85,9 @@
 
   programs.foot = {
     enable = true;
-    settings = {
-      main = {
-        font = "JetBrains Mono:size=11";
-        dpi-aware = "yes";
-        };
-
-      mouse = {
-        hide-when-typing = "yes";
-      };
-    };
+    server.enable = true;
   };
+
 
   programs.ripgrep = {
     enable = true;
