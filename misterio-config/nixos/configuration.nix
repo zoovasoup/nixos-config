@@ -123,7 +123,7 @@
   users.users = {
     zvasoup = {
       isNormalUser = true;
-      shell = "/run/current-system/sw/bin/fish";
+      shell = "/home/zvasoup/.nix-profile/bin/fish";
       extraGroups = ["networkmanager" "wheel" "keyd"];
       packages = with pkgs; [
         firefox
