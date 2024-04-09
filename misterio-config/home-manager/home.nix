@@ -60,9 +60,11 @@
     enable = true; 
   };
 
-  home.file.".config" = {
-    source = ./config;
-    target = ".config";
+  home.file.".config/fish" = {
+    source = ./config/fish;
+    target = ".config/fish";
+    recursive = true;
+    executable = true;
   };
 
 
@@ -88,6 +90,12 @@
     server.enable = true;
   };
 
+  home.file.".config/foot" = {
+    source = ./config/foot;
+    target = ".config/foot";
+    recursive = true;
+    executable = true;
+  };
 
   programs.ripgrep = {
     enable = true;

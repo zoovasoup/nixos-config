@@ -14,8 +14,8 @@ if status is-interactive
   alias luamake="/home/zva/lua-language-server/3rd/luamake/luamake"
   alias nv="nvim"
   alias eww="~/eww/target/release/eww"
-  alias cat="bat"
-  alias ct="cat"
+  # alias cat="bat"
+  # alias ct="cat"
   alias c="clear && cermic 1 ~/.cermic_repo/cermic-tiny-art-repo/images"
   alias yz="yazi"
 end

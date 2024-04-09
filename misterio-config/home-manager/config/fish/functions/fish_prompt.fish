@@ -27,6 +27,7 @@ function fish_prompt
   set -l purple (set_color purple)
 
   set -l cwd $yellow(pwd | sed "s:^$HOME:~:")
+  set -l cwd $yellow(prompt_pwd)
   set -l username $cyan(whoami)
   set -l host $blue(hostname -s)
 
