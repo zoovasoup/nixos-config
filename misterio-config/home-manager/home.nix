@@ -48,7 +48,6 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     username = "zvasoup";
     homeDirectory = "/home/zvasoup";
@@ -57,6 +56,21 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
+  programs.fish = {
+    enable = true; 
+    # plugins = [
+    #   {
+    #     name = "oh-my-fish";
+    #     src = pkgs.fetchFromGitHub {
+    #       owner = "oh-my-fish";
+    #       repo = "oh-my-fish";
+    #       rev = "92a572d8cdfdf5b219269d59210b8a28f6cd6616";
+    #       sha256 = "12qin0i6z7g6kyb3cahazd024jy3smmm161pich7zpmpb5sma8vq";
+    #     };
+    #   }
+    # ];
+  };
+
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

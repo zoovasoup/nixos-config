@@ -123,13 +123,13 @@
   users.users = {
     zvasoup = {
       isNormalUser = true;
+      shell = "/run/current-system/sw/bin/fish";
       extraGroups = ["networkmanager" "wheel" "keyd"];
       packages = with pkgs; [
         firefox
           tree
           git
           keyd
-#  thunderbird
       ];
 
     };
