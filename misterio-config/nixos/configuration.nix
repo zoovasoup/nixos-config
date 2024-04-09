@@ -126,12 +126,13 @@
       shell = "/home/zvasoup/.nix-profile/bin/fish";
       extraGroups = ["networkmanager" "wheel" "keyd"];
       packages = with pkgs; [
+        nerdfonts
+        fira-code-nerdfont
         firefox
           tree
           git
           keyd
       ];
-
     };
   };
 

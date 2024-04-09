@@ -71,6 +71,13 @@
     # ];
   };
 
+  programs.fzf = {
+    enable = true; 
+    enableFishIntegration = true;
+    enableBashIntegration = true; 
+    enableZshIntegration = true;
+  };
+
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -79,6 +86,10 @@
     userName = "zvasoup";
     userEmail = "zulfa.plank@proton.me";
     extraConfig = { init.defaultBranch = "main"; };
+  };
+
+  programs.ripgrep = {
+    enable = true;
   };
   
   programs.nixvim.enable = true;
