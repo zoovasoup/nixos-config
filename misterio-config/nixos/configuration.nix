@@ -129,9 +129,12 @@
         nerdfonts
         fira-code-nerdfont
         firefox
-          tree
-          git
-          keyd
+        tree
+        git
+        keyd
+        fastfetch
+        uwufetch
+        flatpak
       ];
     };
   };

@@ -100,6 +100,14 @@
   programs.ripgrep = {
     enable = true;
   };
+
+  programs.zathura = {
+    enable = true;
+  };
+
+  programs.yazi.enable = true;
+
+  programs.mpv.enable = true;
   
   programs.nixvim.enable = true;
 
