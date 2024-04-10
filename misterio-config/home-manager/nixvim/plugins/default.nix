@@ -2,7 +2,17 @@
   programs.nixvim.plugins = {
     # lazy.enable = true;
 
-    lualine.enable = true; 
+    lualine = {
+      enable = true; 
+      sectionSeparators = {
+        left = "";
+        right = "";
+      };
+      componentSeparators = {
+        left = "|";
+        right = "|";
+      };
+    };
     treesitter.enable = true;
     # comment.enable = true;
     surround.enable = true; 
