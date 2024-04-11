@@ -107,9 +107,23 @@
 
   programs.yazi.enable = true;
 
+  home.file.".config/yazi" = {
+    source = ./config/yazi;
+    target = ".config/yazi";
+    recursive = true;
+    executable = true;
+  };
+
   programs.mpv.enable = true;
   
   programs.nixvim.enable = true;
+
+  home.file.".config/zathura" = {
+    source = ./config/zathura;
+    target = ".config/zathura";
+    recursive = true;
+    executable = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
