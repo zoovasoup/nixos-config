@@ -135,6 +135,8 @@
         fastfetch
         uwufetch
         flatpak
+        uget
+        uget-integrator
       ];
     };
   };
