@@ -15,6 +15,18 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland?ref=v0.38.0";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+    
+    hy3 = {
+      url = "github:outfoxxed/hy3?ref=hl0.38.0"; # where {version} is the hyprland release version
+      inputs.hyprland.follows = "hyprland";
+    };
+
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -22,6 +34,9 @@
     self,
     nixpkgs,
     home-manager,
+    hyprland, 
+    hy3,
+
     ...
   } @ inputs: let
     inherit (self) outputs;

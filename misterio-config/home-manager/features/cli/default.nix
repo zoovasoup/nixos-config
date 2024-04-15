@@ -1,4 +1,4 @@
-{ pkgs, config, ... } : {
+{ pkgs, config, inputs, ... } : {
 
   home.packages = with pkgs; [
     comma # Install and run programs by sticking a , before them
@@ -114,6 +114,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    plugins = [
+      inputs.hy3.packages.x86_64-linux.hy3
+    ];
   };
   home.file.".config/hypr" = {
     source = ../../config/hypr;
