@@ -146,6 +146,11 @@
     arguments = [ "-config" "nixThinkpad-8f1153.dns.nextdns.io" ];
   };
 
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
+
 
 
 # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
