@@ -24,6 +24,7 @@
 
     ltex-ls # Spell checking LSP
 
+
     # tly # Tally counter
 
     # awscli2
@@ -97,6 +98,26 @@
   home.file.".config/zathura" = {
     source = ../../config/zathura;
     target = ".config/zathura";
+    recursive = true;
+    executable = true;
+  };
+
+  programs.yt-dlp = {
+    enable = true;
+  };
+
+  #   programs.hyprland = {
+  #   enable = true;
+  #   portalPackage = pkgs.xdg-desktop-portal-hyprland; # default
+  # };
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  home.file.".config/hypr" = {
+    source = ../../config/hypr;
+    target = ".config/hypr";
     recursive = true;
     executable = true;
   };

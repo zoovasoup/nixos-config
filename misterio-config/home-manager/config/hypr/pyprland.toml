@@ -1,0 +1,30 @@
+[pyprland]
+plugins = [
+"scratchpads",
+"toggle_special",
+"layout_center"
+]
+
+# [scratchpads.term]
+# animation = "null"
+# command = "foot"
+# position = "25% 30%"
+# # class = "scratchpad"
+# margin = "50 50"
+# unfocus = "hide"
+# hysteresis = "0"
+# # size = "75% 40%"
+#
+# [scratchpads.ranger]
+# animation = "null"
+# command = "foot --class scpad_ranger -e ranger"
+# position = "25% 30%"
+# # class = "scratchpad_ranger"
+# margin = "50"
+# unfocus = "hide"
+# # size = "75% 40%"
+
+[layout_center]
+margin = 0
+next = "movefocus r"
+prev = "movefocus l"

@@ -137,6 +137,7 @@
         flatpak
         uget
         uget-integrator
+        hyprlandPlugins.hy3
       ];
     };
   };
