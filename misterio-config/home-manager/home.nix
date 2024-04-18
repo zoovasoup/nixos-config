@@ -19,6 +19,7 @@
     #inputs.nixvim.homeManagerModules.nixvim
     ./nixvim
     ./features/cli
+    ./hyprland
   ];
 
   nixpkgs = {

@@ -127,7 +127,8 @@
       extraGroups = ["networkmanager" "wheel" "keyd"];
       packages = with pkgs; [
         nerdfonts
-        fira-code-nerdfont
+        gnomeExtensions.forge
+        gnome-extension-manager
         firefox
         tree
         git

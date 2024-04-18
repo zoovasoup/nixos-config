@@ -197,8 +197,8 @@
         "$mainMod SHIFT, k, movetoworkspace, e-1"
         "$mainMod SHIFT, h, movetoworkspace, e+1"
 
-        "$mainMod SHIFT, k, movetoworkspace, r-1"
-        "$mainMod SHIFT, h, movetoworkspace, r+1"
+        # "$mainMod SHIFT, k, movetoworkspace, r-1"
+        # "$mainMod SHIFT, h, movetoworkspace, r+1"
 
         "$mainMod, 1, movetoworkspace, 1"
         "$mainMod, 2, movetoworkspace, 2"
@@ -212,8 +212,8 @@
         "$mainMod, 0, movetoworkspace, 0"
 
         # switch active workspaces
-        "$mainMod, k, workspace e-1"
-        "$mainMod, h, workspace e+1"
+        # "$mainMod, k, workspace e-1"
+        # "$mainMod, h, workspace e+1"
 
         # switch relative workspaces
         "$mainMod, k, workspace r-1"
@@ -250,11 +250,11 @@
     };
   };
 
-  home.file.".config/hypr" = {
-    source = ../../config/hypr;
-    target = ".config/hypr";
-    recursive = true;
-    executable = true;
-  };
+  # home.file.".config/hypr" = {
+  #   source = ../../config/hypr;
+  #   target = ".config/hypr";
+  #   recursive = true;
+  #   executable = true;
+  # };
 
 }
