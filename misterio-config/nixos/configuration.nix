@@ -128,6 +128,7 @@
       packages = with pkgs; [
         nerdfonts
         gnome.gnome-tweaks
+        gnome.dconf-editor
         gnomeExtensions.forge
         gnome-extension-manager
         firefox
