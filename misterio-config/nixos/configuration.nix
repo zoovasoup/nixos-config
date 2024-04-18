@@ -127,6 +127,7 @@
       extraGroups = ["networkmanager" "wheel" "keyd"];
       packages = with pkgs; [
         nerdfonts
+        gnome-tweaks
         gnomeExtensions.forge
         gnome-extension-manager
         firefox
