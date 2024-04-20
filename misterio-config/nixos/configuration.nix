@@ -145,7 +145,6 @@
         cargo
         rustup
         clang
-        ags
         dart-sass
         brightnessctl
         swww
@@ -153,6 +152,10 @@
       ];
     };
   };
+
+  environment.systemPackages = [
+    pkgs.ags
+  ];
 
   services.nextdns = {
     enable = true;
