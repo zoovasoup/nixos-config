@@ -9,6 +9,7 @@
 
    settings = {
      exec-once = [
+       "ags"
        "foot --server"
        "[workspace special:magic silent] foot --app-id=scratchpad"
        "[workspace special:fm silent] foot --app-id=scratchpad-fm -e yazi"
@@ -28,7 +29,7 @@
        follow_mouse = "1"; 
 
        accel_profile = "flat";
-       sensitivity = "1";
+       sensitivity = "0.7";
        natural_scroll = true;
 
        touchpad = {
