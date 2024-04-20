@@ -140,6 +140,16 @@
         flatpak
         uget
         uget-integrator
+        nodejs_21
+        bun
+        cargo
+        rustup
+        clang
+        ags
+        dart-sass
+        brightnessctl
+        swww
+        inputs.matugen.packages.${pkgs.system}.default
       ];
     };
   };

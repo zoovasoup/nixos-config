@@ -28,6 +28,11 @@
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
+
+    matugen = {
+      url = "github:/InioX/Matugen?ref=v2.2.0";
+      # ref = "refs/tags/matugen-v2.2.0";
+    };
   };
 
   outputs = {
@@ -36,7 +41,7 @@
     home-manager,
     hyprland, 
     hy3,
-
+    matugen,
     ...
   } @ inputs: let
     inherit (self) outputs;
