@@ -20,6 +20,7 @@
     ./nixvim
     ./features/cli
     ./hyprland
+    inputs.ags.homeManagerModules.default
   ];
 
   nixpkgs = {
@@ -49,6 +50,15 @@
   home = {
     username = "zvasoup";
     homeDirectory = "/home/zvasoup";
+  };
+
+    programs.ags = {
+    enable = true;
+    extraPackages = with pkgs; [
+      gtksourceview
+      webkitgtk
+      accountsservice
+    ];
   };
 
   programs.home-manager.enable = true;

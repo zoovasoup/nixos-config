@@ -148,14 +148,11 @@
         dart-sass
         brightnessctl
         swww
+        typescript
         inputs.matugen.packages.${pkgs.system}.default
       ];
     };
   };
-
-  environment.systemPackages = [
-    pkgs.ags
-  ];
 
   services.nextdns = {
     enable = true;

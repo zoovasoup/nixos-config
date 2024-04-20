@@ -29,6 +29,8 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    ags.url = "github:Aylur/ags";
+
     matugen = {
       url = "github:/InioX/Matugen?ref=v2.2.0";
       # ref = "refs/tags/matugen-v2.2.0";
@@ -42,6 +44,7 @@
     hyprland, 
     hy3,
     matugen,
+    ags,
     ...
   } @ inputs: let
     inherit (self) outputs;
