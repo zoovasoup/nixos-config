@@ -177,8 +177,8 @@
        "$mainMod SHIFT, k, movetoworkspace, e-1"
        "$mainMod SHIFT, h, movetoworkspace, e+1"
 
-       # "$mainMod SHIFT, k, movetoworkspace, r-1"
-       # "$mainMod SHIFT, h, movetoworkspace, r+1"
+       "$secondMod SHIFT, k, movetoworkspace, r-1"
+       "$secondMod SHIFT, h, movetoworkspace, r+1"
 
        "$mainMod, 1, movetoworkspace, 1"
        "$mainMod, 2, movetoworkspace, 2"
@@ -211,9 +211,13 @@
        "$mainMod, 9, workspace, 9"
        "$mainMod, 0, workspace, 0"
 
-       # scratchpad
-       "$mainMod, space, togglespecialworkspace, magic"
-       "$mainMod, backslash, togglespecialworkspace, fm"
+        # scratchpad
+        "$mainMod, space, togglespecialworkspace, magic"
+        "$mainMod, backslash, togglespecialworkspace, fm"
+
+        "SUPER, R,       exec, ags -t launcher"
+        ",XF86PowerOff,  exec, ags -t powermenu"
+        "SUPER, Tab,     exec, ags -t overview"
      ];
 
      bindm = [

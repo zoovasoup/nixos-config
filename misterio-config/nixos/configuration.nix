@@ -148,6 +148,12 @@
         dart-sass
         brightnessctl
         swww
+        wf-recorder
+        wl-clipboard
+        slurp
+        hyprpicker
+        wayshot
+        swappy
         typescript
         inputs.matugen.packages.${pkgs.system}.default
       ];
