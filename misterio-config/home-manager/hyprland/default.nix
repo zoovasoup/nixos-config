@@ -218,6 +218,7 @@
         "SUPER, R,       exec, ags -t launcher"
         ",XF86PowerOff,  exec, ags -t powermenu"
         "SUPER, Tab,     exec, ags -t overview"
+        "CTRL SHIFT, R,  exec, ags -q; ags"
      ];
 
      bindm = [
