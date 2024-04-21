@@ -128,7 +128,7 @@
       packages = with pkgs; [
         nerdfonts
         gnome.gnome-tweaks
-        gnome.software
+        gnome.gnome-software
         gnome.dconf-editor
         gnomeExtensions.forge
         gnome-extension-manager
