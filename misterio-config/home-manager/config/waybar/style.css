@@ -1,0 +1,151 @@
+@import "gruvbox.css";
+
+* {
+    all: unset;
+    font-family: JetBrainsMonoNerdFont, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: @base;
+    /* border: 0.5px solid red; */
+}
+
+window#waybar {
+    background-color: @base;
+    /* background-color: rgba(0, 0, 0, 0); */
+}
+
+.modules-left,
+.modules-center,
+.modules-right{
+    margin: 7px;
+}
+
+#workspaces {
+    color: @base;
+    margin:0 7px 0 0;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: @sky;
+    color: @base;
+    padding: 2px 9px;
+    margin: 0;
+    border-radius: 0;
+    border: 0 ;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+#workspaces button:hover {
+    background: @green;
+    color: @base;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+#workspaces button.active {
+    background: @sapphire;
+    border-radius: 0;
+    color: @base;
+    border: 0 ;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+#workspaces button.urgent {
+    background: @peach;
+    border-radius: 0;
+    border: 0 ;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+#window {
+    padding: 0 7px;
+}
+
+#window,
+#bat,
+#bri,
+#blue,
+#vol,
+#clo,
+#net,
+#info,
+#custom-control_panel,
+#custom-swaync {
+    color: @text;
+    background: @mantle;
+    min-width: 28px;
+    margin:0 7px 0 0;
+}
+
+#bluetooth,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#clock,
+#cpu,
+#memory,
+#temperature,
+#custom-powermenu {
+    color: @text;
+}
+
+#custom-powermenu {
+    background-color: @red;
+    min-width: 28px;
+}
+
+#custom-info_icon,
+#network.icon,
+#battery.icon,
+#backlight.icon,
+#bluetooth.icon,
+#pulseaudio.icon,
+#clock.icon,
+#network.icon {
+    color: @base;
+    min-width: 28px;
+}
+
+#clock.icon {
+    background: @rosewater;
+}
+
+#battery.icon {
+    background: @peach;
+}
+
+#backlight.icon {
+    background: @green;
+}
+
+#network.icon {
+    background: @lavender; 
+}
+
+#pulseaudio.icon {
+    background: @sky;
+}
+
+#bluetooth.icon {
+    background: @flaminggo;
+}
+
+#tray {
+    background: @mantle;
+}
+
+#custom-swaync {
+    background: @peach2;
+    margin: 0;
+}
+
+#custom-info_icon {
+    background: @green;
+    color: @base;
+}

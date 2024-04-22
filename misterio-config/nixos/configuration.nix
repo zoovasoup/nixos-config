@@ -131,6 +131,7 @@
         gnome.gnome-software
         gnome.dconf-editor
         gnomeExtensions.forge
+        libnotify
         gnome-extension-manager
         firefox
         tree

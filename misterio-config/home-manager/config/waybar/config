@@ -1,0 +1,275 @@
+{
+    "layer": "top", // Waybar at top layer
+    
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    
+    // "width": 1280, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+    
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces", 
+        "hyprland/window", 
+        "custom/media"
+    ],
+
+    "modules-center": [
+    "group/clo"
+    ],
+
+    "modules-right": [
+        "group/info", 
+        // "group/blue",
+        // "group/net",
+        // "group/vol",
+        // "group/bri",
+        "group/bat",
+        "custom/control_panel",
+        "group/trays"
+    ],
+
+    "hyprland/window": {
+        "format": "{class}"
+    },
+
+    "group/trays": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "custom/swaync",
+            "tray",
+            "custom/powermenu"
+        ]
+    },
+
+    "custom/swaync": {
+	    "format": "󰂚",
+            "on-click" : "ags -t datemenu"
+	    "tooltip": false,
+    },
+
+    "custom/powermenu": {
+    	"format": "",
+	    "on-click": "ags -t powermenu",
+	    "tooltip": false,
+    },
+
+    "tray": {
+    },
+
+    "group/net": {
+        "orientation": "inherit",
+        "modules": [
+            "network",
+            "network#icon"
+        ]
+    },
+
+    "network#icon": {
+        "format-wifi": " ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} / {essid} ({signalStrength}%) ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "network": {
+        "format-wifi": " {essid} ({signalStrength}%) ",
+        "format-ethernet": " {ipaddr}/{cidr}  ",
+        "tooltip-format": "{ifname} via {gwaddr} /",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "group/vol": {
+        "orientation": "inherit",
+        "modules": [
+            "pulseaudio",
+            "pulseaudio#icon"
+        ]
+    },
+
+    "pulseaudio#icon": {
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": " ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": " {format_source} {volume}% ",
+        "format-bluetooth": " {format_source} {volume}% ",
+        "format-bluetooth-muted": " {format_source}   ",
+        "format-muted": "  {format_source} ",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "group/blue": {
+        "orientation": "inherit",
+        "modules": [
+            "bluetooth",
+            "bluetooth#icon"
+        ]
+    },
+    
+    "bluetooth#icon": {
+        "format": ""
+    },
+
+    "bluetooth": {
+        "format": " {status} ",
+	    "format-connected": " {device_alias} ",
+	    "format-connected-battery": " {device_alias} {device_battery_percentage}% ",
+	    "format-device-preference": [ " device1", "device2 " ], // preference list deciding the displayed device
+        "on-click": "blueman-manager"
+    },
+
+    "group/bat": {
+        "orientation": "inherit",
+        "modules": [
+            "battery",
+            "battery#icon"
+        ]
+    },
+
+    "battery#icon": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} ",
+        "format-full": "{icon} ",
+        "format-charging": "󰂄",
+        "format-plugged": " ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "battery": {
+        "format": " {capacity}% ",
+        "format-full": " {capacity}% ",
+        "format-charging": " {capacity}% ",
+        "format-plugged": " {capacity}% ",
+        "format-alt": " {time} {icon} ",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "group/bri": {
+        "orientation": "inherit",
+        "modules": [
+            "backlight",
+            "backlight#icon"
+        ]
+    },
+
+    "backlight": {
+        "format": " {percent}% ",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "backlight#icon": {
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "group/clo": {
+        "orientation": "inherit",
+        "modules": [
+            "clock",
+            "clock#icon"
+        ],
+    },
+
+    "clock#icon": {
+        "format": " {:%H:%M} ",
+        "timezone": "Asia/Jakarta",
+    },
+
+    "clock": {
+        "timezone": "Asia/Jakarta",
+        "format": " {:%a, %b %d} ",
+        "on-click" : "ags -t datemenu"
+
+    },
+
+    "group/info": {
+        "orientation": "inherit",
+        "modules": [
+            "group/info_content",
+            "custom/info_icon"
+        ]
+    },
+
+    "custom/info_icon": {
+        "format": "",
+        "tooltip": "false",
+    },
+
+    "group/info_content": {
+        "orientation": "inherit",
+        "modules": [
+            "cpu",
+            "memory",
+            "temperature"
+        ]
+    },
+
+    "cpu": {
+        "format": "  {usage}% ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "󰍛 {}%"
+    },
+
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": " {icon} {temperatureC}°C ",
+        "format-icons": ["", "", ""]
+    },
+
+    "custom/control_panel": {
+    	"format": "",
+	    "on-click": "ags -t quicksettings",
+	    "tooltip": false,
+    }
+}

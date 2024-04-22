@@ -66,6 +66,12 @@
   programs.waybar = {
     enable = true;
   };
+  home.file.".config/waybar" = {
+    source = ./config/waybar;
+    target = ".config/waybar";
+    recursive = true;
+    executable = true;
+  };
 
   systemd.user.startServices = "sd-switch";
 

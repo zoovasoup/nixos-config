@@ -9,6 +9,7 @@
 
    settings = {
      exec-once = [
+       "waybar"
        "ags"
        "foot --server"
        "[workspace special:magic silent] foot --app-id=scratchpad"
@@ -218,7 +219,6 @@
         "SUPER, R,       exec, ags -t launcher"
         ",XF86PowerOff,  exec, ags -t powermenu"
         "SUPER, Tab,     exec, ags -t overview"
-        "CTRL SHIFT, R,  exec, ags -q; ags"
      ];
 
      bindm = [
