@@ -160,7 +160,7 @@
         rofi-wayland
         gtklock
         meson
-        python
+        python3
       ];
     };
   };
