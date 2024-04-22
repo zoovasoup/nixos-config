@@ -1,6 +1,6 @@
 { ... } : {
   programs.nixvim.plugins = {
-    lazy.enable = true;
+    # lazy.enable = true;
 
     lualine = {
       enable = true; 

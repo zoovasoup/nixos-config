@@ -63,6 +63,10 @@
 
   programs.home-manager.enable = true;
 
+  programs.waybar = {
+    enable = true;
+  };
+
   systemd.user.startServices = "sd-switch";
 
   home.stateVersion = "23.11";

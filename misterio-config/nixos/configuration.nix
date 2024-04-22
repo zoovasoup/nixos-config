@@ -157,6 +157,10 @@
         swappy
         typescript
         inputs.matugen.packages.${pkgs.system}.default
+        rofi-wayland
+        gtklock
+        meson
+        python
       ];
     };
   };
