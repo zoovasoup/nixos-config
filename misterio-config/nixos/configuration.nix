@@ -133,6 +133,7 @@
         gnomeExtensions.forge
         libnotify
         gnome-extension-manager
+        hypridle
         firefox
         tree
         git
