@@ -73,13 +73,6 @@
     executable = true;
   };
 
-  home.file.".config/hypr/hypridle.conf" = {
-    source = ./config/hypr/hypridle.conf;
-    target = ".config/hypr/hypridle.conf";
-    recursive = true;
-    executable = true;
-  };
-
   systemd.user.startServices = "sd-switch";
 
   home.stateVersion = "23.11";

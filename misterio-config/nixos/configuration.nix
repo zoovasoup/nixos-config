@@ -133,7 +133,6 @@
         gnomeExtensions.forge
         libnotify
         gnome-extension-manager
-        hypridle
         firefox
         tree
         git
@@ -162,6 +161,7 @@
         rofi-wayland
         gtklock
         meson
+        swayidle
         python3
       ];
     };
