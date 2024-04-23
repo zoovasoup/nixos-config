@@ -49,7 +49,7 @@
 
     "custom/swaync": {
 	    "format": "󰂚",
-            "on-click" : "ags -t datemenu"
+            "on-click" : "ags -t datemenu",
 	    "tooltip": false,
     },
 

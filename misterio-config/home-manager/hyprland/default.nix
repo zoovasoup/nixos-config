@@ -21,7 +21,7 @@
 
      "$terminal" = "foot";
      "$fileManager" = "nautilus";
-     "$menu" = "rofi";
+     "$menu" = "rofi -show drun";
 
      input = {
        kb_layout = "us";
@@ -47,8 +47,8 @@
        "col.inactive_border" = "rgba(282828ee)";
        cursor_inactive_timeout = "5";
 
-       # layout = "hy3";
-       layout = "dwindle";
+       layout = "master";
+       #layout = "dwindle";
 
        allow_tearing = false;
      };
@@ -153,10 +153,12 @@
        "$mainMod, q, killactive, "
 
        "$secondMod, RETURN, exec, $terminal"
-       "$mainMod, space, exec, $menu"
+       "$secondMod, space, exec, $menu"
 
        "$mainMod, r, fullscreen, 0"
        "$mainMod, s, togglefloating, "
+
+       "$secondMod, l, exec, gtklock"
        
        # dwindle
        "$mainMod, J, togglesplit, "
