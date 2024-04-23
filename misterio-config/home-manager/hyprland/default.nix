@@ -116,6 +116,15 @@ in {
        sensitivity = "-0.5";
      };
 
+     group = {
+       groupbar = {
+         render_titles = false;
+         gradients = false;
+        "col.active" = "rgba(fabd2fee)";
+        "col.inactive" = "rgba(282828ee)";
+       };
+     };
+
      windowrulev2 = [
        # firefox pip
        "float, class:firefox, title:Picture-inPicture"
@@ -180,6 +189,9 @@ in {
        "$mainMod, n, movefocus, r"
        "$mainMod, e, movefocus, u"
        "$mainMod, i, movefocus, d"
+
+        #group 
+        "$mainMod, t, togglegroup, "
 
        # move active window to workspace 
        "$mainMod SHIFT, k, movetoworkspace, e-1"
