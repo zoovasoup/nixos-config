@@ -13,15 +13,13 @@
       clipboard.register = "unnamedplus"; # use system clipboard instead of internal registers
 
         colorschemes = {
-          rose-pine = {
-            enable = true;
-          };
+          # rose-pine = {
+          #  enable = true;
+          # };
 
-          #  gruvbox = {
-          #     enable = true;
-          #     contrastDark = "medium";
-          #     transparentBg = "true";
-          #     };
+          gruvbox = {
+             enable = true;
+             };
         };
 
     options = {

@@ -1,4 +1,7 @@
-{ inputs, ... } : {
+{ inputs, pkgs, ... } : let 
+      brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+      pactl = "${pkgs.pulseaudio}/bin/pactl";
+in {
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -12,6 +15,8 @@
        "waybar"
        "ags"
        "foot --server"
+       "swayidle -w timeout 300 'gtklock -d' timeout 360 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'"
+       "swww init"
        "[workspace special:magic silent] foot --app-id=scratchpad"
        "[workspace special:fm silent] foot --app-id=scratchpad-fm -e yazi"
      ];
@@ -228,6 +233,12 @@
        "$mainMod, mouse:273, resizewindow"
      ];
 
+      bindle = [
+        ",XF86MonBrightnessUp,   exec, ${brightnessctl} set +5%"
+        ",XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-"
+        ",XF86AudioRaiseVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
+        ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+      ];
 
     };
 

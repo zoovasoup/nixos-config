@@ -150,6 +150,7 @@
         dart-sass
         brightnessctl
         swww
+        waypaper
         wf-recorder
         wl-clipboard
         slurp
