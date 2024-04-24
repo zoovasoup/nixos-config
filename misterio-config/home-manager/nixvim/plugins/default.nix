@@ -14,15 +14,13 @@
       };
     };
     treesitter.enable = true;
-    # comment = {
-    #   enable = true;
-    #   settings = {
-    #     opleader.line = "<C-b>";
-    #     toggler.line = "<C-b>";
-    #   };
-    # };
+    comment = {
+      enable = true;
+    };
     surround.enable = true; 
-    harpoon.enable = true; 
+    # harpoon = {
+    #   enable = true;
+    # };
 
     telescope = {
       enable = true; 
@@ -69,10 +67,10 @@
         };
       };
     };
-    nvim-cmp = {
+    cmp = {
       enable = true;
       autoEnableSources = true;
-      sources = [
+      settings.sources = [
        {name = "nvim_lsp";}
        {name = "path";}
        {name = "buffer";}
@@ -80,5 +78,16 @@
        {name = "lua";}
       ];
     };
+    # nvim-cmp = {
+    #   enable = true;
+    #   autoEnableSources = true;
+    #   sources = [
+    #    {name = "nvim_lsp";}
+    #    {name = "path";}
+    #    {name = "buffer";}
+    #    {name = "luasnip";}
+    #    {name = "lua";}
+    #   ];
+    # };
   };
 }
