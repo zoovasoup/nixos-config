@@ -14,17 +14,32 @@
       };
     };
     treesitter.enable = true;
-    # comment.enable = true;
+    # comment = {
+    #   enable = true;
+    #   settings = {
+    #     opleader.line = "<C-b>";
+    #     toggler.line = "<C-b>";
+    #   };
+    # };
     surround.enable = true; 
-    # harpoon.enable = true; 
+    harpoon.enable = true; 
 
     telescope = {
       enable = true; 
-      # extension.fzf-native.enable = true;
       keymaps = {
         "<leader>pf" = "find_files";
         "<leader>pg" = "live_grep";
         "<leader>ph" = "help_tags";
+      };
+      settings.defaults = {
+        file_ignore_patterns = [
+          "^.git/"
+          "^.mypy_cache/"
+          "^__pycache__/"
+          "^output/"
+          "^data/"
+          "%.ipynb"
+        ];
       };
     };
 

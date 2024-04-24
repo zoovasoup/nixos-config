@@ -22,6 +22,8 @@ if status is-interactive
   alias yz="yazi"
 end
 
+set -x PATH $PATH /home/zvasoup/.cargo/bin
+
 function ya
 	set tmp (mktemp -t "yazi-cwd.XXXXX")
 	yazi $argv --cwd-file="$tmp"
