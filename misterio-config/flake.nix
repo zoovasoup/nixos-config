@@ -2,17 +2,17 @@
   description = "Your new nix config";
 
   inputs = {
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixvim = {
         url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs-unstable";
+        inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #hyprland.url = "github:hyprwm/Hyprland";
