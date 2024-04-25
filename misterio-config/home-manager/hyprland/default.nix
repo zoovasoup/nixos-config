@@ -112,8 +112,10 @@ in {
        movefocus_cycles_fullscreen = true;
      };
 
-     "device:epic-mouse-v1" = {
-       sensitivity = "-0.5";
+     #"device:epic-mouse-v1" = {
+     device = {
+       name = "synps/2-synaptics-touchpad";
+       sensitivity = "0.5";
      };
 
      group = {
@@ -127,14 +129,16 @@ in {
 
      windowrulev2 = [
        # firefox pip
-       "float, class:firefox, title:Picture-inPicture"
-       "pin, class:firefox, title:Picture-inPicture"
-       "size 20%, class:firefox, title:Picture-inPicture"
+       "float, class:firefox, title:Picture-in-Picture"
+       "pin, class:firefox, title:Picture-in-Picture"
+       "size 20%, class:firefox, title:Picture-in-Picture"
+       "move 79%, class:firefox, title:Picture-in-Picture"
        
        # floorp pip
-       "float, class:floorp, title:Picture-inPicture"
-       "pin, class:floor, title:Picture-inPicture"
-       "size 20%, class:floorp, title:Picture-inPicture"
+       "float, class:floorp, title:Picture-in-Picture"
+       "pin, class:floor, title:Picture-in-Picture"
+       "size 20%, class:floorp, title:Picture-in-Picture"
+       "move 79%, class:floorp, title:Picture-in-Picture"
 
        # pavucontrol
        "float, class:(pavucontrol:"
