@@ -177,6 +177,9 @@ in {
        "$mainMod, s, togglefloating, "
 
        "$secondMod, l, exec, gtklock"
+
+       # "$mainMod, ;, exec, ags -t quicksettings"
+       # "$mainMod, y, exec, ags -t datemenu"
        
        # dwindle
        "$mainMod, J, togglesplit, "
@@ -184,15 +187,15 @@ in {
 
        # resize window
        "$mainMod, l, resizeactive, 150 0"
-       "$mainMod, l, resizeactive, -150 0"
+       "$mainMod SHIFT, l, resizeactive, -150 0"
        "$mainMod, u, resizeactive, 0 150"
-       "$mainMod, u, resizeactive, 0 -150"
+       "$mainMod SHIFT, u, resizeactive, 0 -150"
 
        # move window focus
        "$mainMod, m, movefocus, l"
-       "$mainMod, n, movefocus, r"
+       "$mainMod, n, movefocus, d"
        "$mainMod, e, movefocus, u"
-       "$mainMod, i, movefocus, d"
+       "$mainMod, i, movefocus, r"
 
         #group 
         "$mainMod, t, togglegroup, "
@@ -204,16 +207,16 @@ in {
        "$secondMod SHIFT, k, movetoworkspace, r-1"
        "$secondMod SHIFT, h, movetoworkspace, r+1"
 
-       "$mainMod, 1, movetoworkspace, 1"
-       "$mainMod, 2, movetoworkspace, 2"
-       "$mainMod, 3, movetoworkspace, 3"
-       "$mainMod, 4, movetoworkspace, 4"
-       "$mainMod, 5, movetoworkspace, 5"
-       "$mainMod, 6, movetoworkspace, 6"
-       "$mainMod, 7, movetoworkspace, 7"
-       "$mainMod, 8, movetoworkspace, 8"
-       "$mainMod, 9, movetoworkspace, 9"
-       "$mainMod, 0, movetoworkspace, 0"
+       "$mainMod SHIFT, 1, movetoworkspace, 1"
+       "$mainMod SHIFT, 2, movetoworkspace, 2"
+       "$mainMod SHIFT, 3, movetoworkspace, 3"
+       "$mainMod SHIFT, 4, movetoworkspace, 4"
+       "$mainMod SHIFT, 5, movetoworkspace, 5"
+       "$mainMod SHIFT, 6, movetoworkspace, 6"
+       "$mainMod SHIFT, 7, movetoworkspace, 7"
+       "$mainMod SHIFT, 8, movetoworkspace, 8"
+       "$mainMod SHIFT, 9, movetoworkspace, 9"
+       "$mainMod SHIFT, 0, movetoworkspace, 10"
 
        # switch active workspaces
        "$mainMod, k, workspace, e-1"
@@ -233,7 +236,7 @@ in {
        "$mainMod, 7, workspace, 7"
        "$mainMod, 8, workspace, 8"
        "$mainMod, 9, workspace, 9"
-       "$mainMod, 0, workspace, 0"
+       "$mainMod, 0, workspace, 10"
 
         # scratchpad
         "$mainMod, space, togglespecialworkspace, magic"
@@ -254,6 +257,8 @@ in {
         ",XF86MonBrightnessDown, exec, ${brightnessctl} set  5%-"
         ",XF86AudioRaiseVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
         ",XF86AudioLowerVolume,  exec, ${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+        ",XF86AudioMute, exec, ${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
+        ",XF86AudioMicMute, exec, ${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
       ];
 
     };

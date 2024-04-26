@@ -19,6 +19,7 @@
     ],
 
     "modules-right": [
+        "idle_inhibitor",
         "group/info", 
         // "group/blue",
         // "group/net",
@@ -271,5 +272,13 @@
     	"format": "",
 	    "on-click": "ags -t quicksettings",
 	    "tooltip": false,
+    },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
     }
+}
 }
