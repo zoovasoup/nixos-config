@@ -152,6 +152,8 @@
         swww
         waypaper
         wf-recorder
+        hypridle
+        hyprlandPlugins.hy3
         wl-clipboard
         slurp
         hyprpicker
