@@ -30,10 +30,15 @@
     # awscli2
     # inputs.awscli-console.default
   ];
+
+  programs.neovim = {
+    enable = true;
+  };
   
   programs.fish = {
     enable = true; 
   };
+
   home.file.".config/fish" = {
     source = ../../config/fish;
     target = ".config/fish";
@@ -92,9 +97,6 @@
     enable = true;
   };
   
-  programs.nixvim = {
-    enable = true;
-  };
   home.file.".config/zathura" = {
     source = ../../config/zathura;
     target = ".config/zathura";

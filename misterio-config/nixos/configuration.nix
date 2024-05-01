@@ -150,6 +150,7 @@
         dart-sass
         brightnessctl
         swww
+        stylua
         waypaper
         wf-recorder
         hypridle

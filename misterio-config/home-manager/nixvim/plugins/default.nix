@@ -1,4 +1,4 @@
-{ ... } : {
+{ pkgs, ... } : {
   programs.nixvim.plugins = {
     # lazy.enable = true;
 
@@ -21,6 +21,21 @@
     };
 
     surround.enable = true; 
+
+    # harpoon = {
+    #   enable = true;
+    #   package = pkgs.vimPlugins.harpoon2;
+    #   keymaps = {
+    #     addFile = "<leader>a";
+    #     toggleQuickMenu = "<C-,>";
+    #     navFile = {
+    #       "1" = "<C-m>";
+    #       "2" = "<C-n>";
+    #       "3" = "<C-e>";
+    #       "4" = "<C-i>";
+    # };
+    #   };
+    # };
 
     telescope = {
       enable = true; 

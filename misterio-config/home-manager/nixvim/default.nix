@@ -7,7 +7,7 @@
   ];
 
   programs.nixvim = {
-    enable = true;
+    enable = false;
     enableMan = true; # install man pages for nixvim options
 
       clipboard.register = "unnamedplus"; # use system clipboard instead of internal registers
