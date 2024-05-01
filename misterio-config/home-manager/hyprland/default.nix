@@ -13,6 +13,7 @@ in {
    settings = {
      exec-once = [
        "waybar"
+       "hypridle"
        "ags"
        "foot --server"
        "swayidle -w timeout 300 'gtklock -d' timeout 360 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'"

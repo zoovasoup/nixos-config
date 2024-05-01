@@ -106,6 +106,10 @@
     enable = true;
   };
 
+  prograns.tmux = {
+    enable = true;
+  };
+
   #   programs.hyprland = {
   #   enable = true;
   #   portalPackage = pkgs.xdg-desktop-portal-hyprland; # default
