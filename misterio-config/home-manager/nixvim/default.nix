@@ -89,6 +89,7 @@
     }
 
     ];
+
   };
   programs.nixvim.globals.mapleader = " ";
 }

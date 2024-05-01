@@ -106,7 +106,7 @@
     enable = true;
   };
 
-  prograns.tmux = {
+  programs.tmux = {
     enable = true;
   };
 

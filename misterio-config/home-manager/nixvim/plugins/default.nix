@@ -13,14 +13,14 @@
         right = "|";
       };
     };
+
     treesitter.enable = true;
+
     comment = {
       enable = true;
     };
+
     surround.enable = true; 
-    # harpoon = {
-    #   enable = true;
-    # };
 
     telescope = {
       enable = true; 
