@@ -139,7 +139,6 @@
         keyd
         fastfetch
         uwufetch
-        flatpak
         uget
         uget-integrator
         nodejs_22
@@ -180,6 +179,8 @@
   };
 
   # programs.home-manager.enable = true;  
+
+  services.flatpak.enable = true;
 
   programs.hyprland = {
     enable = true;
