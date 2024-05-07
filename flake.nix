@@ -67,7 +67,7 @@
 
     nixosConfigurations = {
       # FIXME replace with your hostname
-      zvasoup = nixpkgs.lib.nixosSystem {
+      nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nixos/configuration.nix
@@ -76,7 +76,7 @@
     };
 
     homeConfigurations = {
-      "zvasoup" = home-manager.lib.homeManagerConfiguration {
+      "zvasoup@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [

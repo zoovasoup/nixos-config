@@ -31,9 +31,9 @@
     # inputs.awscli-console.default
   ];
 
-  programs.neovim = {
-    enable = true;
-  };
+  # programs.neovim = {
+  #   enable = true;
+  # };
   
   programs.fish = {
     enable = true; 

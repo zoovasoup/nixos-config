@@ -142,7 +142,7 @@
         flatpak
         uget
         uget-integrator
-        nodejs_21
+        nodejs_22
         bun
         cargo
         rustup
@@ -154,7 +154,7 @@
         waypaper
         wf-recorder
         hypridle
-        hyprlandPlugins.hy3
+        # hyprlandPlugins.hy3
         wl-clipboard
         slurp
         hyprpicker
@@ -166,7 +166,7 @@
         gtklock
         meson
         swayidle
-        vimPlugins.harpoon2
+        # vimPlugins.harpoon2
         python3
       ];
     };
@@ -178,6 +178,8 @@
     enable = true;
     arguments = [ "-config" "nixThinkpad-8f1153.dns.nextdns.io" ];
   };
+
+  # programs.home-manager.enable = true;  
 
   programs.hyprland = {
     enable = true;

@@ -1,1 +1,1 @@
-i really like nixos 
+i really like nixos
