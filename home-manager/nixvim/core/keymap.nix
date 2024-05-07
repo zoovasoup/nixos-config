@@ -32,8 +32,8 @@
   { action = "<C-w>k"; key = "<leader>wi"; }
 
   # --buffer sizing
-  { action = "<cmd>vertical resize +10<cr>"; key = "="; } # -- make the window biger vertically
-  { action = "<cmd>vertical resize -10<cr>"; key = "-"; } # -- make the window smaller vertically
+  # { action = "<cmd>vertical resize +10<cr>"; key = "="; } # -- make the window biger vertically
+  # { action = "<cmd>vertical resize -10<cr>"; key = "-"; } # -- make the window smaller vertically
   { action = "<cmd>horizontal resize +5<cr>"; key = "+"; } # -- make the window bigger horizontally by pressing shift and =
   { action = "<cmd>horizontal resize -5<cr>"; key = "_"; } # -- make the window smaller horizontally by pressing shift and -
 
