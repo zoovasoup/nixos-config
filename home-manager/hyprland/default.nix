@@ -6,9 +6,10 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    #plugins = [
-    #  inputs.hy3.packages.x86_64-linux.hy3
-    #];
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    plugins = [
+     inputs.hy3.packages.x86_64-linux.hy3
+    ];
 
    settings = {
      exec-once = [

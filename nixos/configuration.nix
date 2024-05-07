@@ -166,7 +166,6 @@
         meson
         swayidle
         # vimPlugins.harpoon2
-        python3
       ];
     };
   };
