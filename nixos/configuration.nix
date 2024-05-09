@@ -181,6 +181,8 @@
         meson
         swayidle
         # vimPlugins.harpoon2
+        udiskie
+        arduino
       ];
     };
   };
