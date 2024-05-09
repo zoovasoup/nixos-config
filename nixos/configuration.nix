@@ -130,6 +130,7 @@
 #media-session.enable = true;
   };
 
+
 # Enable touchpad support (enabled default in most desktopManager).
 # services.xserver.libinput.enable = true;
 
@@ -202,6 +203,21 @@
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     xwayland.enable = true;
+  };
+
+  services.power-profiles-daemon = {
+    enable = false;
+  };
+
+  services.tlp = {
+    enable = true;
+    settings = {
+      TLP_DEFAULT_MODE = "BAT";
+      CPU_BOOST_ON_BAT = 0;
+      START_CHARGE_THRESH_BAT0 = 70;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+    };
   };
 
 
