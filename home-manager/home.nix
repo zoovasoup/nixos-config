@@ -52,7 +52,17 @@
     homeDirectory = "/home/zvasoup";
   };
 
-    programs.ags = {
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Gruvbox-Dark-BL";
+  #     package = pkgs.gruvbox-gtk-theme-unstable;
+  #   };
+  # };
+
+  home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
+
+  programs.ags = {
     enable = true;
     extraPackages = with pkgs; [
       gtksourceview
