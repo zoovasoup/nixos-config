@@ -18,6 +18,7 @@
     # You can also split up your configuration and import pieces of it here:
     #inputs.nixvim.homeManagerModules.nixvim
     ./nixvim
+    # ./neovim
     ./features/cli
     ./hyprland
     inputs.ags.homeManagerModules.default

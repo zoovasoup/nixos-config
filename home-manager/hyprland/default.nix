@@ -291,6 +291,14 @@ in {
       "SUPER, R,       exec, ags -t launcher"
       ",XF86PowerOff,  exec, ags -t powermenu"
       "SUPER, Tab,     exec, ags -t overview"
+      
+      ",print , exec, grimblast copysave output"
+      "SHIFT ,print , exec, grimblast copysave area"
+      "$mainMod SHIFT ,print , exec, grimblast copysave active"
+      "$secondMod SHIFT ,print , exec, grimblast copysave area"
+      ",XF86favorites, exec, ags -t quicksettings"
+      ",XF86messenger, exec, ags -t datemenu"
+      ",XF86phone, exec, hyprshade toggle ~/.config/hypr/shaders/grayscale.glsl"
       ];
 
   bindm = [

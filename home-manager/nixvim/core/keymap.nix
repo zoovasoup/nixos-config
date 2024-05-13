@@ -54,5 +54,10 @@
   { action = "<cmd>lnext<CR>zz"; key = "<leader>k"; }
   { action = "<cmd>lprev<CR>zz"; key = "<leader>j"; }
 
+  { action = "function() lint.try_lint() end";
+    key = "<leader>l";
+    lua = true;
+  }
+
   ];
 }

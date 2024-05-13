@@ -174,6 +174,8 @@
         nodejs_22
         bun
         cargo
+        eslint_d
+        pylint
         python312
         python312Packages.pip
         rustup
