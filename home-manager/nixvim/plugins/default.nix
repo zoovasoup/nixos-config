@@ -105,7 +105,7 @@
       servers = {
         nil_ls.enable = true; 
         tsserver.enable = true;
-        rnix-lsp.enable = true;
+        # rnix-lsp.enable = true;
         lua-ls.enable = true; 
       };
     };

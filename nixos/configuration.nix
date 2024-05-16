@@ -210,6 +210,15 @@
         yarn
         # wl-gammarelay-rs
         hyprshade
+
+     #nixd
+     #nil
+     #alejandra
+     #nodePackages_latest.typescript-language-server
+     #lua-language-server
+     #eslint_d
+     #pylint
+     #stylua
       ];
     };
   };
