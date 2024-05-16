@@ -1,1 +1,1 @@
-require("zoova")
+require "zoova".init()

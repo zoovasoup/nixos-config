@@ -1,2 +1,6 @@
-require("zoova.core")
-require("zoova.plugins")
+-- require("zoova.core")
+-- require("zoova.plugins")
+-- require("zoova.options")
+require 'zoova.option'.init()
+require 'zoova.core'.init()
+require 'zoova.plugins'.init()
