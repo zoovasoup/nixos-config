@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   programs.neovim = 
@@ -46,12 +46,12 @@
       nvim-cmp 
       {
         plugin = nvim-cmp;
-        config = toLuaFile ./nvim/plugin/cmp.lua;
+        # config = toLuaFile ./nvim/plugin/cmp.lua;
       }
 
       {
         plugin = telescope-nvim;
-        config = toLuaFile ./nvim/plugin/telescope.lua;
+        # config = toLuaFile ./nvim/plugin/telescope.lua;
       }
 
       telescope-fzf-native-nvim
@@ -68,7 +68,7 @@
 
       {
         plugin = nvim-treesitter.withAllGrammars;
-        config = toLuaFile ./nvim/plugin/treesitter.lua;
+        # config = toLuaFile ./nvim/plugin/treesitter.lua;
       }
 
       vim-nix
@@ -80,10 +80,11 @@
     ];
 
     extraLuaConfig = ''
-      ${builtins.readFile ./nvim/core/keymaps.lua} 
-      ${builtins.readFile ./nvim/core/options.lua} 
-      ${builtins.readFile ./nvim/core/colemak-dh.lua} 
-      ${builtins.readFile ./nvim/plugin/lsp.lua}
+      ${builtins.readFile ./init.lua} 
+      # ${builtins.readFile ./nvim/core/keymaps.lua} 
+      # ${builtins.readFile ./nvim/core/options.lua} 
+      # ${builtins.readFile ./nvim/core/colemak-dh.lua} 
+      # ${builtins.readFile ./nvim/plugin/lsp.lua}
     '';
 
     # extraLuaConfig = ''
