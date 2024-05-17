@@ -13,12 +13,22 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
+      #lsp
       nixd
       nil
       alejandra
       typescript
       nodePackages_latest.typescript-language-server
       lua-language-server
+      nodePackages_latest.vscode-html-languageserver-bin
+      nodePackages_latest.tailwindcss
+      nodePackages_latest.vscode-css-languageserver-bin
+      nodePackages_latest.graphql-language-service-cli
+      emmet-ls
+      pyright
+
+      #formatter/linter
+      nodePackages_latest.prettier
       eslint_d
       pylint
       stylua
@@ -55,6 +65,7 @@
       plenary-nvim
       fugitive
       oil-nvim
+      conform-nvim
 
       #visual
       lualine-nvim
@@ -86,6 +97,8 @@
       ${builtins.readFile ./zoova/plugins/cmp.lua}
       ${builtins.readFile ./zoova/plugins/treesitter.lua}
       ${builtins.readFile ./zoova/plugins/telescope.lua}
+      ${builtins.readFile ./zoova/plugins/formatter.lua}
+      ${builtins.readFile ./zoova/plugins/harpoon.lua}
       ${builtins.readFile ./zoova/plugins/default.lua}
     '';
 
