@@ -1,66 +1,3 @@
--- local on_attach = function(_, bufnr)
--- 	local bufmap = function(keys, func)
--- 		vim.keymap.set("n", keys, func, { buffer = bufnr })
--- 	end
---
--- 	bufmap("<leader>r", vim.lsp.buf.rename)
--- 	bufmap("<leader>ca", vim.lsp.buf.code_action)
---
--- 	bufmap("gd", vim.lsp.buf.definition)
--- 	bufmap("gD", vim.lsp.buf.declaration)
--- 	bufmap("gI", vim.lsp.buf.implementation)
--- 	bufmap("<leader>D", vim.lsp.buf.type_definition)
---
--- 	bufmap("gr", require("telescope.builtin").lsp_references)
--- 	bufmap("<leader>s", require("telescope.builtin").lsp_document_symbols)
--- 	bufmap("<leader>S", require("telescope.builtin").lsp_dynamic_workspace_symbols)
---
--- 	bufmap("K", vim.lsp.buf.hover)
---
--- 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
--- 		vim.lsp.buf.format()
--- 	end, {})
--- end
---
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
--- local lspconfig = require("lspconfig")
---
--- require("neodev").setup()
---
--- lspconfig.lua_ls.setup({
--- 	capabilities = capabilities,
--- 	on_attach = on_attach,
--- 	root_dir = function()
--- 		return vim.loop.cwd()
--- 	end,
--- 	settings = { -- custom settings for lua
--- 		Lua = {
--- 			-- make the language server recognize "vim" global
--- 			diagnostics = {
--- 				globals = { "vim" },
--- 			},
--- 			workspace = {
--- 				-- make language server aware of runtime files
--- 				library = {
--- 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
--- 					[vim.fn.stdpath("config") .. "/lua"] = true,
--- 				},
--- 			},
--- 		},
--- 	},
--- })
---
--- lspconfig.nixd.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
---
--- lspconfig.tsserver.setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
--- import lspconfig plugin
 local lspconfig = require("lspconfig")
 
 -- import cmp-nvim-lsp plugin
@@ -115,10 +52,16 @@ end
 
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+require("ufo").setup()
 
 -- Change the Diagnostic symbols in the sign column (gutter)
 -- (not in youtube nvim video)
-local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+-- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+local signs = { Error = "x ", Warn = "! ", Hint = "+ ", Info = "i " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })

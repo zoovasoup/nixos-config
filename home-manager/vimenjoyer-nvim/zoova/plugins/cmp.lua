@@ -13,9 +13,9 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-e>"] = cmp.mapping.select_prev_item(),
+		["<C-k>"] = cmp.mapping.scroll_docs(-4),
+		["<C-h>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete({}),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
@@ -42,9 +42,9 @@ cmp.setup({
 	}),
 	sources = {
 		{ name = "nvim_lsp" },
+		{ name = "cmp-buffer" },
 		{ name = "luasnip" },
 		{ name = "cmp_luasnip" },
-		{ name = "cmp-buffer" },
 		{ name = "cmp-path" },
 		{ name = "cmp-nvim-tags" },
 		{ name = "cmp-cmdline" },

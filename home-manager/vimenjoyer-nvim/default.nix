@@ -76,6 +76,8 @@
       colorizer
       surround
       ChatGPT-nvim
+      nvim-ufo
+      promise-async
 
       {
         plugin = comment-nvim;
