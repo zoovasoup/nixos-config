@@ -9,8 +9,8 @@
   imports = [
     #inputs.nixvim.homeManagerModules.nixvim
     # ./nixvim
-    # ./neovim
-    # ./vimenjoyer-nvim
+    #./neovim
+     ./vimenjoyer-nvim
     ./features/cli
     ./hyprland
     inputs.ags.homeManagerModules.default
@@ -46,16 +46,16 @@
 
   programs.home-manager.enable = true;
 
-  programs.neovim = {
-    enable = true;
-  };
-
-  home.file.".config/nvim" = {
-    source = ./config/nvim;
-    target = ".config/nvim";
-    recursive = true;
-    executable = true;
-  };
+  # programs.neovim = {
+  #   enable = true;
+  # };
+  #
+  # home.file.".config/nvim" = {
+  #   source = ./config/nvim;
+  #   target = ".config/nvim";
+  #   recursive = true;
+  #   executable = true;
+  # };
 
   programs.waybar = {
     enable = true;
