@@ -97,6 +97,7 @@
       ${builtins.readFile ./zoova/core/colemak-dh.lua} 
       ${builtins.readFile ./zoova/plugins/lsp.lua}
       ${builtins.readFile ./zoova/plugins/cmp.lua}
+      ${builtins.readFile ./zoova/plugins/fold.lua}
       ${builtins.readFile ./zoova/plugins/treesitter.lua}
       ${builtins.readFile ./zoova/plugins/telescope.lua}
       ${builtins.readFile ./zoova/plugins/formatter.lua}

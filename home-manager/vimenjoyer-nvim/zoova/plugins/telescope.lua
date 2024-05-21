@@ -1,4 +1,5 @@
 local actions = require("telescope.actions")
+local builtin = require("telescope.builtin")
 require("telescope").setup({
 	defaults = {
 		path_display = { "truncate " },
@@ -7,6 +8,8 @@ require("telescope").setup({
 				["<C-e>"] = actions.move_selection_previous, -- move to prev result
 				["<C-n>"] = actions.move_selection_next, -- move to next result
 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				["<C-k>"] = actions.preview_scrolling_down, -- scroll preview down
+				["<C-h>"] = actions.preview_scrolling_up, -- scroll preview up
 				-- ["e"] = actions.move_selection_previous, -- move to prev result
 				-- ["n"] = actions.move_selection_next, -- move to next result
 				-- ["q"] = actions.send_selected_to_qflist + actions.open_qflist,
@@ -32,3 +35,6 @@ keymap.set("n", "<leader>pr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy fin
 keymap.set("n", "<leader>pg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 keymap.set("n", "<leader>ps", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 keymap.set("n", "<leader>ph", "<cmd>Telescope help_tags<cr>", { desc = "Find string under cursor in cwd" })
+keymap.set("n", "<leader>pgs", function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)

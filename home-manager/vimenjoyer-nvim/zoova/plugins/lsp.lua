@@ -52,11 +52,11 @@ end
 
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
-capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true,
-}
-require("ufo").setup()
+-- capabilities.textDocument.foldingRange = {
+-- 	dynamicRegistration = false,
+-- 	lineFoldingOnly = true,
+-- }
+-- require("ufo").setup()
 
 -- Change the Diagnostic symbols in the sign column (gutter)
 -- (not in youtube nvim video)

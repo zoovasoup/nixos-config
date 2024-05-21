@@ -38,10 +38,14 @@ keymap.set("n", "<leader>bn", ":bn<CR>", { desc = "Go to next buffer" }) --  go 
 keymap.set("n", "<leader>bp", ":bp<CR>", { desc = "Go to previous buffer" }) --  go to previous buffer
 
 -- buffer navigation
-keymap.set("n", "<leader><C-m>", "<C-w>h")
-keymap.set("n", "<leader><C-i>", "<C-w>l")
-keymap.set("n", "<leader><C-n>", "<C-w>j")
-keymap.set("n", "<leader><C-e>", "<C-w>k")
+-- keymap.set("n", "<leader><C-m>", "<C-w>h")
+-- keymap.set("n", "<leader><C-i>", "<C-w>l")
+-- keymap.set("n", "<leader><C-n>", "<C-w>j")
+-- keymap.set("n", "<leader><C-e>", "<C-w>k")
+keymap.set("n", "<leader>M", "<C-w>h")
+keymap.set("n", "<leader>I", "<C-w>l")
+keymap.set("n", "<leader>N", "<C-w>j")
+keymap.set("n", "<leader>E", "<C-w>k")
 
 --buffer sizing
 keymap.set("n", "=", "<cmd>vertical resize +10<cr>") -- make the window biger vertically
@@ -49,3 +53,25 @@ keymap.set("n", "-", "<cmd>vertical resize -10<cr>") -- make the window smaller 
 keymap.set("n", "+", "<cmd>horizontal resize +5<cr>") -- make the window bigger horizontally by pressing shift and =
 keymap.set("n", "_", "<cmd>horizontal resize -5<cr>") -- make the window smaller horizontally by pressing shift and -
 
+keymap.set("v", "N", ":m '>+1<CR>gv=gv")
+keymap.set("v", "E", ":m '<-2<CR>gv=gv")
+
+keymap.set("n", "J", "mzJ`z")
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+-- keymap.set("n", "n", "nzzzv")
+-- keymap.set("n", "N", "Nzzzv")
+
+-- greatest remap ever
+keymap.set("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+keymap.set("n", "<leader>Y", [["+Y]])
+
+keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+
+keymap.set("n", "<leader>n", "<cmd>lnext<CR>zz")
+keymap.set("n", "<leader>e", "<cmd>lprev<CR>zz")
+-- set_mapping("", "E", "<cmd>cprev<CR>zz", {})
+-- set_mapping("", "N", "<cmd>cnext<CR>zz", {})
