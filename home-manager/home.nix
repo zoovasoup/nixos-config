@@ -10,7 +10,7 @@
     #inputs.nixvim.homeManagerModules.nixvim
     # ./nixvim
     # ./neovim
-    ./vimenjoyer-nvim
+    # ./vimenjoyer-nvim
     ./features/cli
     ./hyprland
     inputs.ags.homeManagerModules.default
@@ -33,14 +33,6 @@
     homeDirectory = "/home/zvasoup";
   };
 
-  # gtk = {
-  #   enable = true;
-  #   theme = {
-  #     name = "Gruvbox-Dark-BL";
-  #     package = pkgs.gruvbox-gtk-theme-unstable;
-  #   };
-  # };
-
   home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
 
   programs.ags = {
@@ -53,6 +45,17 @@
   };
 
   programs.home-manager.enable = true;
+
+  programs.neovim = {
+    enable = true;
+  };
+
+  home.file.".config/nvim" = {
+    source = ./config/nvim;
+    target = ".config/nvim";
+    recursive = true;
+    executable = true;
+  };
 
   programs.waybar = {
     enable = true;
