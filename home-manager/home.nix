@@ -10,7 +10,7 @@
     #inputs.nixvim.homeManagerModules.nixvim
     # ./nixvim
     #./neovim
-     ./vimenjoyer-nvim
+     # ./vimenjoyer-nvim
     ./features/cli
     ./hyprland
     inputs.ags.homeManagerModules.default
@@ -46,10 +46,10 @@
 
   programs.home-manager.enable = true;
 
-  # programs.neovim = {
-  #   enable = true;
-  # };
-  #
+  programs.neovim = {
+    enable = true;
+  };
+
   # home.file.".config/nvim" = {
   #   source = ./config/nvim;
   #   target = ".config/nvim";
