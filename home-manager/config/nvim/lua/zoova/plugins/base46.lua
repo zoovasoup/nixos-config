@@ -1,8 +1,5 @@
 return {
 	{
-		lazy = true,
-	},
-	{
 		"jayden-chan/base46.nvim",
 		config = function()
 			-- exit if it can't be found

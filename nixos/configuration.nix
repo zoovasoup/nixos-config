@@ -211,6 +211,8 @@
         # wl-gammarelay-rs
         hyprshade
         unzip
+        nix-ld
+        lua-language-server
 
      #nixd
      #nil
@@ -259,7 +261,7 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
-      stdenv.cc.cc
+      stdenv.cc.cc 
     ];
   };
 
