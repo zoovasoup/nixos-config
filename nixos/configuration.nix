@@ -210,6 +210,7 @@
         yarn
         # wl-gammarelay-rs
         hyprshade
+        unzip
 
      #nixd
      #nil
