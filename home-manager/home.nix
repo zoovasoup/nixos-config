@@ -48,6 +48,30 @@
 
   programs.neovim = {
     enable = true;
+    extraPackages = with pkgs; [
+      #lsp
+      nixd
+      nil
+      alejandra
+      typescript
+      nodePackages_latest.typescript-language-server
+      lua-language-server
+      nodePackages_latest.vscode-html-languageserver-bin
+      # nodePackages_latest.tailwindcss
+      tailwindcss-language-server
+      nodePackages_latest.vscode-css-languageserver-bin
+      nodePackages_latest.graphql-language-service-cli
+      nodePackages_latest.svelte-language-server
+      emmet-ls
+      pyright
+      vscode-langservers-extracted
+
+      #formatter/linter
+      nodePackages_latest.prettier
+      eslint_d
+      pylint
+      stylua
+    ];
   };
 
   # home.file.".config/nvim" = {

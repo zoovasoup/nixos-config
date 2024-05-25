@@ -1,12 +1,9 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
+  lazy = vim.fn.argc(-1) == 0,
   build = ":TSUpdate",
-  config = function()
-    local treesitter = require("nvim-treesitter")
-
-    -- configure treesitter
-    treesitter.setup({ -- enable syntax highlighting
+  opts = {
       highlight = {
         enable = true,
       },
@@ -44,6 +41,8 @@ return {
           node_decremental = "<bs>",
         },
       },
-    })
-  end
+  },
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }

@@ -42,7 +42,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 opt.swapfile = false
 
 -- fold setup
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 3 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
+-- vim.o.foldcolumn = "1" -- '0' is not bad
+-- vim.o.foldlevel = 3 -- Using ufo provider need a large value, feel free to decrease the value
+-- vim.o.foldlevelstart = 99
 -- vim.o.foldenable = true

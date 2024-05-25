@@ -7,8 +7,8 @@ end
 set_mapping("", "m", "h", {})
 -- set_mapping("", "n", "jzzzv", {})
 -- set_mapping("", "e", "kzzzv", {})
-set_mapping("", "n", "jzz", {})
-set_mapping("", "e", "kzz", {})
+set_mapping("", "n", "j", {})
+set_mapping("", "e", "k", {})
 set_mapping({ "n", "v" }, "i", "l", {})
 
 set_mapping("", "M", "H", {})
