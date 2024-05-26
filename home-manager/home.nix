@@ -35,6 +35,8 @@
 
   home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
 
+  home.enableNixpkgsReleaseCheck = false;
+
   programs.ags = {
     enable = true;
     extraPackages = with pkgs; [
@@ -100,5 +102,6 @@
 
   systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = "23.11";
+  #home.stateVersion = "23.11";
+  home.stateVersion = "24.11";
 }
