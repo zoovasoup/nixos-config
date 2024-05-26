@@ -34,8 +34,10 @@ return {
             ["<C-t>"] = trouble_telescope.smart_open_with_trouble,
           },
         },
+        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
       },
     })
+
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
