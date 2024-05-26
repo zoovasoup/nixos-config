@@ -226,6 +226,12 @@
     };
   };
 
+  environment.systemPackages = [
+    (pkgs.hyprshade.override {
+      hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    })
+  ];
+
   security.pam.services.gtklock = {};
 
   services.nextdns = {
