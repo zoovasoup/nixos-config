@@ -53,7 +53,6 @@ in {
         border_size = "3";
         "col.active_border" = "rgba(d79921ee)";
         "col.inactive_border" = "rgba(282828ee)";
-        cursor_inactive_timeout = "5";
 
         layout = "hy3";
 #layout = "dwindle";
@@ -181,8 +180,7 @@ in {
 
 # scratchpad
       "float, class:(scratchpad)"
-      # "center, class:(scratchpad)"
-      "move 100%-w-20 59%, class:(scratchpad)"
+      "center, class:(scratchpad)"
       "size 60% 50%, class:(scratchpad)"
       "workspace special:magic silent, class:(scratchpad)"
 

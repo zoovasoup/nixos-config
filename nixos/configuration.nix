@@ -209,7 +209,9 @@
         cliphist
         yarn
         # wl-gammarelay-rs
-        hyprshade
+        # hyprshade.override { 
+        #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        # }
         unzip
         nix-ld
         lua-language-server
