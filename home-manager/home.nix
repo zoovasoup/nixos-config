@@ -37,6 +37,11 @@
 
   home.enableNixpkgsReleaseCheck = false;
 
+  home.packages = with pkgs; [
+    ytui-music
+    ytermusic
+  ];
+
   programs.ags = {
     enable = true;
     extraPackages = with pkgs; [
