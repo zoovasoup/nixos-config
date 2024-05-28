@@ -1,21 +1,21 @@
 {
   inputs,
-    outputs,
-    lib,
-    config,
-    pkgs,
-    ...
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }: {
   imports = [
-# ./users.nix
+    # ./users.nix
     ./hardware-configuration.nix
   ];
 
   nixpkgs = {
     overlays = [
       outputs.overlays.additions
-        outputs.overlays.modifications
-        outputs.overlays.unstable-packages
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
     ];
     config = {
       allowUnfree = true;
@@ -27,10 +27,10 @@
   environment.etc =
     lib.mapAttrs'
     (name: value: {
-     name = "nix/path/${name}";
-     value.source = value.flake;
-     })
-  config.nix.registry;
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    })
+    config.nix.registry;
 
   nix.settings = {
     experimental-features = "nix-command flakes";
@@ -49,16 +49,16 @@
   boot.plymouth.enable = true;
   boot.loader.timeout = 1;
   boot.kernelParams = [
-        "quiet"
-      "loglevel=3"
-      "systemd.show_status=auto"
-      "udev.log_level=3"
-      "rd.udev.log_level=3"
-      "vt.global_cursor_default=0"
+    "quiet"
+    "loglevel=3"
+    "systemd.show_status=auto"
+    "udev.log_level=3"
+    "rd.udev.log_level=3"
+    "vt.global_cursor_default=0"
   ];
   boot.consoleLogLevel = 0;
 
-# ==================
+  # ==================
 
   time.timeZone = "Asia/Singapore";
 
@@ -76,10 +76,10 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-# Enable the X11 windowing system.
+  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-# Enable the GNOME Desktop Environment.
+  # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm = {
     enable = true;
     settings = {
@@ -92,7 +92,7 @@
   };
   services.xserver.desktopManager.gnome.enable = true;
 
-# Configure keymap
+  # Configure keymap
   services.xserver.xkb = {
     layout = "us";
     variant = "colemak_dh";
@@ -103,11 +103,11 @@
     enable = true;
     keyboards = {
       default = {
-        ids = [ "*" ];
+        ids = ["*"];
         settings = {
-          main = { 
+          main = {
             capslock = "overload(caps_layer, esc)";
-            };
+          };
           caps_layer = {
             m = "left";
             n = "down";
@@ -119,10 +119,10 @@
     };
   };
 
-# Enable CUPS to print documents.
+  # Enable CUPS to print documents.
   services.printing.enable = true;
 
-# Enable sound with pipewire.
+  # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -143,11 +143,10 @@
     };
   };
 
+  # Enable touchpad support (enabled default in most desktopManager).
+  # services.xserver.libinput.enable = true;
 
-# Enable touchpad support (enabled default in most desktopManager).
-# services.xserver.libinput.enable = true;
-
-# ===========================
+  # ===========================
 
   users.users = {
     zvasoup = {
@@ -209,21 +208,21 @@
         cliphist
         yarn
         # wl-gammarelay-rs
-        # hyprshade.override { 
+        # hyprshade.override {
         #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
         # }
         unzip
         nix-ld
         lua-language-server
 
-     #nixd
-     #nil
-     #alejandra
-     #nodePackages_latest.typescript-language-server
-     #lua-language-server
-     #eslint_d
-     #pylint
-     #stylua
+        #nixd
+        #nil
+        #alejandra
+        #nodePackages_latest.typescript-language-server
+        #lua-language-server
+        #eslint_d
+        #pylint
+        #stylua
       ];
     };
   };
@@ -238,10 +237,10 @@
 
   services.nextdns = {
     enable = true;
-    arguments = [ "-config" "nixThinkpad-8f1153.dns.nextdns.io" ];
+    arguments = ["-config" "nixThinkpad-8f1153.dns.nextdns.io"];
   };
 
-  # programs.home-manager.enable = true;  
+  # programs.home-manager.enable = true;
 
   services.flatpak.enable = true;
 
@@ -269,10 +268,10 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
-      stdenv.cc.cc 
+      stdenv.cc.cc
     ];
   };
 
-# https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";
 }
