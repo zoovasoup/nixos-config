@@ -106,13 +106,15 @@
         ids = ["*"];
         settings = {
           main = {
-            capslock = "overload(caps_layer, esc)";
-          };
-          caps_layer = {
-            m = "left";
-            n = "down";
-            e = "up";
-            i = "right";
+            capslock = "overloadt2(control, esc, 200)";
+            a = "overloadt2(shift, a, 200)";
+            s = "overloadt2(control, s, 200)";
+            d = "overloadt2(meta, d, 200)";
+            f = "overloadt2(alt, f, 200)";
+            j = "overloadt2(alt, j, 200)";
+            k = "overloadt2(meta, k, 200)";
+            l = "overloadt2(control, l, 200)";
+            ";" = "overloadt2(shift, ;, 200)";
           };
         };
       };
