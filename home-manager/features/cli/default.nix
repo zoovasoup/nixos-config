@@ -1,5 +1,9 @@
-{ pkgs, config, inputs, ... } : {
-
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     comma # Install and run programs by sticking a , before them
     distrobox # Nice escape hatch, integrates docker images with my environment
@@ -24,7 +28,6 @@
 
     ltex-ls # Spell checking LSP
 
-
     # tly # Tally counter
 
     # awscli2
@@ -34,9 +37,9 @@
   # programs.neovim = {
   #   enable = true;
   # };
-  
+
   programs.fish = {
-    enable = true; 
+    enable = true;
   };
 
   home.file.".config/fish" = {
@@ -47,9 +50,9 @@
   };
 
   programs.fzf = {
-    enable = true; 
+    enable = true;
     enableFishIntegration = true;
-    enableBashIntegration = true; 
+    enableBashIntegration = true;
     enableZshIntegration = true;
   };
 
@@ -57,7 +60,7 @@
     enable = true;
     userName = "zvasoup";
     userEmail = "zulfa.plank@proton.me";
-    extraConfig = { init.defaultBranch = "main"; };
+    extraConfig = {init.defaultBranch = "main";};
   };
 
   programs.foot = {
@@ -83,7 +86,7 @@
     enable = true;
   };
 
-  programs.yazi ={
+  programs.yazi = {
     enable = true;
   };
   home.file.".config/yazi" = {
@@ -96,7 +99,7 @@
   programs.mpv = {
     enable = true;
   };
-  
+
   home.file.".config/zathura" = {
     source = ../../config/zathura;
     target = ".config/zathura";
@@ -110,12 +113,26 @@
 
   programs.tmux = {
     enable = true;
+    mouse = true;
+    keyMode = "vi";
+    extraConfig = "
+      unbind-key C-b
+      set-option -g prefix C-Space
+      bind-key C-Space send-prefix
+      set-option -g status-left-length 40
+      set-option -g status-right-length 40
+      set-option -g status-left '[Session: #{server_sessions}-#{session_name}]'
+      set-option -g status-right '[#{?pane_at_top,top,bot}:#{?pane_at_left,left,right}]'
+      set-option -g window-status-format '#{window_index}:#{window_name}#{window_flags}'
+      set-option -g window-status-current-format '#[bold,fg=#D79920]#{window_index}:#{window_name}#{window_flags}'
+      set-option -g status-style bg='#504945',fg='#f2e5bc'
+      set-option -g status-justify absolute-centre
+      set-option -g status-interval 1
+      ";
   };
 
   #   programs.hyprland = {
   #   enable = true;
   #   portalPackage = pkgs.xdg-desktop-portal-hyprland; # default
   # };
-
-
 }
