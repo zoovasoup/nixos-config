@@ -131,12 +131,6 @@
       set-option -g status-style bg='#504945',fg='#f2e5bc'
       set-option -g status-justify absolute-centre
       set-option -g status-interval 1
-
-      bind -n C-m select-pane -L
-      bind -n C-n select-pane -D
-      bind -n C-e select-pane -U
-      bind -n C-i select-pane -R
-
       ";
   };
 
