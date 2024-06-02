@@ -115,23 +115,10 @@
     enable = true;
     mouse = true;
     keyMode = "vi";
-    plugins = with pkgs; [
-      tmuxPlugins.vim-tmux-navigator
-    ];
-    extraConfig = "
-      unbind-key C-b
-      set-option -g prefix C-Space
-      bind-key C-Space send-prefix
-      set-option -g status-left-length 40
-      set-option -g status-right-length 40
-      set-option -g status-left '[Session: #{server_sessions}-#{session_name}]'
-      set-option -g status-right '[#{?pane_at_top,top,bot}:#{?pane_at_left,left,right}]'
-      set-option -g window-status-format '#{window_index}:#{window_name}#{window_flags}'
-      set-option -g window-status-current-format '#[bold,fg=#D79920]#{window_index}:#{window_name}#{window_flags}'
-      set-option -g status-style bg='#504945',fg='#f2e5bc'
-      set-option -g status-justify absolute-centre
-      set-option -g status-interval 1
-      ";
+    # plugins = with pkgs; [
+    #   tmuxPlugins.vim-tmux-navigator
+    # ];
+    extraConfig = builtins.readFile ./tmux.conf;
   };
 
   #   programs.hyprland = {

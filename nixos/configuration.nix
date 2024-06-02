@@ -107,15 +107,15 @@
         ids = ["*"];
         settings = {
           main = {
-            capslock = "overloadt2(arrow_caps, esc, 200)";
-            a = "overloadt2(shift, a, 200)";
-            s = "overloadt2(control, s, 200)";
-            d = "overloadt2(meta, d, 200)";
-            f = "overloadt2(alt, f, 200)";
-            j = "overloadt2(alt, j, 200)";
-            k = "overloadt2(meta, k, 200)";
-            l = "overloadt2(control, l, 200)";
-            ";" = "overloadt2(shift, ;, 200)";
+            capslock = "overloadt2(arrow_caps, esc, 180)";
+            a = "overloadt(shift, a, 180)";
+            s = "overloadt(control, s, 180)";
+            d = "overloadt(meta, d, 180)";
+            f = "overloadt(alt, f, 180)";
+            j = "overloadt(alt, j, 180)";
+            k = "overloadt(meta, k, 180)";
+            l = "overloadt(control, l, 180)";
+            ";" = "overloadt(shift, ;, 180)";
           };
           arrow_caps = {
             h = "left";
