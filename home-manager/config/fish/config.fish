@@ -20,6 +20,7 @@ if status is-interactive
   # alias ct="cat"
   alias c="clear && cermic 1 ~/.cermic_repo/cermic-tiny-art-repo/images"
   alias yz="yazi"
+  alias bt="bat --paging=never"
 end
 
 set -x PATH $PATH /home/zvasoup/.cargo/bin

@@ -10,6 +10,7 @@
     # ./users.nix
     ./hardware-configuration.nix
     inputs.auto-cpufreq.nixosModules.default
+    inputs.self.nixosModules.battery-check
   ];
 
   nixpkgs = {
@@ -107,15 +108,17 @@
         ids = ["*"];
         settings = {
           main = {
-            capslock = "overloadt2(arrow_caps, esc, 180)";
-            a = "overloadt(shift, a, 180)";
-            s = "overloadt(control, s, 180)";
-            d = "overloadt(meta, d, 180)";
-            f = "overloadt(alt, f, 180)";
-            j = "overloadt(alt, j, 180)";
-            k = "overloadt(meta, k, 180)";
-            l = "overloadt(control, l, 180)";
-            ";" = "overloadt(shift, ;, 180)";
+            capslock = "overloadt(arrow_caps, esc, 220)";
+            a = "overloadt(shift, a, 220)";
+            s = "overloadt(control, s, 220)";
+            d = "overloadt(meta, d, 220)";
+            f = "overloadt(alt, f, 220)";
+            j = "overloadt(alt, j, 220)";
+            k = "overloadt(meta, k, 220)";
+            l = "overloadt(control, l, 220)";
+            ";" = "overloadt(shift, ;, 220)";
+            "\\" = "backspace";
+            "backspace" = "\\";
           };
           arrow_caps = {
             h = "left";
@@ -232,6 +235,7 @@
         #eslint_d
         #pylint
         #stylua
+        acpi
       ];
     };
   };
@@ -282,6 +286,8 @@
       stdenv.cc.cc
     ];
   };
+
+  modules.battery-check.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";

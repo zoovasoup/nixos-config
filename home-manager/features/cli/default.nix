@@ -38,6 +38,10 @@
   #   enable = true;
   # };
 
+  programs.zsh = {
+    enable = true;
+  };
+
   programs.fish = {
     enable = true;
   };
@@ -115,9 +119,9 @@
     enable = true;
     mouse = true;
     keyMode = "vi";
-    # plugins = with pkgs; [
-    #   tmuxPlugins.vim-tmux-navigator
-    # ];
+    plugins = with pkgs; [
+      tmuxPlugins.sensible
+    ];
     extraConfig = builtins.readFile ./tmux.conf;
   };
 
