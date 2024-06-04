@@ -42,6 +42,10 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
+opt.signcolumn = "yes"
+
+vim.cmd.autocmd("VimResized * :wincmd =")
+
 -- fold setup
 -- vim.o.foldcolumn = "1" -- '0' is not bad
 -- vim.o.foldlevel = 3 -- Using ufo provider need a large value, feel free to decrease the value
