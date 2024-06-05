@@ -3,10 +3,44 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-telescope/telescope.nvim",
+		"ellisonleao/glow.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
-	opts = {},
-	config = function()
-		require("nvim-devdocs").setup()
-	end,
+	opts = {
+		format = "markdown",
+		filetypes = {
+			javascript = { "javascript", "react" },
+			typescript = { "javascript", "typescript", "react" },
+		},
+		float_win = { -- passed to nvim_open_win(), see :h api-floatwin
+			relative = "editor",
+			height = 45,
+			width = 150,
+		},
+		cmd_ignore = {},
+		picker_cmd = true,
+		picker_cmd_args = { "-s", "auto", "-w", "110" },
+		mappings = {
+			open_in_browser = "<leader>ob",
+			toggle_rendering = "<leader>or",
+		},
+		warp = true,
+		previewer_cmd = "glow",
+		cmd_args = { "-s", "auto", "-w", "120" },
+		ensure_installed = {
+			"html",
+			"css",
+			"javascript",
+			"typescript",
+			"lua-5.4",
+			"nix",
+			"node",
+			"vite",
+			"sass",
+			"tailwindcss",
+			"yarn-berry",
+			"web_extensions",
+			"react",
+		},
+	},
 }

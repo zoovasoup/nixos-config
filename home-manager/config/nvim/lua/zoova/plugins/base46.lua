@@ -11,5 +11,6 @@ return {
 		vim.cmd.hi("CursorLineFold guibg=NONE")
 		vim.cmd.hi("LineNr guibg=NONE")
 		vim.cmd.hi("CursorLineNr guibg=NONE")
+		vim.cmd.hi("NormalFloat guibg=NONE")
 	end,
 }

@@ -32,7 +32,7 @@ return {
 						auto = false,
 					},
 					click = "v:lua.ScSa",
-					hl = "LineNr",
+					hl = "SignColumn",
 				},
 			},
 		})

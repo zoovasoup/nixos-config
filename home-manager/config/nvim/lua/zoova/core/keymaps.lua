@@ -4,17 +4,11 @@ vim.g.maplocalleader = ","
 
 local keymap = vim.keymap -- for conciseness
 
----------------------
--- General Keymaps -------------------
-
--- use jk to exit insert mode
--- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
-
 -- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>ch", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- delete single character without copying into register
--- keymap.set("n", "x", '"_x')
+keymap.set("n", "x", '"_x')
 
 -- increment/decrement numbers
 -- keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
@@ -37,11 +31,7 @@ keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Close current buffer from lis
 keymap.set("n", "<leader>bn", ":bn<CR>", { desc = "Go to next buffer" }) --  go to next buffer
 keymap.set("n", "<leader>bp", ":bp<CR>", { desc = "Go to previous buffer" }) --  go to previous buffer
 
--- buffer navigation
--- keymap.set("n", "<leader><C-m>", "<C-w>h")
--- keymap.set("n", "<leader><C-i>", "<C-w>l")
--- keymap.set("n", "<leader><C-n>", "<C-w>j")
--- keymap.set("n", "<leader><C-e>", "<C-w>k")
+-- split buffer navigation
 keymap.set("n", "<leader>M", "<C-w>h")
 keymap.set("n", "<leader>I", "<C-w>l")
 keymap.set("n", "<leader>N", "<C-w>j")
@@ -73,5 +63,6 @@ keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 keymap.set("n", "<leader>n", "<cmd>lnext<CR>zz")
 keymap.set("n", "<leader>e", "<cmd>lprev<CR>zz")
--- set_mapping("", "E", "<cmd>cprev<CR>zz", {})
--- set_mapping("", "N", "<cmd>cnext<CR>zz", {})
+keymap.set("", "E", "<cmd>cprev<CR>zz", {})
+keymap.set("", "N", "<cmd>cnext<CR>zz", {})
+--

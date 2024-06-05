@@ -25,12 +25,21 @@ return {
 
 		telescope.setup({
 			defaults = {
-				path_display = { "shorten" },
+				path_display = { "smart" },
+				layout_config = {
+					preview_width = 0.65,
+					horizontal = {
+						size = {
+							width = "95%",
+							height = "95%",
+						},
+					},
+				},
 				mappings = {
 					i = {
 						["<C-e>"] = actions.move_selection_previous, -- move to prev result
 						["<C-n>"] = actions.move_selection_next, -- move to next result
-						["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
+						["<C-o>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
 						["<C-t>"] = trouble_telescope.smart_open_with_trouble,
 						["<C-N>"] = actions.preview_scrolling_down,
 						["<C-E>"] = actions.preview_scrolling_up,

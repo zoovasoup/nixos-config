@@ -108,15 +108,15 @@
         ids = ["*"];
         settings = {
           main = {
-            capslock = "overloadt(arrow_caps, esc, 220)";
-            a = "overloadt(shift, a, 220)";
-            s = "overloadt(control, s, 220)";
-            d = "overloadt(meta, d, 220)";
-            f = "overloadt(alt, f, 220)";
-            j = "overloadt(alt, j, 220)";
-            k = "overloadt(meta, k, 220)";
-            l = "overloadt(control, l, 220)";
-            ";" = "overloadt(shift, ;, 220)";
+            capslock = "overloadt2(arrow_caps, esc, 220)";
+            a = "overloadt2(shift, a, 220)";
+            s = "overloadt2(control, s, 220)";
+            d = "overloadt2(meta, d, 220)";
+            f = "overloadt2(alt, f, 220)";
+            j = "overloadt2(alt, j, 220)";
+            k = "overloadt2(meta, k, 220)";
+            l = "overloadt2(control, l, 220)";
+            ";" = "overloadt2(shift, ;, 220)";
             "\\" = "backspace";
             "backspace" = "\\";
           };
@@ -236,6 +236,8 @@
         #pylint
         #stylua
         acpi
+        suwayomi-server
+        glow
       ];
     };
   };

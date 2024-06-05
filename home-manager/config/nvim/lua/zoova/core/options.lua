@@ -46,8 +46,11 @@ opt.signcolumn = "yes"
 
 vim.cmd.autocmd("VimResized * :wincmd =")
 
--- fold setup
--- vim.o.foldcolumn = "1" -- '0' is not bad
--- vim.o.foldlevel = 3 -- Using ufo provider need a large value, feel free to decrease the value
--- vim.o.foldlevelstart = 99
--- vim.o.foldenable = true
+opt.incsearch = true
+opt.scrolloff = 7
+
+vim.g.terminal_typer = "foot"
+
+vim.cmd([[
+autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=200}
+]])
