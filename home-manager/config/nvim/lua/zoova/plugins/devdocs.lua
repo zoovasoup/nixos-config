@@ -19,7 +19,7 @@ return {
 		},
 		cmd_ignore = {},
 		picker_cmd = true,
-		picker_cmd_args = { "-s", "auto", "-w", "110" },
+		picker_cmd_args = { "-s", "dark", "-w", "110" },
 		mappings = {
 			open_in_browser = "<leader>ob",
 			toggle_rendering = "<leader>or",
@@ -40,7 +40,32 @@ return {
 			"tailwindcss",
 			"yarn-berry",
 			"web_extensions",
+			"webpack-5",
 			"react",
 		},
 	},
+
+	config = function(_, opts)
+		require("nvim-devdocs").setup(opts)
+
+		-- vim.keymap.set("n", "<leader>di", function()
+		-- 	vim.cmd("DevdocsOpenFloat")
+		-- end, {})
+
+		vim.keymap.set("n", "<leader>di", function()
+			vim.fn.feedkeys(":DevdocsOpenFloat ", "n")
+		end, {})
+
+		vim.keymap.set("n", "<leader>do", function()
+			vim.cmd("DevdocsToggle")
+		end, {})
+
+		vim.keymap.set("n", "<leader>doc", function()
+			vim.cmd("DevdocsOpenCurrent")
+		end, {})
+
+		vim.keymap.set("n", "<leader>df", function()
+			vim.cmd("DevdocsOpenCurrentFloat")
+		end, {})
+	end,
 }

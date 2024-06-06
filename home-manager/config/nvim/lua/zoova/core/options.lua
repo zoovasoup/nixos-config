@@ -54,3 +54,10 @@ vim.g.terminal_typer = "foot"
 vim.cmd([[
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=200}
 ]])
+
+vim.cmd('let $TZ = "Asia/Bangkok"')
+
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
+
+vim.o.foldlevel = 4
