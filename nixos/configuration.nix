@@ -306,6 +306,18 @@
     ];
   };
 
+  xdg.mime = {
+    enable = true;
+    defaultApplications = {
+      "x-scheme-handler/http" = "com.aborilov.floorp.desktop";
+      "x-scheme-handler/https" = "com.aborilov.floorp.desktop";
+      "x-scheme-handler/about" = "com.aborilov.floorp.desktop";
+      "x-scheme-handler/unknown" = "com.aborilov.floorp.desktop";
+      "text/html" = "com.aborilov.floorp.desktop";
+      "application/xhtml+xml" = "com.aborilov.floorp.desktop";
+    };
+  };
+
   modules.battery-check.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

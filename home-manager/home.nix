@@ -10,7 +10,7 @@
     #inputs.nixvim.homeManagerModules.nixvim
     # ./nixvim
     #./neovim
-     # ./vimenjoyer-nvim
+    # ./vimenjoyer-nvim
     ./features/cli
     ./hyprland
     inputs.ags.homeManagerModules.default
@@ -104,6 +104,20 @@
     recursive = true;
     executable = true;
   };
+
+  # xdg.mime.enable = true;
+
+  # xdg.mimeApps = {
+  #   enable = true;
+  #   defaultApplications = {
+  #     "x-scheme-handler/http" = "one.ablaze.floorp";
+  #     "x-scheme-handler/https" = "one.ablaze.floorp";
+  #     "x-scheme-handler/about" = "one.ablaze.floorp";
+  #     "x-scheme-handler/unknown" = "one.ablaze.floorp";
+  #     "text/html" = "one.ablaze.floorp";
+  #     "application/xhtml+xml" = "one.ablaze.floorp";
+  #   };
+  # };
 
   systemd.user.startServices = "sd-switch";
 
