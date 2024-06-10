@@ -238,6 +238,7 @@
         acpi
         suwayomi-server
         glow
+        vdhcoapp
       ];
     };
   };
