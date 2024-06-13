@@ -108,15 +108,18 @@
         ids = ["*"];
         settings = {
           main = {
-            capslock = "overloadt2(arrow_caps, esc, 220)";
-            a = "overloadt2(shift, a, 220)";
-            s = "overloadt2(control, s, 220)";
-            d = "overloadt2(meta, d, 220)";
-            f = "overloadt2(alt, f, 220)";
-            j = "overloadt2(alt, j, 220)";
-            k = "overloadt2(meta, k, 220)";
-            l = "overloadt2(control, l, 220)";
-            ";" = "overloadt2(shift, ;, 220)";
+            capslock = "overloadt2(arrow_caps, esc, 180)";
+            a = "overloadt2(shift, a, 180)";
+            s = "overloadt2(control, s, 180)";
+            d = "overloadt2(meta, d, 180)";
+            f = "overloadt2(alt, f, 180)";
+            j = "overloadt2(alt, j, 180)";
+            k = "overloadt2(meta, k, 180)";
+            l = "overloadt2(control, l, 180)";
+            ";" = "overloadt2(shift, ;, 180)";
+            "g" = "overloadt2(keys_1, g, 180)";
+            "h" = "overloadt2(keys_1, h, 180)";
+            "space" = "overloadt2(keys_2, space, 180)";
             "\\" = "backspace";
             "backspace" = "\\";
           };
@@ -125,6 +128,30 @@
             j = "down";
             k = "up";
             l = "right";
+          };
+          keys_1 = {
+            q = "1";
+            w = "2";
+            e = "3";
+            r = "4";
+            t = "5";
+            y = "6";
+            u = "7";
+            i = "8";
+            o = "9";
+            p = "0";
+          };
+          keys_2 = {
+            a = "z";
+            s = "x";
+            d = "c";
+            f = "v";
+            g = "b";
+            h = "n";
+            j = "m";
+            k = ",";
+            l = ".";
+            ":" = "/";
           };
         };
       };
@@ -239,6 +266,8 @@
         suwayomi-server
         glow
         vdhcoapp
+        libva-utils
+        libGL
       ];
     };
   };
@@ -318,6 +347,30 @@
       "application/xhtml+xml" = "com.aborilov.floorp.desktop";
     };
   };
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      mesa # This includes the necessary VAAPI support for AMD GPUs.
+      libva
+      libva-utils
+      amdvlk
+    ];
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "radeonsi"; # radeonsi is the VAAPI driver for AMD.
+  };
+
+  # To enable Vulkan support for 32-bit applications, also add:
+  hardware.opengl.extraPackages32 = [
+    pkgs.driversi686Linux.amdvlk
+  ];
+
+  # Force radv
+  environment.variables.AMD_VULKAN_ICD = "RADV";
+  # Or
+  environment.variables.VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
 
   modules.battery-check.enable = true;
 

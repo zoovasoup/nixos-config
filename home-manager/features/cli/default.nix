@@ -27,6 +27,7 @@
     # nh # Nice wrapper for NixOS and HM
 
     ltex-ls # Spell checking LSP
+    texliveFull
 
     # tly # Tally counter
 
