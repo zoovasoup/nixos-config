@@ -107,19 +107,22 @@
       default = {
         ids = ["*"];
         settings = {
+          global = {
+            layer_indicator = 1;
+          };
           main = {
-            capslock = "overloadt2(arrow_caps, esc, 180)";
-            a = "overloadt2(shift, a, 180)";
-            s = "overloadt2(control, s, 180)";
-            d = "overloadt2(meta, d, 180)";
-            f = "overloadt2(alt, f, 180)";
-            j = "overloadt2(alt, j, 180)";
-            k = "overloadt2(meta, k, 180)";
-            l = "overloadt2(control, l, 180)";
-            ";" = "overloadt2(shift, ;, 180)";
-            "g" = "overloadt2(keys_1, g, 180)";
-            "h" = "overloadt2(keys_1, h, 180)";
-            "space" = "overloadt2(keys_2, space, 180)";
+            capslock = "overloadt2(arrow_caps, esc, 140)";
+            a = "overloadt2(keys_3, a, 130)";
+            s = "overloadt2(control, s, 170)";
+            d = "overloadt2(meta, d, 170)";
+            f = "overloadt2(alt, f, 170)";
+            j = "overloadt2(alt, j, 170)";
+            k = "overloadt2(meta, k, 170)";
+            l = "overloadt2(control, l, 170)";
+            ";" = "overloadt2(keys_2, ;, 130)";
+            "leftalt" = "oneshot(shift)";
+            "rightalt" = "backspace";
+            "space" = "overloadt2(shift, space, 140)";
             "\\" = "backspace";
             "backspace" = "\\";
           };
@@ -129,29 +132,31 @@
             k = "up";
             l = "right";
           };
-          keys_1 = {
-            q = "1";
-            w = "2";
-            e = "3";
-            r = "4";
-            t = "5";
-            y = "6";
-            u = "7";
-            i = "8";
-            o = "9";
-            p = "0";
-          };
+          # keys_1 = {
+          #   q = "1";
+          #   w = "2";
+          #   e = "3";
+          #   r = "4";
+          #   t = "5";
+          #   y = "6";
+          #   u = "7";
+          #   i = "8";
+          #   o = "9";
+          #   p = "0";
+          # };
           keys_2 = {
             a = "z";
             s = "x";
             d = "c";
             f = "v";
             g = "b";
+          };
+          keys_3 = {
             h = "n";
             j = "m";
             k = ",";
             l = ".";
-            ":" = "/";
+            ";" = "/";
           };
         };
       };
