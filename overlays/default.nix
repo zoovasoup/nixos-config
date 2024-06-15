@@ -10,6 +10,14 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    keyd = prev.keyd.overrideAttrs (oldAttrs: rec {
+      src = final.fetchFromGitHub {
+        owner = "rvaiya";
+        repo = "keyd";
+        rev = "master";
+        hash = "sha256-NhZnFIdK0yHgFR+rJm4cW+uEhuQkOpCSLwlXNQy6jas=";
+      };
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

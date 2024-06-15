@@ -111,18 +111,20 @@
             layer_indicator = 1;
           };
           main = {
-            capslock = "overloadt2(arrow_caps, esc, 140)";
-            a = "overloadt2(keys_3, a, 130)";
+            capslock = "overloadt2(arrow_caps, esc, 160)";
+            a = "overloadt2(shift, a, 170)";
             s = "overloadt2(control, s, 170)";
             d = "overloadt2(meta, d, 170)";
             f = "overloadt2(alt, f, 170)";
             j = "overloadt2(alt, j, 170)";
             k = "overloadt2(meta, k, 170)";
             l = "overloadt2(control, l, 170)";
-            ";" = "overloadt2(keys_2, ;, 130)";
-            "leftalt" = "oneshot(shift)";
+            ";" = "overloadt2(shift, ;, 170)";
+            e = "overloadi(keys_3, e, 150)";
+            i = "overloadi(keys_2, i, 150)";
+            "leftalt" = "enter";
             "rightalt" = "backspace";
-            "space" = "overloadt2(shift, space, 140)";
+            "space" = "overloadt2(shift, space, 180)";
             "\\" = "backspace";
             "backspace" = "\\";
           };
@@ -273,6 +275,7 @@
         vdhcoapp
         libva-utils
         libGL
+        keyd
       ];
     };
   };
