@@ -211,7 +211,6 @@
         firefox
         tree
         git
-        keyd
         fastfetch
         uwufetch
         uget
@@ -275,7 +274,6 @@
         vdhcoapp
         libva-utils
         libGL
-        keyd
       ];
     };
   };
@@ -284,6 +282,16 @@
     (pkgs.hyprshade.override {
       hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
     })
+    (
+      pkgs.keyd.overrideAttrs (oldAttrs: {
+        src = pkgs.fetchFromGitHub {
+          owner = "rvaiya";
+          repo = "keyd";
+          rev = "master";
+          hash = "sha256:0n0x38gfz3hibl6jg5gnp5s19h4g7id41krmfy5wx3szm7i76ffk";
+        };
+      })
+    )
   ];
 
   security.pam.services.gtklock = {};

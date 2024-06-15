@@ -72,7 +72,7 @@
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays/default.nix {inherit inputs;};
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 

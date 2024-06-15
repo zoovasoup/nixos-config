@@ -10,7 +10,7 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
-    keyd = prev.keyd.overrideAttrs (oldAttrs: rec {
+    keyd = prev.keyd.overrideAttrs (oldAttrs: {
       src = final.fetchFromGitHub {
         owner = "rvaiya";
         repo = "keyd";
