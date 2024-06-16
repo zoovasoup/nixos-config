@@ -111,17 +111,18 @@
             layer_indicator = 1;
           };
           main = {
-            capslock = "overloadt2(arrow_caps, esc, 160)";
-            a = "overloadt2(shift, a, 170)";
-            s = "overloadt2(control, s, 170)";
-            d = "overloadt2(meta, d, 170)";
-            f = "overloadt2(alt, f, 170)";
-            j = "overloadt2(alt, j, 170)";
-            k = "overloadt2(meta, k, 170)";
-            l = "overloadt2(control, l, 170)";
-            ";" = "overloadt2(shift, ;, 170)";
+            capslock = "lettermod(arrow_caps, esc, 80, 160)";
+            a = "lettermod(shift, a, 90, 150)";
+            s = "lettermod(control, s, 90, 150)";
+            d = "lettermod(meta, d, 90, 150)";
+            f = "lettermod(alt, f, 90, 150)";
+            j = "lettermod(alt, j, 90, 150)";
+            k = "lettermod(meta, k, 90, 150)";
+            l = "lettermod(control, l, 90, 150)";
+            ";" = "lettermod(shift, ;, 90, 150)";
             w = "overloadt2(keys_3, w, 150)";
             o = "overloadt2(keys_2, o, 150)";
+            # o = "overloadi(keys_2, o, 150)";
             "leftalt" = "enter";
             "rightalt" = "backspace";
             "space" = "overloadt2(shift, space, 180)";
