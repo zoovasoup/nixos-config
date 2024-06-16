@@ -120,8 +120,8 @@
             k = "overloadt2(meta, k, 170)";
             l = "overloadt2(control, l, 170)";
             ";" = "overloadt2(shift, ;, 170)";
-            e = "overloadi(keys_3, e, 150)";
-            i = "overloadi(keys_2, i, 150)";
+            w = "overloadt2(keys_3, w, 150)";
+            o = "overloadt2(keys_2, o, 150)";
             "leftalt" = "enter";
             "rightalt" = "backspace";
             "space" = "overloadt2(shift, space, 180)";
@@ -274,6 +274,9 @@
         vdhcoapp
         libva-utils
         libGL
+        gnumake
+        gnumake42
+        keyd
       ];
     };
   };
@@ -282,16 +285,6 @@
     (pkgs.hyprshade.override {
       hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
     })
-    (
-      pkgs.keyd.overrideAttrs (oldAttrs: {
-        src = pkgs.fetchFromGitHub {
-          owner = "rvaiya";
-          repo = "keyd";
-          rev = "master";
-          hash = "sha256:0n0x38gfz3hibl6jg5gnp5s19h4g7id41krmfy5wx3szm7i76ffk";
-        };
-      })
-    )
   ];
 
   security.pam.services.gtklock = {};
@@ -388,7 +381,7 @@
   # Or
   environment.variables.VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
 
-  modules.battery-check.enable = true;
+  # modules.battery-check.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";

@@ -59,6 +59,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    lib = nixpkgs.lib // home-manager.lib;
     # Supported systems for your flake packages, shell, etc.
     systems = [
       "aarch64-linux"
@@ -68,12 +69,25 @@
       "x86_64-darwin"
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
+    mySystem = "x86_64-linux";
   in {
+    inherit lib;
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    overlays = import ./overlays/default.nix {inherit inputs;};
+    overlays = import ./overlays {
+      inherit inputs outputs;
+      python3 = nixpkgs.legacyPackages.${mySystem}.python3;
+      runtimeShell = nixpkgs.legacyPackages.${mySystem}.stdenv.shell;
+      systemd = nixpkgs.legacyPackages.${mySystem}.systemd;
+      fetchFromGithub = nixpkgs.legacyPackages.${mySystem}.fetchFromGithub;
+      stdenv = nixpkgs.legacyPackages.${mySystem}.stdenv;
+    };
+    # {
+    #       inherit inputs
+    #     }
     nixosModules = import ./modules/nixos;
+
     homeManagerModules = import ./modules/home-manager;
 
     nixosConfigurations = {
