@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     inputs.auto-cpufreq.nixosModules.default
     inputs.self.nixosModules.battery-check
+    ./system
   ];
 
   nixpkgs = {
@@ -23,60 +24,8 @@
       allowUnfree = true;
     };
   };
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-  nix.nixPath = ["/etc/nix/path"];
-  environment.etc =
-    lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
-
-  nix.settings = {
-    experimental-features = "nix-command flakes";
-    auto-optimise-store = true;
-  };
-
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.loader.systemd-boot.configurationLimit = 15;
-  boot.loader.systemd-boot.consoleMode = "max";
-
-  boot.plymouth.enable = true;
-  boot.loader.timeout = 1;
-  boot.kernelParams = [
-    "quiet"
-    "loglevel=3"
-    "systemd.show_status=auto"
-    "udev.log_level=3"
-    "rd.udev.log_level=3"
-    "vt.global_cursor_default=0"
-  ];
-  boot.consoleLogLevel = 0;
 
   # ==================
-
-  time.timeZone = "Asia/Singapore";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_GB.UTF-8";
-    LC_IDENTIFICATION = "en_GB.UTF-8";
-    LC_MEASUREMENT = "en_GB.UTF-8";
-    LC_MONETARY = "en_GB.UTF-8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "en_GB.UTF-8";
-    LC_PAPER = "en_GB.UTF-8";
-    LC_TELEPHONE = "en_GB.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
-  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -120,11 +69,13 @@
             k = "lettermod(meta, k, 90, 150)";
             l = "lettermod(control, l, 90, 150)";
             ";" = "lettermod(shift, ;, 90, 150)";
-            w = "overloadt2(keys_3, w, 150)";
-            o = "overloadt2(keys_2, o, 150)";
+            "leftalt" = "layer(keys_3)";
+            "rightalt" = "layer(keys_2)";
+            # "leftalt" = "overloadt2(keys_3, enter, 150)";
+            # "rigntalt" = "overloadt2(keys_2, backspace, 150)";
             # o = "overloadi(keys_2, o, 150)";
-            "leftalt" = "enter";
-            "rightalt" = "backspace";
+            # "leftalt" = "enter";
+            # "rightalt" = "backspace";
             "space" = "overloadt2(shift, space, 180)";
             "\\" = "backspace";
             "backspace" = "\\";
@@ -168,27 +119,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    jack.enable = true;
-    pulse.enable = true;
-    wireplumber.enable = true;
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 44100;
-        "default.clock.quantum" = 512;
-        "default.clock.min-quantum" = 512;
-        "default.clock.max-quantum" = 512;
-      };
-    };
-  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -258,7 +188,6 @@
         #   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
         # }
         unzip
-        nix-ld
         lua-language-server
 
         #nixd
@@ -290,11 +219,6 @@
 
   security.pam.services.gtklock = {};
 
-  services.nextdns = {
-    enable = true;
-    arguments = ["-config" "nixThinkpad-8f1153.dns.nextdns.io"];
-  };
-
   # programs.home-manager.enable = true;
 
   services.flatpak.enable = true;
@@ -303,27 +227,6 @@
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     xwayland.enable = true;
-  };
-
-  services.power-profiles-daemon = {
-    enable = false;
-  };
-
-  services.tlp = {
-    enable = true;
-    settings = {
-      TLP_DEFAULT_MODE = "bat";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_SCALING_MAX_FREQ_ON_BAT = "1700000";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_BOOST_ON_BAT = 0;
-      PLATFORM_PROFILE_ON_BAT = "low-power";
-      RADEON_DPM_PERF_LEVEL_ON_BAT = "low";
-      RADEON_DPM_STATE_ON_BAT = "battery";
-      USB_AUTOSUSPEND = 0;
-      START_CHARGE_THRESH_BAT0 = "70";
-      STOP_CHARGE_THRESH_BAT0 = "81";
-    };
   };
 
   # programs.auto-cpufreq = {
@@ -339,48 +242,17 @@
   #   };
   # };
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc
-    ];
-  };
-
-  xdg.mime = {
-    enable = true;
-    defaultApplications = {
-      "x-scheme-handler/http" = "com.aborilov.floorp.desktop";
-      "x-scheme-handler/https" = "com.aborilov.floorp.desktop";
-      "x-scheme-handler/about" = "com.aborilov.floorp.desktop";
-      "x-scheme-handler/unknown" = "com.aborilov.floorp.desktop";
-      "text/html" = "com.aborilov.floorp.desktop";
-      "application/xhtml+xml" = "com.aborilov.floorp.desktop";
-    };
-  };
-
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      mesa # This includes the necessary VAAPI support for AMD GPUs.
-      libva
-      libva-utils
-      amdvlk
-    ];
-  };
-
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "radeonsi"; # radeonsi is the VAAPI driver for AMD.
-  };
-
-  # To enable Vulkan support for 32-bit applications, also add:
-  hardware.opengl.extraPackages32 = [
-    pkgs.driversi686Linux.amdvlk
-  ];
-
-  # Force radv
-  environment.variables.AMD_VULKAN_ICD = "RADV";
-  # Or
-  environment.variables.VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+  # xdg.mime = {
+  #   enable = true;
+  #   defaultApplications = {
+  #     "x-scheme-handler/http" = "com.aborilov.floorp.desktop";
+  #     "x-scheme-handler/https" = "com.aborilov.floorp.desktop";
+  #     "x-scheme-handler/about" = "com.aborilov.floorp.desktop";
+  #     "x-scheme-handler/unknown" = "com.aborilov.floorp.desktop";
+  #     "text/html" = "com.aborilov.floorp.desktop";
+  #     "application/xhtml+xml" = "com.aborilov.floorp.desktop";
+  #   };
+  # };
 
   # modules.battery-check.enable = true;
 
