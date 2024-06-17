@@ -12,6 +12,7 @@
     inputs.auto-cpufreq.nixosModules.default
     inputs.self.nixosModules.battery-check
     ./system
+    ./utils
   ];
 
   nixpkgs = {
@@ -24,8 +25,6 @@
       allowUnfree = true;
     };
   };
-
-  # ==================
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -43,93 +42,13 @@
   };
   services.xserver.desktopManager.gnome.enable = true;
 
-  # Configure keymap
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "colemak_dh";
-    options = "caps:escape_shifted_capslock";
-  };
-
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        ids = ["*"];
-        settings = {
-          global = {
-            layer_indicator = 1;
-          };
-          main = {
-            capslock = "lettermod(arrow_caps, esc, 80, 160)";
-            a = "lettermod(shift, a, 90, 150)";
-            s = "lettermod(control, s, 90, 150)";
-            d = "lettermod(meta, d, 90, 150)";
-            f = "lettermod(alt, f, 90, 150)";
-            j = "lettermod(alt, j, 90, 150)";
-            k = "lettermod(meta, k, 90, 150)";
-            l = "lettermod(control, l, 90, 150)";
-            ";" = "lettermod(shift, ;, 90, 150)";
-            "leftalt" = "layer(keys_3)";
-            "rightalt" = "layer(keys_2)";
-            # "leftalt" = "overloadt2(keys_3, enter, 150)";
-            # "rigntalt" = "overloadt2(keys_2, backspace, 150)";
-            # o = "overloadi(keys_2, o, 150)";
-            # "leftalt" = "enter";
-            # "rightalt" = "backspace";
-            "space" = "overloadt2(shift, space, 180)";
-            "\\" = "backspace";
-            "backspace" = "\\";
-          };
-          arrow_caps = {
-            h = "left";
-            j = "down";
-            k = "up";
-            l = "right";
-          };
-          # keys_1 = {
-          #   q = "1";
-          #   w = "2";
-          #   e = "3";
-          #   r = "4";
-          #   t = "5";
-          #   y = "6";
-          #   u = "7";
-          #   i = "8";
-          #   o = "9";
-          #   p = "0";
-          # };
-          keys_2 = {
-            a = "z";
-            s = "x";
-            d = "c";
-            f = "v";
-            g = "b";
-          };
-          keys_3 = {
-            h = "n";
-            j = "m";
-            k = ",";
-            l = ".";
-            ";" = "/";
-          };
-        };
-      };
-    };
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # ===========================
 
   users.users = {
     zvasoup = {
       isNormalUser = true;
       shell = "/home/zvasoup/.nix-profile/bin/fish";
-      extraGroups = ["networkmanager" "wheel" "keyd"];
+      extraGroups = ["networkmanager" "wheel" "keyd" "scanner"];
       packages = with pkgs; [
         nerdfonts
         gnome.gnome-tweaks
@@ -206,7 +125,6 @@
         libGL
         gnumake
         gnumake42
-        keyd
       ];
     };
   };
@@ -228,19 +146,6 @@
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
     xwayland.enable = true;
   };
-
-  # programs.auto-cpufreq = {
-  #   enable = true;
-  #   settings = {
-  #     battery = {
-  #       governor = "powersave";
-  #       turbo = "never";
-  #       enable_thresholds = true;
-  #       start_threshold = "65";
-  #       stop_threshold = "81";
-  #     };
-  #   };
-  # };
 
   # xdg.mime = {
   #   enable = true;

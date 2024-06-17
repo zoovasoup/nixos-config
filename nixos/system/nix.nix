@@ -4,9 +4,18 @@
   config,
   ...
 }: {
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+  nix = {
+    registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
-  nix.nixPath = ["/etc/nix/path"];
+    nixPath = ["/etc/nix/path"];
+
+    settings = {
+      warn-dirty = false;
+      experimental-features = "nix-command flakes";
+      auto-optimise-store = true;
+    };
+  };
+
   environment.etc =
     lib.mapAttrs'
     (name: value: {
@@ -14,9 +23,4 @@
       value.source = value.flake;
     })
     config.nix.registry;
-
-  nix.settings = {
-    experimental-features = "nix-command flakes";
-    auto-optimise-store = true;
-  };
 }

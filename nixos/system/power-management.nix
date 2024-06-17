@@ -19,4 +19,17 @@
       STOP_CHARGE_THRESH_BAT0 = "81";
     };
   };
+
+  # programs.auto-cpufreq = {
+  #   enable = true;
+  #   settings = {
+  #     battery = {
+  #       governor = "powersave";
+  #       turbo = "never";
+  #       enable_thresholds = true;
+  #       start_threshold = "65";
+  #       stop_threshold = "81";
+  #     };
+  #   };
+  # };
 }

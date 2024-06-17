@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./nix.nix
-    ./tlp.nix
+    ./power-management.nix
     ./sound.nix
     ./locale.nix
     ./nix-ld.nix
