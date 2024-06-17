@@ -8,5 +8,6 @@
     ./amd-driver.nix
     ./bootloader.nix
     ./networking.nix
+    ./nixpkgs.nix
   ];
 }

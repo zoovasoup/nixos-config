@@ -9,8 +9,11 @@
 
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
+  modifications = final: prev:
   # https://nixos.wiki/wiki/Overlays
-  modifications = final: prev: let
+  # keyd follow commit may 28, 2024
+  let
+    #version is when i create this overlay
     version = "16-05-2024";
     src = final.fetchFromGitHub {
       owner = "rvaiya";

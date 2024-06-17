@@ -1,4 +1,8 @@
-{...}: {
+{inputs, ...}: {
+  imports = [
+    inputs.auto-cpufreq.nixosModules.default
+  ];
+
   services.power-profiles-daemon = {
     enable = false;
   };
