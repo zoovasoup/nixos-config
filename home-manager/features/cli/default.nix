@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     comma # Install and run programs by sticking a , before them
     distrobox # Nice escape hatch, integrates docker images with my environment
-
     bc # Calculator
     bottom # System viewer
     ncdu # TUI disk usage
@@ -19,20 +18,23 @@
     jq # JSON pretty printer and manipulator
     # trekscii # Cute startrek cli printer
     timer # To help with my ADHD paralysis
-
-    nil # Nix LSP
-    alejandra # Nix formatter
     nvd # Differ
     nix-output-monitor
     # nh # Nice wrapper for NixOS and HM
-
-    ltex-ls # Spell checking LSP
     texliveFull
-
     # tly # Tally counter
-
     # awscli2
     # inputs.awscli-console.default
+    uget
+    uget-integrator
+    unzip
+    # Utilities
+    tree
+    git
+    fastfetch
+    uwufetch
+    acpi
+    glow
   ];
 
   # programs.neovim = {

@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # ./users.nix
     ./hardware-configuration.nix
@@ -17,50 +13,28 @@
       shell = "/home/zvasoup/.nix-profile/bin/fish";
       extraGroups = ["networkmanager" "wheel" "keyd" "scanner"];
       packages = with pkgs; [
+        # Fonts
         nerdfonts
-        libnotify
+
+        # Themes
         gruvbox-gtk-theme
+
+        # Browsers
         firefox
-        tree
-        git
-        fastfetch
-        uwufetch
-        uget
-        uget-integrator
+
+        vdhcoapp
+
+        # JavaScript/Node.js #framework #runtime
         nodejs_22
         bun
-        cargo
-        eslint_d
-        pylint
-        python312
-        python312Packages.pip
-        rustup
-        clang
-        dart-sass
-        stylua
-        typescript
-        inputs.matugen.packages.${pkgs.system}.default
-        udiskie
         yarn
-        unzip
-        lua-language-server
+        typescript
 
-        #nixd
-        #nil
-        #alejandra
-        #nodePackages_latest.typescript-language-server
-        #lua-language-server
-        #eslint_d
-        #pylint
-        #stylua
-        acpi
+        # Web development #tool
+        dart-sass
+
+        # Other
         suwayomi-server
-        glow
-        vdhcoapp
-        libva-utils
-        libGL
-        gnumake
-        gnumake42
       ];
     };
   };

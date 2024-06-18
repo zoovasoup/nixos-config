@@ -6,6 +6,7 @@
       libva
       libva-utils
       amdvlk
+      libGL
     ];
   };
 

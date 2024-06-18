@@ -32,10 +32,14 @@
     #gtk theming
     nwg-look
 
+    # Notifications
+    libnotify
+
     wf-recorder
     wl-clipboard
     hyprpicker
     brightnessctl
+    udiskie
   ];
 in {
   # add some pkgs

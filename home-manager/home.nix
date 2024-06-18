@@ -1,18 +1,14 @@
 {
   inputs,
   outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
   imports = [
     #inputs.nixvim.homeManagerModules.nixvim
-    # ./nixvim
-    #./neovim
-    # ./vimenjoyer-nvim
     ./features/cli
     ./hyprland
+    ./nvim/home.nix
     inputs.ags.homeManagerModules.default
   ];
 
@@ -42,55 +38,26 @@
     ytermusic
   ];
 
-  programs.ags = {
-    enable = true;
-    extraPackages = with pkgs; [
+  programs.ags = let
+    # Inputs (specific to your system)
+    matugen = inputs.matugen.packages.${pkgs.system}.default;
+
+    listPkgs = with pkgs; [
       gtksourceview
       webkitgtk
       accountsservice
     ];
+  in {
+    enable = true;
+    extraPackages = matugen ++ listPkgs;
   };
 
   programs.home-manager.enable = true;
 
-  programs.neovim = {
-    enable = true;
-    extraPackages = with pkgs; [
-      #lsp
-      nixd
-      nil
-      alejandra
-      typescript
-      nodePackages_latest.typescript-language-server
-      lua-language-server
-      nodePackages_latest.vscode-html-languageserver-bin
-      # nodePackages_latest.tailwindcss
-      tailwindcss-language-server
-      nodePackages_latest.vscode-css-languageserver-bin
-      nodePackages_latest.graphql-language-service-cli
-      nodePackages_latest.svelte-language-server
-      emmet-ls
-      pyright
-      vscode-langservers-extracted
-
-      #formatter/linter
-      nodePackages_latest.prettier
-      eslint_d
-      pylint
-      stylua
-    ];
-  };
-
-  # home.file.".config/nvim" = {
-  #   source = ./config/nvim;
-  #   target = ".config/nvim";
-  #   recursive = true;
-  #   executable = true;
-  # };
-
   programs.waybar = {
     enable = true;
   };
+
   home.file.".config/waybar" = {
     source = ./config/waybar;
     target = ".config/waybar";
