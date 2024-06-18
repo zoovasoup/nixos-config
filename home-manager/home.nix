@@ -6,10 +6,13 @@
 }: {
   imports = [
     #inputs.nixvim.homeManagerModules.nixvim
+    inputs.ags.homeManagerModules.default
     ./features/cli
     ./hyprland
     ./nvim/home.nix
-    inputs.ags.homeManagerModules.default
+    ./waybar/home.nix
+    ./mime/home.nix
+    ./ags/home.nix
   ];
 
   nixpkgs = {
@@ -40,51 +43,12 @@
     ytermusic
   ];
 
-  programs.ags = let
-    # Inputs (specific to your system)
-    matugen = [inputs.matugen.packages.${pkgs.system}.default];
-
-    listPkgs = with pkgs; [
-      gtksourceview
-      webkitgtk
-      accountsservice
-    ];
-  in {
-    enable = true;
-    extraPackages = matugen ++ listPkgs;
-  };
-
-  programs.waybar = {
-    enable = true;
-  };
-
-  home.file.".config/waybar" = {
-    source = ./config/waybar;
-    target = ".config/waybar";
-    recursive = true;
-    executable = true;
-  };
-
   home.file.".config/hypr/hypridle.conf" = {
     source = ./config/hypr/hypridle.conf;
     target = ".config/hypr/hypridle.conf";
     recursive = true;
     executable = true;
   };
-
-  # xdg.mime.enable = true;
-
-  # xdg.mimeApps = {
-  #   enable = true;
-  #   defaultApplications = {
-  #     "x-scheme-handler/http" = "one.ablaze.floorp";
-  #     "x-scheme-handler/https" = "one.ablaze.floorp";
-  #     "x-scheme-handler/about" = "one.ablaze.floorp";
-  #     "x-scheme-handler/unknown" = "one.ablaze.floorp";
-  #     "text/html" = "one.ablaze.floorp";
-  #     "application/xhtml+xml" = "one.ablaze.floorp";
-  #   };
-  # };
 
   # programs.texlive = {
   #   enable = true;
