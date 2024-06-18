@@ -8,7 +8,7 @@
     #inputs.nixvim.homeManagerModules.nixvim
     inputs.ags.homeManagerModules.default
     ./features/cli
-    ./hyprland
+    ./hyprland/home.nix
     ./nvim/home.nix
     ./waybar/home.nix
     ./mime/home.nix
@@ -42,13 +42,6 @@
     ytui-music
     ytermusic
   ];
-
-  home.file.".config/hypr/hypridle.conf" = {
-    source = ./config/hypr/hypridle.conf;
-    target = ".config/hypr/hypridle.conf";
-    recursive = true;
-    executable = true;
-  };
 
   # programs.texlive = {
   #   enable = true;

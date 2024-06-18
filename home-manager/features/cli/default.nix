@@ -1,4 +1,12 @@
 {pkgs, ...}: {
+  imports = [
+    ./fish/home.nix
+    ./foot/home.nix
+    ./yazi/home.nix
+    ./tmux/home.nix
+    ./zathura/home.nix
+  ];
+
   home.packages = with pkgs; [
     comma # Install and run programs by sticking a , before them
     distrobox # Nice escape hatch, integrates docker images with my environment
@@ -31,23 +39,8 @@
     glow
   ];
 
-  # programs.neovim = {
-  #   enable = true;
-  # };
-
   programs.zsh = {
     enable = true;
-  };
-
-  programs.fish = {
-    enable = true;
-  };
-
-  home.file.".config/fish" = {
-    source = ../../config/fish;
-    target = ".config/fish";
-    recursive = true;
-    executable = true;
   };
 
   programs.fzf = {
@@ -64,17 +57,6 @@
     extraConfig = {init.defaultBranch = "main";};
   };
 
-  programs.foot = {
-    enable = true;
-    server.enable = true;
-  };
-  home.file.".config/foot" = {
-    source = ../../config/foot;
-    target = ".config/foot";
-    recursive = true;
-    executable = true;
-  };
-
   programs.ripgrep = {
     enable = true;
   };
@@ -83,47 +65,11 @@
     enable = true;
   };
 
-  programs.zathura = {
-    enable = true;
-  };
-
-  programs.yazi = {
-    enable = true;
-  };
-  home.file.".config/yazi" = {
-    source = ../../config/yazi;
-    target = ".config/yazi";
-    recursive = true;
-    executable = true;
-  };
-
   programs.mpv = {
     enable = true;
-  };
-
-  home.file.".config/zathura" = {
-    source = ../../config/zathura;
-    target = ".config/zathura";
-    recursive = true;
-    executable = true;
   };
 
   programs.yt-dlp = {
     enable = true;
   };
-
-  programs.tmux = {
-    enable = true;
-    mouse = true;
-    keyMode = "vi";
-    plugins = with pkgs; [
-      tmuxPlugins.sensible
-    ];
-    extraConfig = builtins.readFile ./tmux.conf;
-  };
-
-  #   programs.hyprland = {
-  #   enable = true;
-  #   portalPackage = pkgs.xdg-desktop-portal-hyprland; # default
-  # };
 }

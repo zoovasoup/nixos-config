@@ -2,14 +2,22 @@
   inputs,
   pkgs,
   ...
-}: let
-  brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-  pactl = "${pkgs.pulseaudio}/bin/pactl";
-in {
-  wayland.windowManager.hyprland = {
+}: {
+  imports = [
+    ./hypridle.nix
+  ];
+
+  wayland.windowManager.hyprland = let
+    brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+
+    pactl = "${pkgs.pulseaudio}/bin/pactl";
+  in {
     enable = true;
+
     xwayland.enable = true;
+
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+
     plugins = [
       inputs.hy3.packages.x86_64-linux.hy3
     ];
@@ -319,10 +327,10 @@ in {
     };
   };
 
-  # home.file.".config/hypr" = {
-  #   source = ../../config/hypr;
-  #   target = ".config/hypr";
-  #   recursive = true;
-  #   executable = true;
-  # };
+  home.file.".config/hypr" = {
+    source = ./hypr;
+    target = ".config/hypr";
+    recursive = true;
+    executable = true;
+  };
 }
