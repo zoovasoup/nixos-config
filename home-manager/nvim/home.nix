@@ -43,10 +43,10 @@
     ];
   };
 
-  # home.file.".config/nvim" = {
-  #   source = ./config/nvim;
-  #   target = ".config/nvim";
-  #   recursive = true;
-  #   executable = true;
-  # };
+  home.file.".config/nvim" = {
+    source = ./nvim;
+    target = ".config/nvim";
+    recursive = true;
+    executable = true;
+  };
 }

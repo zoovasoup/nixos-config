@@ -24,6 +24,8 @@
     };
   };
 
+  programs.home-manager.enable = true;
+
   home = {
     username = "zvasoup";
     homeDirectory = "/home/zvasoup";
@@ -40,7 +42,7 @@
 
   programs.ags = let
     # Inputs (specific to your system)
-    matugen = inputs.matugen.packages.${pkgs.system}.default;
+    matugen = [inputs.matugen.packages.${pkgs.system}.default];
 
     listPkgs = with pkgs; [
       gtksourceview
@@ -51,8 +53,6 @@
     enable = true;
     extraPackages = matugen ++ listPkgs;
   };
-
-  programs.home-manager.enable = true;
 
   programs.waybar = {
     enable = true;

@@ -97,7 +97,7 @@ in {
       };
 
       master = {
-        new_is_master = false;
+        # new_is_master = false;
         mfact = "0.6";
       };
 

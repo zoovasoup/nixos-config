@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "zoovasoup nixos conifg";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -26,7 +26,6 @@
     };
 
     hy3 = {
-      # url = "github:outfoxxed/hy3?ref=hl0.39.1"; # where {version} is the hyprland release version
       # url = "github:outfoxxed/hy3?ref=hl0.40.0"; # where {version} is the hyprland release version
       url = "github:outfoxxed/hy3"; # development branch
       inputs.hyprland.follows = "hyprland";
@@ -51,11 +50,6 @@
     self,
     nixpkgs,
     home-manager,
-    hyprland,
-    hy3,
-    matugen,
-    ags,
-    auto-cpufreq,
     ...
   } @ inputs: let
     inherit (self) outputs;
