@@ -1,23 +1,28 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     # ./users.nix
     ./hardware-configuration.nix
     ./system
     ./utils
     ./desktop
+    inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
+  #TODO: adding ueburzug++ for yazi and other dependencies for preview (pdf and stuff)
+
   users.users = {
-    zvasoup = {
-      isNormalUser = true;
-      shell = "/home/zvasoup/.nix-profile/bin/fish";
-      extraGroups = ["networkmanager" "wheel" "keyd" "scanner"];
-      packages = with pkgs; [
+    zvasoup = let
+      # Script to add Flatpak remotes and install apps
+      myApps = with pkgs; [
         # Fonts
         nerdfonts
 
         # Themes
-        gruvbox-gtk-theme
+        # gruvbox-gtk-theme
 
         # Browsers
         firefox
@@ -36,22 +41,20 @@
         # Other
         suwayomi-server
       ];
+    in {
+      isNormalUser = true;
+      shell = "/home/zvasoup/.nix-profile/bin/fish";
+      extraGroups = ["networkmanager" "wheel" "keyd" "scanner"];
+      packages = myApps;
     };
   };
 
-  services.flatpak.enable = true;
-
-  # xdg.mime = {
-  #   enable = true;
-  #   defaultApplications = {
-  #     "x-scheme-handler/http" = "com.aborilov.floorp.desktop";
-  #     "x-scheme-handler/https" = "com.aborilov.floorp.desktop";
-  #     "x-scheme-handler/about" = "com.aborilov.floorp.desktop";
-  #     "x-scheme-handler/unknown" = "com.aborilov.floorp.desktop";
-  #     "text/html" = "com.aborilov.floorp.desktop";
-  #     "application/xhtml+xml" = "com.aborilov.floorp.desktop";
-  #   };
-  # };
+  services.flatpak = {
+    packages = [
+      "one.ablaze.floorp"
+      "org.learningequality.Kolibri"
+    ];
+  };
 
   # modules.battery-check.enable = true;
 

@@ -33,6 +33,8 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
     ags.url = "github:Aylur/ags";
 
     matugen = {
@@ -50,6 +52,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-flatpak,
     ...
   } @ inputs: let
     inherit (self) outputs;

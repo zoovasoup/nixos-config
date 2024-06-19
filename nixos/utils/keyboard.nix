@@ -25,18 +25,18 @@
           };
 
           main = {
-            capslock = "lettermod(arrow_caps, esc, 80, 160)";
-            a = "lettermod(shift, a, 90, 150)";
-            s = "lettermod(control, s, 90, 150)";
-            d = "lettermod(meta, d, 90, 150)";
-            f = "lettermod(alt, f, 90, 150)";
-            j = "lettermod(alt, j, 90, 150)";
-            k = "lettermod(meta, k, 90, 150)";
-            l = "lettermod(control, l, 90, 150)";
-            ";" = "lettermod(shift, ;, 90, 150)";
-            "leftalt" = "layer(keys_3)";
-            "rightalt" = "layer(keys_2)";
-            "space" = "overloadt2(shift, space, 180)";
+            capslock = "lettermod(arrow_caps, esc, 100, 160)";
+            a = "lettermod(shift, a, 100, 160)";
+            s = "lettermod(control, s, 100, 160)";
+            d = "lettermod(meta, d, 100, 160)";
+            f = "lettermod(alt, f, 100, 160)";
+            j = "lettermod(alt, j, 100, 160)";
+            k = "lettermod(meta, k, 100, 160)";
+            l = "lettermod(control, l, 100, 160)";
+            ";" = "lettermod(shift, ;, 100, 160)";
+            # "leftalt" = "layer(keys_3)";
+            # "rightalt" = "layer(keys_2)";
+            # "space" = "overloadt2(shift, space, 180)";
             "\\" = "backspace";
             "backspace" = "\\";
           };

@@ -9,5 +9,6 @@
     ./bootloader.nix
     ./networking.nix
     ./nixpkgs.nix
+    ./flatpak.nix
   ];
 }

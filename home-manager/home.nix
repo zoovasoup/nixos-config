@@ -34,18 +34,15 @@
     homeDirectory = "/home/zvasoup";
   };
 
-  home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
+  # home.sessionVariables.GTK_THEME = "Gruvbox-Dark-BL";
 
   home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
     ytui-music
     ytermusic
+    vscodium-fhs
   ];
-
-  # programs.texlive = {
-  #   enable = true;
-  # };
 
   programs.pandoc = {
     enable = true;

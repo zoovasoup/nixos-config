@@ -1,7 +1,11 @@
-{...}: {
+{pkgs, ...}: {
   programs.yazi = {
     enable = true;
   };
+
+  home.packages = with pkgs; [
+    ueberzugpp
+  ];
 
   home.file.".config/yazi" = {
     source = ./yazi;
