@@ -60,8 +60,8 @@ vim.cmd('let $TZ = "Asia/Bangkok"')
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = "nc"
 
-vim.o.foldlevel = 4
-vim.o.foldmethod = "expr"
+-- vim.o.foldlevel = 4
+-- vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Create an autocommand group

@@ -53,6 +53,13 @@
     packages = [
       "one.ablaze.floorp"
       "org.learningequality.Kolibri"
+      "so.libdb.dissent"
+      "com.usebottles.bottles"
+      "app.ytmdesktop.ytmdesktop"
+      "com.github.mdh34.quickdocs"
+      "io.gitlab.news_flash.NewsFlash"
+      "org.gaphor.Gaphor"
+      "com.belmoussaoui.Obfuscate"
     ];
   };
 

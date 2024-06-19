@@ -2,7 +2,8 @@ return {
 	"lifepillar/vim-gruvbox8",
 	branch = "neovim",
 	config = function()
-		vim.cmd.colorscheme("gruvbox8_soft")
+		-- vim.cmd.colorscheme("gruvbox8_soft")
+		vim.cmd.colorscheme("gruvbox8_hard")
 		vim.cmd.hi("SignColumn guibg=NONE")
 		-- vim.cmd.hi("CursorLineSign guibg=#3c3836")
 		vim.cmd.hi("CursorLineSign guibg=NONE")
