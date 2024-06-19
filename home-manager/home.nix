@@ -13,6 +13,7 @@
     ./waybar/home.nix
     ./mime/home.nix
     ./ags/home.nix
+    # ./sway/home.nix
   ];
 
   nixpkgs = {

@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   ...
@@ -20,9 +21,6 @@
       myApps = with pkgs; [
         # Fonts
         nerdfonts
-
-        # Themes
-        # gruvbox-gtk-theme
 
         # Browsers
         firefox
@@ -62,6 +60,8 @@
       "com.belmoussaoui.Obfuscate"
     ];
   };
+
+  xdg.portal.wlr.enable = lib.mkForce true;
 
   # modules.battery-check.enable = true;
 

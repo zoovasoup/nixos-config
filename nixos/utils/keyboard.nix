@@ -2,7 +2,7 @@
   # Configure layout
   services.xserver.xkb = {
     layout = "us";
-    variant = "colemak_dh";
+    # variant = "colemak_dh";
   };
 
   #adding keyd to systemPackages
@@ -22,23 +22,50 @@
         settings = {
           global = {
             layer_indicator = 1;
+            default_layout = "colemak_dh";
           };
 
           main = {
-            capslock = "lettermod(arrow_caps, esc, 100, 160)";
-            a = "lettermod(shift, a, 100, 160)";
-            s = "lettermod(control, s, 100, 160)";
-            d = "lettermod(meta, d, 100, 160)";
-            f = "lettermod(alt, f, 100, 160)";
-            j = "lettermod(alt, j, 100, 160)";
-            k = "lettermod(meta, k, 100, 160)";
-            l = "lettermod(control, l, 100, 160)";
-            ";" = "lettermod(shift, ;, 100, 160)";
+            capslock = "overloadt2(arrow_caps, esc, 130)";
+            a = "lettermod(shift, a, 175, 165)";
+            s = "lettermod(control, r, 175, 165)";
+            d = "lettermod(meta, s, 175, 165)";
+            f = "lettermod(alt, t, 175, 165)";
+            j = "lettermod(alt, n, 175, 165)";
+            k = "lettermod(meta, e, 175, 165)";
+            l = "lettermod(control, i, 175, 165)";
+            ";" = "lettermod(shift, o, 175, 165)";
             # "leftalt" = "layer(keys_3)";
             # "rightalt" = "layer(keys_2)";
             # "space" = "overloadt2(shift, space, 180)";
             "\\" = "backspace";
             "backspace" = "\\";
+          };
+
+          control = {
+            "1" = "setlayout(colemak_dh)";
+          };
+
+          "colemak_dh:layout" = {
+            q = "q";
+            w = "w";
+            e = "f";
+            r = "p";
+            t = "b";
+            y = "j";
+            u = "l";
+            i = "u";
+            o = "y";
+            p = ";";
+            g = "g";
+            h = "m";
+            z = "x";
+            x = "c";
+            c = "d";
+            v = "v";
+            b = "z";
+            n = "k";
+            m = "h";
           };
 
           arrow_caps = {
