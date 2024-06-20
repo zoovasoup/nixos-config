@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     home-manager = {
@@ -65,6 +65,7 @@
       "x86_64-darwin"
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
+    mySystem = "x86_64-linux";
   in {
     inherit lib;
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
@@ -72,11 +73,11 @@
 
     overlays = import ./overlays {
       inherit inputs outputs;
-      python3 = forAllSystems (system: nixpkgs.legacyPackages.${system}.python3);
-      runtimeShell = forAllSystems (system: nixpkgs.legacyPackages.${system}.stdenv.shell);
-      systemd = forAllSystems (system: nixpkgs.legacyPackages.${system}.systemd);
-      fetchFromGithub = forAllSystems (system: nixpkgs.legacyPackages.${system}.fetchFromGithub);
-      stdenv = forAllSystems (system: nixpkgs.legacyPackages.${system}.stdenv);
+      python3 = nixpkgs.legacyPackages.${mySystem}.python3;
+      runtimeShell = nixpkgs.legacyPackages.${mySystem}.stdenv.shell;
+      systemd = nixpkgs.legacyPackages.${mySystem}.systemd;
+      fetchFromGithub = nixpkgs.legacyPackages.${mySystem}.fetchFromGithub;
+      stdenv = nixpkgs.legacyPackages.${mySystem}.stdenv;
     };
     # {
     #       inherit inputs

@@ -64,7 +64,23 @@
     ];
   };
 
-  xdg.portal.wlr.enable = lib.mkForce true;
+  # xdg.portal.wlr.enable = lib.mkForce true;
+
+  xdg.portal = {
+    enable = true;
+    # extraPortals = with pkgs; [
+    #   xdg-desktop-portal-gtk
+    #   xdg-desktop-portal-hyprland
+    # ];
+    wlr.enable = lib.mkForce true;
+    xdgOpenUsePortal = true;
+  };
+
+  systemd.user.services."xdg-desktop-portal-gnome".serviceConfig = {
+    WantedBy = ["default.target"];
+    Requisite = "gnome-session-initialized.target";
+    After = ["gnome-session-initialized.target"];
+  };
 
   # modules.battery-check.enable = true;
 
