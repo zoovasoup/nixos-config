@@ -12,34 +12,10 @@
   ];
 
   additionalPkgs = with pkgs; [
-    # app launcher
-    rofi-wayland
-
-    # wallpaper init
-    swww
-
     # idle and lock
     gtklock
     hypridle
-
-    # clipbloard
-    cliphist
-
-    # screeshoot
-    grimblast
-    slurp
-
-    #gtk theming
-    nwg-look
-
-    # Notifications
-    libnotify
-
-    wf-recorder
-    wl-clipboard
     hyprpicker
-    brightnessctl
-    udiskie
   ];
 in {
   # add some pkgs

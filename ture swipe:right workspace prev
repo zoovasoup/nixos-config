@@ -1,0 +1,996 @@
+[4msway[24m(5)                                    File Formats Manual                                   [4msway[24m(5)
+
+[1mNAME[0m
+       sway - configuration file and commands
+
+[1mDESCRIPTION[0m
+       A sway configuration file is a list of sway commands that are executed by sway on startup.  These
+       commands  usually consist of setting your preferences and setting key bindings. An example config
+       is likely present in /etc/sway/config for you to check out.
+
+       Lines in the configuration file might be extended through multiple lines by adding a '\'  charac‐
+       ter at the end of line. e.g.:
+
+           bindsym Shift+XF86AudioRaiseVolume exec \
+                pactl set-sink-volume @DEFAULT_SINK@ -1%
+
+       Commands  can  also be given as a block in the form [1mcommand { <subcommands...> }[22m. Anything before
+       the opening [1m{ [22mwill be prepended to the lines inside the block. For example:
+
+           output eDP-1 {
+                background ~/wallpaper.png fill
+                resolution 1920x1080
+           }
+
+       is identical to
+
+           output eDP-1 background ~/wallpaper.png fill
+           output eDP-1 resolution 1920x1080
+
+       These commands can be executed in your config file, via [1mswaymsg[22m(1), or via the bindsym command.
+
+[1mCOMMAND CONVENTIONS[0m
+       Commands are split into several arguments using spaces. You can enclose arguments with  quotation
+       marks  ([1m"..."  [22mor [1m'...'[22m) to add spaces to a single argument. You may also run several commands in
+       order by separating each with [1m, [22mor [1m;[22m. Criteria is retained across commands separated  by  [1m,[22m,  but
+       will be reset (and allow for new criteria, if desired) for commands separated by a [1m;[22m.
+
+       Throughout  the  documentation, [1m| [22mis used to distinguish between arguments for which you may only
+       select one. [1m[...] [22mis used for optional arguments, and [1m<...> [22mfor arguments where you are  expected
+       to supply some value.
+
+[1mCOMMANDS[0m
+       This  section  only lists general commands. For input and output commands, refer to [1msway-input[22m(5)
+       and [1msway-output[22m(5).
+
+       The following commands may only be used in the configuration file.
+
+       [1mbar [22m[<bar-id>] <bar-subcommands...>
+           For details on bar subcommands, see [1msway-bar[22m(5).
+
+       [1mdefault_orientation [22mhorizontal|vertical|auto
+           Sets the default container layout for tiled containers.
+
+       [1minclude [22m<path>
+           Includes another file from [4mpath[24m. [4mpath[24m can be either a full path or a  path  relative  to  the
+           parent  config,  and expands shell syntax (see [1mwordexp[22m(3) for details). The same include file
+           can only be included once; subsequent attempts will be ignored.
+
+       [1mscratchpad_minimize [22menable|disable
+           Adjusts if minimized windows should be moved into the scratchpad. Must be set at  config-time
+           (when starting sway).
+
+       [1mswaybg_command [22m<command>
+           Executes  custom  background [4mcommand[24m. Default is [4mswaybg[24m. Refer to [1msway-output[22m(5) for more in‐
+           formation.
+
+           It can be disabled by setting the command to a single dash: [4mswaybg_command[24m [4m-[0m
+
+       [1mswaynag_command [22m<command>
+           Executes custom command for [4mswaynag[24m. Default is [4mswaynag[24m. Additional arguments may be appended
+           to the end. This should only be used to either direct sway to call swaynag from a custom path
+           or to provide additional arguments. This should be placed at the top of the  config  for  the
+           best results.
+
+           It can be disabled by setting the command to a single dash: [4mswaynag_command[24m [4m-[0m
+
+       [1mworkspace_layout [22mdefault|stacking|tabbed
+           Specifies the initial layout for new containers in an empty workspace.
+
+       [1mxwayland [22menable|disable|force
+           Enables  or  disables Xwayland support, which allows X11 applications to be used. [4menable[24m will
+           lazily load Xwayland so Xwayland will not be launched until the first client attempts to con‐
+           nect. In some cases, such as slower machines, it may be desirable to  have  Xwayland  started
+           immediately by using [4mforce[24m instead of [4menable[24m.
+
+       The following commands cannot be used directly in the configuration file. They are expected to be
+       used with [1mbindsym [22mor at runtime through [1mswaymsg[22m(1).
+
+       [1mborder [22mnone|normal|csd|pixel [<n>]
+           Set border style for focused window. [4mnormal[24m includes a border of thickness [4mn[24m and a title bar.
+           [4mpixel[24m  is  a border without title bar [4mn[24m pixels thick. Default is [4mnormal[24m with border thickness
+           2. [4mcsd[24m is short for client-side-decorations, which allows the client to draw its own  decora‐
+           tions.
+
+       [1mborder [22mtoggle
+           Cycles through the available border styles.
+
+       [1mexit[0m
+           Exit sway and end your Wayland session.
+
+       [1mfloating [22menable|disable|toggle
+           Make focused view floating, non-floating, or the opposite of what it is now.
+
+       <criteria> [1mfocus[0m
+           Moves focus to the container that matches the specified criteria.
+
+       [1mfocus [22mup|right|down|left
+           Moves focus to the next container in the specified direction.
+
+       [1mfocus [22mprev|next [sibling]
+           Moves focus to the previous or next container in the current layout. By default, the last ac‐
+           tive  child  of the newly focused container will be focused. The [4msibling[24m option indicates not
+           to immediately focus a child of the container.
+
+       [1mfocus [22mchild
+           Moves focus to the last-focused child of the focused container.
+
+       [1mfocus [22mparent
+           Moves focus to the parent of the focused container.
+
+       [1mfocus [22moutput up|right|down|left
+           Moves focus to the next output in the specified direction.
+
+       [1mfocus [22moutput <name>
+           Moves focus to the named output.
+
+       [1mfocus [22mtiling
+           Sets focus to the last focused tiling container.
+
+       [1mfocus [22mfloating
+           Sets focus to the last focused floating container.
+
+       [1mfocus [22mmode_toggle
+           Moves focus between the floating and tiled layers.
+
+       [1mfullscreen [22m[enable|disable|toggle] [global]
+           Makes focused view fullscreen, non-fullscreen, or the opposite of what it is now. If no argu‐
+           ment is given, it does the same  as  [4mtoggle[24m.  If  [4mglobal[24m  is  specified,  the  view  will  be
+           fullscreen across all outputs.
+
+       [1mgaps   [22minner|outer|horizontal|vertical|top|right|bottom|left   all|current  set|plus|minus|toggle
+       <amount>
+           Changes the [4minner[24m or [4mouter[24m gaps for either [4mall[24m workspaces or  the  [4mcurrent[24m  workspace.  [4mouter[0m
+           gaps can be altered per side with [4mtop[24m, [4mright[24m, [4mbottom[24m, and [4mleft[24m or per direction with [4mhorizon‐[0m
+           [4mtal[24m and [4mvertical[24m.
+
+       [1minhibit_idle [22mfocus|fullscreen|open|none|visible
+           Set/unset an idle inhibitor for the view. [4mfocus[24m will inhibit idle when the view is focused by
+           any  seat.  [4mfullscreen[24m  will  inhibit  idle when the view is fullscreen (or a descendant of a
+           fullscreen container) and is visible. [4mopen[24m will inhibit idle until the view is closed (or the
+           inhibitor is unset/changed). [4mvisible[24m will inhibit idle when the view is visible on  any  out‐
+           put. [4mnone[24m will remove any existing idle inhibitor for the view.
+
+           This  can  also  be used with criteria to set an idle inhibitor for any existing view or with
+           [4mfor_window[24m to set idle inhibitors for future views.
+
+       [1mlayout [22mdefault|splith|splitv|stacking|tabbed
+           Sets the layout mode of the focused container.
+
+           When using the [4mstacking[24m layout, only the focused window in the container is  displayed,  with
+           the opened windows' list on the top of the container.
+
+           The [4mtabbed[24m layout is similar to [4mstacking[24m, but the windows’ list is vertically split.
+
+       [1mlayout [22mtoggle [split|all]
+           Cycles  the layout mode of the focused container though a preset list of layouts. If no argu‐
+           ment is given, then it cycles through stacking, tabbed and the last split layout. If [4msplit[24m is
+           given, then it cycles through splith and splitv. If [4mall[24m is  given,  then  it  cycles  through
+           every layout.
+
+       [1mlayout [22mtoggle [split|tabbed|stacking|splitv|splith] [split|tabbed|stacking|splitv|splith]...
+           Cycles the layout mode of the focused container through a list of layouts.
+
+       [1mmax_render_time [22moff|<msec>
+           Controls when the relevant application is told to render this window, as a positive number of
+           milliseconds  before  the  next  time  sway  composites the output. A smaller number leads to
+           fresher rendered frames being composited by sway and lower perceived input  latency,  but  if
+           set  too  low,  the  application  may not finish rendering before sway composites the output,
+           leading to delayed frames.
+
+           When set to off, the relevant application is told to render  this  window  immediately  after
+           display  refresh.  How  much  time is left for rendering before sway composites the output at
+           that point depends on the output [1mmax_render_time [22msetting.
+
+           To set this up for optimal latency:
+           1.  Set up [1moutput max_render_time [22m(see [1msway-output[22m(5)).
+           2.  Put the target application in [4mfull-screen[24m and have it continuously render something.
+           3.  Start by setting [1mmax_render_time 1[22m. If the application drops frames, increment by [1m1[22m.
+
+           This setting only has an effect if a per-output [1mmax_render_time [22mis in effect  on  the  output
+           the window is currently on. See [1msway-output[22m(5) for further details.
+
+       [1mmove [22mleft|right|up|down [<px> px]
+           Moves  the  focused  container in the direction specified. The optional [4mpx[24m argument specifies
+           how many pixels to move the container. If unspecified, the default is 10 pixels.  Pixels  are
+           ignored when moving tiled containers.
+
+       [1mmove [22m[absolute] position <pos_x> [px|ppt] <pos_y> [px|ppt]
+           Moves  the  focused container to the specified position in the workspace. The position can be
+           specified in pixels or percentage points, omitting the unit defaults to pixels.  If  [4mabsolute[0m
+           is  used,  the  position is relative to all outputs. [4mabsolute[24m can not be used with percentage
+           points.
+
+       [1mmove [22m[absolute] position center
+           Moves the focused container to be centered on the workspace. If [4mabsolute[24m is used, it is moved
+           to the center of all outputs.
+
+       [1mmove [22mposition cursor|mouse|pointer
+           Moves the focused container to be centered on the cursor.
+
+       [1mmove [22m[container|window] [to] mark <mark>
+           Moves the focused container to the specified mark.
+
+       [1mmove [22m[--no-auto-back-and-forth] [container|window] [to] workspace [number] <name>
+           Moves the focused container to the specified workspace. The string [4mnumber[24m is optional and  is
+           used to match a workspace with the same number, even if it has a different name.
+
+       [1mmove [22m[container|window] [to] workspace prev|next|current
+           Moves  the focused container to the previous, next or current workspace on this output, or if
+           no workspaces remain, the previous or next output.
+
+       [1mmove [22m[container|window] [to] workspace prev_on_output|next_on_output
+           Moves the focused container to the previous or next workspace on this output, wrapping around
+           if already at the first or last workspace.
+
+       [1mmove [22m[container|window] [to] workspace back_and_forth
+           Moves the focused container to previously focused workspace.
+
+       [1mmove [22m[container|window] [to] output <name-or-id>|current
+           Moves the focused container to the specified output.
+
+       [1mmove [22m[container|window] [to] output up|right|down|left
+           Moves the focused container to next output in the specified direction.
+
+       [1mmove [22m[container|window] [to] scratchpad
+           Moves the focused container to the scratchpad.
+
+       [1mmove [22mworkspace [to] output <name-or-id>|current
+           Moves the focused workspace to the specified output.
+
+       [1mmove [22mworkspace to [output] <name-or-id>|current
+           Moves the focused workspace to the specified output.
+
+       [1mmove [22mworkspace [to] output up|right|down|left
+           Moves the focused workspace to next output in the specified direction.
+
+       [1mmove [22mworkspace to [output] up|right|down|left
+           Moves the focused workspace to next output in the specified direction.
+
+       [1mnop [22m<comment>
+           A no operation command that can be used to override default behaviour. The  optional  comment
+           argument is ignored, but logged for debugging purposes.
+
+       [1mreload[0m
+           Reloads  the  sway  config  file  and applies any changes. The config file is located at path
+           specified by the command line arguments when started, otherwise  according  to  the  priority
+           stated in [1msway[22m(1).
+
+       [1mrename [22mworkspace [<old_name>] to <new_name>
+           Rename either <old_name> or the focused workspace to the <new_name>
+
+       [1mresize [22mshrink|grow width|height [<amount> [px|ppt]]
+           Resizes  the currently focused container by [4mamount[24m, specified in pixels or percentage points.
+           If the units are omitted, floating containers are resized in px and tiled containers by  ppt.
+           [4mamount[24m will default to 10 if omitted.
+
+       [1mresize [22mset height <height> [px|ppt]
+           Sets  the height of the container to [4mheight[24m, specified in pixels or percentage points. If the
+           units are omitted, floating containers are resized in px and  tiled  containers  by  ppt.  If
+           [4mheight[24m is 0, the container will not be resized.
+
+       [1mresize [22mset [width] <width> [px|ppt]
+           Sets  the  width  of the container to [4mwidth[24m, specified in pixels or percentage points. If the
+           units are omitted, floating containers are resized in px and  tiled  containers  by  ppt.  If
+           [4mwidth[24m is 0, the container will not be resized.
+
+       [1mresize [22mset [width] <width> [px|ppt] [height] <height> [px|ppt]
+           Sets  the  width and height of the container to [4mwidth[24m and [4mheight[24m, specified in pixels or per‐
+           centage points. If the units are omitted, floating containers are resized  in  px  and  tiled
+           containers by ppt. If [4mwidth[24m or [4mheight[24m is 0, the container will not be resized on that axis.
+
+       [1mscratchpad [22mshow
+           Shows a window from the scratchpad. Repeatedly using this command will cycle through the win‐
+           dows in the scratchpad.
+
+       [1mshortcuts_inhibitor [22menable|disable
+           Enables  or disables the ability of clients to inhibit keyboard shortcuts for a view. This is
+           primarily useful for virtualization and remote desktop software. It affects either  the  cur‐
+           rently  focused  view or a set of views selected by criteria. Subcommand [4mdisable[24m additionally
+           deactivates any active inhibitors for the given view(s).  Criteria  are  particularly  useful
+           with  the  [1mfor_window [22mcommand to configure a class of views differently from the per-seat de‐
+           faults established by the [1mseat [22msubcommand of the same name. See [1msway-input[22m(5) for  more  ways
+           to affect inhibitors.
+
+       [1msplit [22mvertical|v|horizontal|h|none|n|toggle|t
+           Splits  the current container, vertically or horizontally. When [4mnone[24m is specified, the effect
+           of a previous split is undone if the current container is the only child of a  split  parent.
+           When  [4mtoggle[24m  is specified, the current container is split opposite to the parent container's
+           layout.
+
+       [1msplith[0m
+           Equivalent to [1msplit horizontal[0m
+
+       [1msplitv[0m
+           Equivalent to [1msplit vertical[0m
+
+       [1msplitt[0m
+           Equivalent to [1msplit toggle[0m
+
+       [1msticky [22menable|disable|toggle
+           "Sticks" a floating window to the current output so that it shows up on all workspaces.
+
+       [1mswap [22mcontainer with id|con_id|mark <arg>
+           Swaps the position, geometry, and fullscreen status of two containers.  The  first  container
+           can  be  selected  either  by  criteria or focus. The second container can be selected by [4mid[24m,
+           [4mcon_id[24m, or [4mmark[24m. [4mid[24m can only be used with xwayland views. If the first container  has  focus,
+           it  will retain focus unless it is moved to a different workspace or the second container be‐
+           comes fullscreen on the same workspace as the first container. In either of those cases,  the
+           second container will gain focus.
+
+       [1mtitle_format [22m<format>
+           Sets the format of window titles. The following placeholders may be used:
+
+               %title - The title supplied by the window
+                         %app_id - The wayland app ID (applicable to wayland windows only)
+                         %class - The X11 classname (applicable to xwayland windows only)
+                         %instance - The X11 instance (applicable to xwayland windows only)
+                         %shell - The protocol the window is using (typically xwayland or
+                   xdg_shell)
+
+           This command is typically used with [1mfor_window [22mcriteria. For example:
+
+               for_window [title="."] title_format "<b>%title</b> (%app_id)"
+
+           Note that markup requires pango to be enabled via the [1mfont [22mcommand.
+
+           The default format is "%title".
+
+       The following commands may be used either in the configuration file or at runtime.
+
+       [1massign [22m<criteria> [→] [workspace] [number] <workspace>
+           Assigns  views  matching  [4mcriteria[24m (see [1mCRITERIA [22mfor details) to [4mworkspace[24m. The → (U+2192) is
+           optional and cosmetic. This command is equivalent to:
+
+               for_window <criteria> move container to workspace <workspace>
+
+       [1massign [22m<criteria> [→] output left|right|up|down|<name>
+           Assigns views matching [4mcriteria[24m (see [1mCRITERIA [22mfor details) to the  specified  output.  The  →
+           (U+2192) is optional and cosmetic. This command is equivalent to:
+
+               for_window <criteria> move container to output <output>
+
+       [1mbindsym  [22m[--whole-window]  [--border]  [--exclude-titlebar]  [--release]  [--locked]  [--to-code]
+       [--input-device=<device>] [--no-warn] [--no-repeat] [--inhibited] [Group<1-4>+]<key combo>  <com‐
+       mand>
+           Binds  [4mkey[24m  [4mcombo[24m to execute the sway command [4mcommand[24m when pressed. You may use XKB key names
+           here ([1mwev[22m(1) is a good tool for discovering these). With the flag [4m--release[24m, the  command  is
+           executed  when  the key combo is released. If [4minput-device[24m is given, the binding will only be
+           executed for that input device and will be executed instead of any binding that is generic to
+           all devices. If a group number is given, then the binding will only  be  available  for  that
+           group.  By  default,  if you overwrite a binding, swaynag will give you a warning. To silence
+           this, use the [4m--no-warn[24m flag.
+
+           Unless the flag [4m--locked[24m is set, the command will not be run when a screen locking program is
+           active. If there is a matching binding with and without [4m--locked[24m, the one with will  be  pre‐
+           ferred when locked and the one without will be preferred when unlocked. If there are matching
+           bindings  and  one has both [4m--input-device[24m and [4m--locked[24m and the other has neither, the former
+           will be preferred even when unlocked.
+
+           Unless the flag [4m--inhibited[24m is set, the command will not be run when a keyboard shortcuts in‐
+           hibitor is active for the currently focused window. Such inhibitors are usually requested  by
+           remote  desktop  and virtualization software to enable the user to send keyboard shortcuts to
+           the remote or virtual session. The [4m--inhibited[24m flag allows one to define bindings which  will
+           be  exempt  from pass-through to such software. The same preference logic as for [4m--locked[24m ap‐
+           plies.
+
+           Unless the flag [4m--no-repeat[24m is set, the command will be run repeatedly when the key is  held,
+           according to the repeat settings specified in the input configuration.
+
+           Bindings  to  keysyms  are  layout-dependent. This can be changed with the [4m--to-code[24m flag. In
+           this case, the keysyms will be translated into the corresponding keycodes in the  first  con‐
+           figured layout.
+
+           Mouse  bindings  operate  on the container under the cursor instead of the container that has
+           focus. Mouse buttons can either be specified in the form [4mbutton[1-9][24m or by using the name  of
+           the  event code (ex [4mBTN_LEFT[24m or [4mBTN_RIGHT[24m). For the former option, the buttons will be mapped
+           to their values in X11 (1=left, 2=middle, 3=right, 4=scroll up, 5=scroll down, 6=scroll left,
+           7=scroll right, 8=back, 9=forward). For the latter option, you can find the event names using
+           [4mlibinput[24m [4mdebug-events[24m.
+
+           The priority for matching bindings is as follows: input device, group, and locked state.
+
+           [4m--whole-window[24m, [4m--border[24m, and [4m--exclude-titlebar[24m are mouse-only options which affect the  re‐
+           gion in which the mouse bindings can be triggered.  By default, mouse bindings are only trig‐
+           gered when over the title bar. With the [4m--border[24m option, the border of the window will be in‐
+           cluded in this region. With the [4m--whole-window[24m option, the cursor can be anywhere over a win‐
+           dow  including  the title, border, and content. [4m--exclude-titlebar[24m can be used in conjunction
+           with any other option to specify that the titlebar should be excluded from the region of con‐
+           sideration.
+
+           If [4m--whole-window[24m is given, the command can be triggered when the cursor  is  over  an  empty
+           workspace.  Using  a  mouse  binding over a layer surface's exclusive region is not currently
+           possible.
+
+           Example:
+                     # Execute firefox when alt, shift, and f are pressed together
+                     bindsym Mod1+Shift+f exec firefox
+
+           [1mbindcode [22m[--whole-window] [--border] [--exclude-titlebar] [--release] [--locked] [--input-de‐
+           vice=<device>] [--no-warn] [--no-repeat] [--inhibited] [Group<1-4>+]<code> <command> is  also
+           available for binding with key/button codes instead of key/button names.
+
+       [1mbindswitch [22m[--locked] [--no-warn] [--reload] <switch>:<state> <command>
+           Binds  <switch>  to execute the sway command [4mcommand[24m on state changes. Supported switches are
+           [4mlid[24m (laptop lid) and [4mtablet[24m (tablet mode) switches. Valid values for [4mstate[24m are  [4mon[24m,  [4moff[24m  and
+           [4mtoggle[24m.  These switches are on when the device lid is shut and when tablet mode is active re‐
+           spectively. [4mtoggle[24m is also supported to run a command both when the switch is toggled  on  or
+           off.
+
+           Unless the flag [4m--locked[24m is set, the command will not be run when a screen locking program is
+           active.  If  there is a matching binding with and without [4m--locked[24m, the one with will be pre‐
+           ferred when locked and the one without will be preferred when unlocked.
+
+           If the [4m--reload[24m flag is given, the binding will also be executed when the config is reloaded.
+           [4mtoggle[24m bindings will not be executed on reload. The [4m--locked[24m flag will operate as  normal  so
+           if the config is reloaded while locked and [4m--locked[24m is not given, the binding will not be ex‐
+           ecuted.
+
+           By default, if you overwrite a binding, swaynag will give you a warning. To silence this, use
+           the [4m--no-warn[24m flag.
+
+           Example:
+                     # Show the virtual keyboard when tablet mode is entered.
+                     bindswitch tablet:on busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true
+
+                     # Log a message when the laptop lid is opened or closed.
+                     bindswitch lid:toggle exec echo "Lid moved"
+
+       [1mbindgesture  [22m[--exact]  [--input-device=<device>]  [--no-warn] <gesture>[:<fingers>][:directions]
+       <command>
+           Binds [4mgesture[24m to execute the sway command [4mcommand[24m when detected. Currently supports the [4mhold[24m,
+           [4mpinch[24m or [4mswipe[24m gesture. Optionally can be limited to bind to a certain number of [4mfingers[24m  or,
+           for a [4mpinch[24m or [4mswipe[24m gesture, to certain [4mdirections[24m.
+
+       ┌───────┬─────────┬─────────────────────────────────────────────────────────────────────────────┐
+       │ [1mtype  [22m│ [1mfingers [22m│ [1mdirection                                                                   [22m│
+       ├───────┼─────────┼─────────────────────────────────────────────────────────────────────────────┤
+       │ hold  │  1 - 5  │ none                                                                        │
+       ├───────┼─────────┼─────────────────────────────────────────────────────────────────────────────┤
+       │ swipe │  3 - 5  │ up, down, left, right                                                       │
+       ├───────┼─────────┼─────────────────────────────────────────────────────────────────────────────┤
+       │ pinch │  2 - 5  │ all above + inward, outward, clockwise, counterclockwise                    │
+       └───────┴─────────┴─────────────────────────────────────────────────────────────────────────────┘
+
+           The  [4mfingers[24m can be limited to any sensible number or left empty to accept any finger counts.
+           Valid directions are [4mup[24m, [4mdown[24m, [4mleft[24m and [4mright[24m, as well as [4minward[24m, [4moutward[24m,  [4mclockwise[24m,  [4mcoun‐[0m
+           [4mterclockwise[24m for the [4mpinch[24m gesture. Multiple directions can be combined by a plus.
+
+           If  a [4minput-device[24m is given, the binding will only be executed for that input device and will
+           be executed instead of any binding that is generic to all devices. By default, if  you  over‐
+           write a binding, swaynag will give you a warning. To silence this, use the [4m--no-warn[24m flag.
+
+           The  [4m--exact[24m flag can be used to ensure a binding only matches when exactly all specified di‐
+           rections are matched and nothing more. If there is matching binding with [4m--exact[24m, it will  be
+           preferred.
+
+           The  priority  for matching bindings is as follows: input device, then exact matches followed
+           by matches with the highest number of matching directions.
+
+           Gestures executed while the pointer is above a bar are not handled by sway. See  the  respec‐
+           tive documentation, e.g. [1mbindgesture [22min [1msway-bar[22m(5).
+
+           Example:
+                     # Allow switching between workspaces with left and right swipes
+                     bindgesture swipe:right workspace prev
+                     bindgesture swipe:left workspace next
+
+                     # Allow container movements by pinching them
+                     bindgesture pinch:inward+up move up
+                     bindgesture pinch:inward+down move down
+                     bindgesture pinch:inward+left move left
+                     bindgesture pinch:inward+right move right
+
+       [1mclient.background [22m<color>
+           This command is ignored and is only present for i3 compatibility.
+
+       [1mclient.<class> [22m<border> <background> <text> [<indicator> [<child_border>]]
+           Configures  the  color of window borders and title bars. The first three colors are required.
+           When omitted [4mindicator[24m will use a sane default and [4mchild_border[24m will use the  color  set  for
+           [4mbackground[24m. Colors may be specified in hex, either as [4m#RRGGBB[24m or [4m#RRGGBBAA[24m.
+
+           The available classes are:
+
+           [1mclient.focused[0m
+               The window that has focus.
+
+           [1mclient.focused_inactive[0m
+               The most recently focused view within a container which is not focused.
+
+           [1mclient.focused_tab_title[0m
+               A  view  that  has focused descendant container. Tab or stack container title that is the
+               parent of the focused container but is not directly focused. Defaults to focused_inactive
+               if not specified and does not use the indicator and child_border colors.
+
+           [1mclient.placeholder[0m
+               Ignored (present for i3 compatibility).
+
+           [1mclient.unfocused[0m
+               A view that does not have focus.
+
+           [1mclient.urgent[0m
+               A view with an urgency hint. [1mNote[22m: Native Wayland windows do not support urgency. Urgency
+               only works for Xwayland windows.
+
+           The meaning of each color is:
+
+           [4mborder[0m
+               The border around the title bar.
+
+           [4mbackground[0m
+               The background of the title bar.
+
+           [4mtext[0m
+               The text color of the title bar.
+
+           [4mindicator[0m
+               The color used to indicate where a new view will open. In a tiled container,  this  would
+               paint the right border of the current view if a new view would be opened to the right.
+
+           [4mchild_border[0m
+               The border around the view itself.
+
+       The default colors are:
+
+       ┌─────────────────┬─────────┬────────────┬─────────┬───────────┬──────────────┐
+       │      [1mclass      [22m│ [4mborder[24m  │ [4mbackground[24m │ [4mtext[24m    │ [4mindicator[24m │ [4mchild_border[24m │
+       ├─────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ [1mbackground      [22m│ n/a     │ #ffffff    │ n/a     │ n/a       │ n/a          │
+       ├─────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ [1mfocused         [22m│ #4c7899 │ #285577    │ #ffffff │ #2e9ef4   │ #285577      │
+       ├─────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ [1mfocused_inac‐   [22m│ #333333 │ #5f676a    │ #ffffff │ #484e50   │ #5f676a      │
+       │ [1mtive            [22m│         │            │         │           │              │
+       ├─────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ [1mfocused_tab_ti‐ [22m│ #333333 │ #5f676a    │ #ffffff │ n/a       │ n/a          │
+       │ [1mtle             [22m│         │            │         │           │              │
+       ├─────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ [1munfocused       [22m│ #333333 │ #222222    │ #888888 │ #292d2e   │ #222222      │
+       ├─────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ [1murgent          [22m│ #2f343a │ #900000    │ #ffffff │ #900000   │ #900000      │
+       ├─────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ [1mplaceholder     [22m│ #000000 │ #0c0c0c    │ #ffffff │ #000000   │ #0c0c0c      │
+       └─────────────────┴─────────┴────────────┴─────────┴───────────┴──────────────┘
+
+       [1mcorner_radius [22m<radius>
+           Set corner radius for new windows.
+
+       [1msmart_corner_radius [22menable|disable
+           Set corner radius only if there are gaps around the window.
+
+       [1mdefault_dim_inactive [22m<value>
+           Adjusts the dimming of inactive windows between 0.0 (no dimming) and 1.0 (fully dimmed) while
+           0.0 is the default value.
+
+       [1mdim_inactive [22m<value>
+           This  can  only be used with a [1mfor_window [22mrule. Adjusts the dimming of a window, matching the
+           rule, between 0.0 (no dimming) and 1.0 (fully dimmed). Default value: [1mdefault_dim_inactive[0m
+
+       [1mdim_inactive_colors.unfocused [22m<hex color>
+           The color to dim inactive windows with. Example color: #000000FF
+
+       [1mdim_inactive_colors.urgent [22m<hex color>
+           The color to dim inactive urgent windows with. Example color: #900000FF
+
+       [1mshadows [22menable|disable
+           Sets whether or not shadows should be drawn. Can also be set per window with [1mfor_window[22m.
+
+       [1mshadows_on_csd [22menable|disable
+           Adjusts if shadows should be drawn on windows that draw  their  own  decorations.  [1mNote:  [22mThe
+           shadow might not fit some windows.
+
+       [1mshadow_blur_radius [22m<value>
+           Adjusts  the  shadow  blur radius of windows between 0 (disabled) and 100 while 20 is the de‐
+           fault value.
+
+       [1mshadow_color [22m<hex color with alpha>
+           The shadow color. Default color: #0000007F
+
+       [1mshadow_inactive_color [22m<hex color with alpha>
+           The shadow color for inactive windows. Default value: [1mshadow_color[0m
+
+       [1mshadow_offset [22m<x offset> <y offset>
+           Offset all box shadows by the given value.
+
+       [1mblur [22menable|disable
+           Sets whether blur should be drawn. Can also be set per window with [1mfor_window[22m.
+
+       [1mblur_xray [22menable|disable
+           Sets whether blur should only display the background.
+
+       [1mblur_passes [22m<value>
+           Adjusts the blur passes of windows between 0 (disabled) and 10 while 2 is the default value.
+
+       [1mblur_radius [22m<value>
+           Adjusts the blur radius of windows between 0 (disabled) and 10 while 5 is the default value.
+
+       [1mblur_noise [22m<value>
+           Adjusts the percentage of noise applied to the blur between 0 and 1 while 0.02  (2%)  is  the
+           default value.
+
+       [1mblur_brightness [22m<value>
+           Adjusts  the percentage of brightness for the blur between 0 and 2 while 0.9 (90%) is the de‐
+           fault value.
+
+       [1mblur_contrast [22m<value>
+           Adjusts the percentage of contrast for the blur between 0 and 2 while 0.9 (90%)  is  the  de‐
+           fault value.
+
+       [1mblur_saturation [22m<value>
+           Adjusts the percentage of saturation for the blur between 0 and 2 while 1.1 (110%) is the de‐
+           fault value.
+
+       [1mdefault_border [22mnormal|none|pixel [<n>]
+           Set  default border style for new tiled windows. Config reload won't affect existing windows,
+           only newly created ones after the reload.
+
+       [1mdefault_floating_border [22mnormal|none|pixel [<n>]
+           Set default border style for new floating windows. This only  applies  to  windows  that  are
+           spawned in floating mode, not windows that become floating afterwards.
+
+       [1mexec [22m<shell command>
+           Executes [4mshell[24m [4mcommand[24m with sh.
+
+       [1mexec_always [22m<shell command>
+           Like [1mexec[22m, but the shell command will be executed [4magain[24m after [1mreload[22m.
+
+       [1mfloating_maximum_size [22m<width> x <height>
+           Specifies  the maximum size of floating windows. -1 x -1 removes the upper limit. The default
+           is 0 x 0, which will use the width and height of the entire output layout as the maximums
+
+       [1mfloating_minimum_size [22m<width> x <height>
+           Specifies the minimum size of floating windows. The default is 75 x 50.
+
+       [1mfloating_modifier [22m<modifier> [normal|inverse]
+           When the [4mmodifier[24m key is held down, you may hold left click to move windows, and right  click
+           to resize them. Setting [4mmodifier[24m to [4mnone[24m disables this feature. If [4minverse[24m is specified, left
+           click is used for resizing and right click for moving.
+
+       [1mfocus_follows_mouse [22myes|no|always
+           If  set to [4myes[24m, moving your mouse over a window will focus that window. If set to [4malways[24m, the
+           window under the cursor will always be focused, even after switching between workspaces.
+
+       [1mfocus_on_window_activation [22msmart|urgent|focus|none
+           This option determines what to do when a client requests window activation. If set to [4murgent[24m,
+           the urgent state will be set for that window. If set to [4mfocus[24m, the  window  will  become  fo‐
+           cused.  If set to [4msmart[24m, the window will become focused only if it is already visible, other‐
+           wise the urgent state will be set. Default is [4murgent[24m.
+
+       [1mfocus_wrapping [22myes|no|force|workspace
+           This option determines what to do when attempting to focus over the edge of a  container.  If
+           set  to  [4mno[24m, the focused container will retain focus, if there are no other containers in the
+           direction. If set to [4myes[24m, focus will be wrapped to the opposite edge  of  the  container,  if
+           there are no other containers in the direction. If set to [4mforce[24m, focus will be wrapped to the
+           opposite  edge  of the container, even if there are other containers in the direction. If set
+           to [4mworkspace[24m, focus will wrap like in the [4myes[24m case and additionally wrap when moving  outside
+           of workspaces boundaries. Default is [4myes[24m.
+
+       [1mfont [22m[pango:]<font>
+           Sets  font  to  use  for the title bars. To enable support for pango markup, preface the font
+           name with [4mpango:[24m. For example, [4mmonospace[24m [4m10[24m is the default font. To enable support for  pango
+           markup,  [4mpango:monospace[24m [4m10[24m should be used instead. Regardless of whether pango markup is en‐
+           abled, [4mfont[24m should be specified as a pango font description. For more  information  on  pango
+           font        descriptions,        see        https://docs.gtk.org/Pango/type_func.FontDescrip‐
+           tion.from_string.html#description
+
+       [1mforce_display_urgency_hint [22m<timeout> [ms]
+           If an application on another workspace sets an urgency hint, switching to this workspace  may
+           lead  to  immediate  focus  of  the application, which also means the window decoration color
+           would be immediately reset to [1mclient.focused[22m. This may make it  unnecessarily  hard  to  tell
+           which  window  originally  raised the event. This option allows one to set a [4mtimeout[24m in ms to
+           delay the urgency hint reset.
+
+       [1mtitlebar_border_thickness [22m<thickness>
+           Thickness of the titlebar border in pixels
+
+       [1mtitlebar_padding [22m<horizontal> [<vertical>]
+           Padding of the text in the titlebar. [4mhorizontal[24m value affects horizontal padding of the  text
+           while  [4mvertical[24m value affects vertical padding (space above and below text). Padding includes
+           titlebar borders so their value should be greater than titlebar_border_thickness. If [4mvertical[0m
+           value is not specified it is set to the [4mhorizontal[24m value.  If  [4mcorner_radius[24m  is  set  to  be
+           greater  than  the  [4mhorizontal[24m  or  [4mvertical[24m value, the value will be treated as that of [4mcor‐[0m
+           [4mner_radius[24m.
+
+       [1mtitlebar_separator [22menable|disable
+           Allows to remove the border between titlebar and window content.
+
+       [1mfor_window [22m<criteria> <command>
+           Whenever a window that matches [4mcriteria[24m appears, run list of commands. See [1mCRITERIA [22mfor  more
+           details.
+
+       [1mlayer_effects [22m<layer-namespace> <effects>
+           Apply  effects  on  specific layer shell surfaces, eg "waybar" or "rofi". At least one effect
+           needs to be provided. The <layer-namespace> can be gotten through [1msway-ipc[22m. Note: Surfaces in
+           the [4mbottom[24m layer cannot use these effects.
+
+           Effects:
+           •   [1mblur [22m<enable|disable>
+           •   [1mblur_ignore_transparent [22m<enable|disable>
+           •   [1mshadows [22m<enable|disable>
+           •   [1mcorner_radius [22m<integer>
+
+           Example:
+
+               layer_effects "waybar" blur enable; shadows enable; corner_radius 6
+
+           SwayIPC Example:
+
+               swaymsg "layer_effects 'waybar' 'blur enable; shadows enable'"
+
+       [1mgaps [22minner|outer|horizontal|vertical|top|right|bottom|left <amount>
+           Sets default [4mamount[24m pixels of [4minner[24m or [4mouter[24m gap, where the inner affects spacing around each
+           view and outer affects the spacing around each workspace. Outer gaps are in addition to inner
+           gaps. To reduce or remove outer gaps, outer gaps can be set to a negative value.  [4mouter[24m  gaps
+           can  also be specified per side with [4mtop[24m, [4mright[24m, [4mbottom[24m, and [4mleft[24m or per direction with [4mhori‐[0m
+           [4mzontal[24m and [4mvertical[24m.
+
+           This affects new workspaces only, and is used when the workspace doesn't have  its  own  gaps
+           settings (see: workspace <ws> gaps ...).
+
+       [1mhide_edge_borders [22m[--i3] none|vertical|horizontal|both|smart|smart_no_gaps
+           Hides  window  borders adjacent to the screen edges. Default is [4mnone[24m. The [4m--i3[24m option enables
+           i3-compatible behavior to hide the title bar on tabbed and stacked containers with one child.
+           The [4msmart[24m|[4msmart_no_gaps[24m options are equivalent to  setting  [4msmart_borders[24m  smart|no_gaps  and
+           [4mhide_edge_borders[24m none.
+
+       [1minput [22m<input_device> <input-subcommands...>
+           For details on input subcommands, see [1msway-input[22m(5).
+
+           * may be used in lieu of a specific device name to configure all input devices. A list of in‐
+           put device names may be obtained via [1mswaymsg -t get_inputs[22m.
+
+       [1mseat [22m<seat> <seat-subcommands...>
+           For details on seat subcommands, see [1msway-input[22m(5).
+
+       [1mkill[0m
+           Kills (closes) the currently focused container and all of its children.
+
+       [1msmart_borders [22mon|no_gaps|off
+           If smart_borders are [4mon[24m, borders will only be enabled if the workspace has more than one vis‐
+           ible child. If smart_borders is set to [4mno_gaps[24m, borders will only be enabled if the workspace
+           has more than one visible child and gaps equal to zero.
+
+       [1msmart_gaps [22mon|off|toggle|inverse_outer
+           If  smart_gaps  are  [4mon[24m  gaps will only be enabled if a workspace has more than one child. If
+           smart_gaps are [4minverse_outer[24m outer gaps will only be enabled if a workspace has  exactly  one
+           child.
+
+       [1mmark [22m--add|--replace [--toggle] <identifier>
+           Marks are arbitrary labels that can be used to identify certain windows and then jump to them
+           at  a later time. Each [4midentifier[24m can only be set on a single window at a time since they act
+           as a unique identifier. By default, [1mmark [22msets [4midentifier[24m as the only mark on a window.  [4m--add[0m
+           will  instead  add  [4midentifier[24m  to  the list of current marks for that window. If [4m--toggle[24m is
+           specified mark will remove [4midentifier[24m if it is already marked.
+
+       [1mmode [22m<mode>
+           Switches to the specified mode. The default mode is [4mdefault[24m.
+
+       [1mmode [22m[--pango_markup] <mode> <mode-subcommands...>
+           The  only  valid  [4mmode-subcommands...[24m  are  [1mbindsym[22m,  [1mbindcode[22m,  [1mbindswitch[22m,  and   [1mset[22m.   If
+           [4m--pango_markup[24m is given, then [4mmode[24m will be interpreted as pango markup.
+
+       [1mmouse_warping [22moutput|container|none
+           If  [4moutput[24m  is  specified,  the  mouse will be moved to new outputs as you move focus between
+           them. If [4mcontainer[24m is specified, the mouse will be moved to the middle of  the  container  on
+           switch. Default is [4moutput[24m.
+
+       [1mno_focus [22m<criteria>
+           Prevents  windows  matching <criteria> from being focused automatically when they're created.
+           This has no effect on the first window in a workspace.
+
+       [1moutput [22m<output_name> <output-subcommands...>
+           For details on output subcommands, see [1msway-output[22m(5).
+
+           * may be used in lieu of a specific output name to configure all outputs. A  list  of  output
+           names may be obtained via [1mswaymsg -t get_outputs[22m.
+
+       [1mpopup_during_fullscreen [22msmart|ignore|leave_fullscreen
+           Determines what to do when a fullscreen view opens a dialog. If [4msmart[24m (the default), the dia‐
+           log  will  be displayed. If [4mignore[24m, the dialog will not be rendered. If [4mleave_fullscreen[24m, the
+           view will exit fullscreen mode and the dialog will be rendered.
+
+       [1mprimary_selection [22menabled|disabled
+           Enable or disable the primary selection clipboard. May only be configured at launch.  Default
+           is [4menabled[24m.
+
+       [1mset [22m$<name> <value>
+           Sets  variable  $[4mname[24m  to [4mvalue[24m. You can use the new variable in the arguments of future com‐
+           mands. When the variable is used, it can be escaped with an additional $ (ie $$[4mname[24m) to  have
+           the  replacement  happen at run time instead of when reading the config. However, it does not
+           always make sense for the variable to be replaced at run time since some arguments do need to
+           be known at config time.
+
+       [1mshow_marks [22myes|no
+           If [1mshow_marks [22mis yes, marks will be displayed in the window borders.  Any  mark  that  starts
+           with an underscore will not be drawn even if [1mshow_marks [22mis yes. The default is [4myes[24m.
+
+       [1mopacity [22m[set|plus|minus] <value>
+           Adjusts  the  opacity  of  the  window  between  0 (completely transparent) and 1 (completely
+           opaque). If the operation is omitted, [4mset[24m will be used.
+
+       [1msaturation [22m[set|plus|minus] <value>
+           Adjusts the saturation (Digital Vibrance) of the window between 0 (black  and  white)  and  2
+           (over saturated which is suited for some FPS games) while 1 is the default saturation. If the
+           operation is omitted, [4mset[24m will be used.
+
+       [1mtiling_drag  [22menable|disable|toggle
+           Sets  whether  or  not tiling containers can be dragged with the mouse. If [4menabled[24m (default),
+           the [4mfloating_mod[24m can be used to drag tiling, as well as floating, containers. Using the  left
+           mouse  button  on  title  bars  without  the [4mfloating_mod[24m will also allow the container to be
+           dragged. [4mtoggle[24m should not be used in the config file.
+
+       [1mtiling_drag_threshold [22m<threshold>
+           Sets the threshold that must be exceeded for a container to be dragged by its titlebar.  This
+           has  no effect if [4mfloating_mod[24m is used or if [4mtiling_drag[24m is set to [4mdisable[24m.  Once the thresh‐
+           old has been exceeded once, the drag starts and the cursor can come back inside the threshold
+           without stopping the drag.  [4mthreshold[24m is multiplied by the scale of the output that the  cur‐
+           sor on.  The default is 9.
+
+       [1mtitle_align [22mleft|center|right
+           Sets  the  title alignment. If [4mright[24m is selected and [4mshow_marks[24m is set to [4myes[24m, the marks will
+           be shown on the [4mleft[24m side instead of the [4mright[24m side.
+
+       [1munbindswitch [22m<switch>:<state>
+           Removes a binding for when <switch> changes to <state>.
+
+       [1munbindgesture [22m[--exact] [--input-device=<device>] <gesture>[:<fingers>][:directions]
+           Removes a binding for the specified [4mgesture[24m, [4mfingers[24m and [4mdirections[24m combination.
+
+       [1munbindsym [22m[--whole-window] [--border]  [--exclude-titlebar]  [--release]  [--locked]  [--to-code]
+       [--input-device=<device>] <key combo>
+           Removes  the binding for [4mkey[24m [4mcombo[24m that was previously bound with the given flags.  If [4minput-[0m
+           [4mdevice[24m is given, only the binding for that input device will be unbound.
+
+           [1munbindcode [22m[--whole-window] [--border] [--exclude-titlebar] [--release] [--locked]  [--input-
+           device=<device>]  <code>  is  also  available  for unbinding with key/button codes instead of
+           key/button names.
+
+       [1munmark [22m[<identifier>]
+           [1munmark [22mwill remove [4midentifier[24m from the list of current marks on a window.  If  [4midentifier[24m  is
+           omitted, all marks are removed.
+
+       [1murgent [22menable|disable|allow|deny
+           Using  [4menable[24m  or  [4mdisable[24m  manually sets or unsets the window's urgent state. Using [4mallow[24m or
+           [4mdeny[24m controls the window's ability to set itself as urgent. By default, windows  are  allowed
+           to set their own urgency.
+
+       [1mworkspace [22m[--no-auto-back-and-forth] [number] <[num:]name>
+           Switches  to  the  specified  workspace. The [4mnum:[24m portion of the name is optional and will be
+           used for ordering. If [4mnum:[24m is not given and [4mname[24m is a number, then it will be  also  be  used
+           for ordering.
+
+           If the [4mno-auto-back-and-forth[24m option is given, then this command will not perform a back-and-
+           forth  operation  when  the workspace is already focused and [4mworkspace_auto_back_and_forth[24m is
+           enabled.
+
+           If the [4mnumber[24m keyword is specified and a workspace with the number already exists,  then  the
+           workspace  with the number will be used. If a workspace with the number does not exist, a new
+           workspace will be created with the name [4mname[24m.
+
+       [1mworkspace [22mprev|next
+           Switches to the next workspace on the current output or on the next output  if  currently  on
+           the last workspace.
+
+       [1mworkspace [22mprev_on_output|next_on_output
+           Switches to the next workspace on the current output.
+
+       [1mworkspace [22mback_and_forth
+           Switches to the previously focused workspace.
+
+       [1mworkspace [22m<name> gaps inner|outer|horizontal|vertical|top|right|bottom|left <amount>
+           Specifies that workspace [4mname[24m should have the given gaps settings when it is created.
+
+           This command does not affect existing workspaces. To alter the gaps of an existing workspace,
+           use the [4mgaps[24m command.
+
+       [1mworkspace [22m<name> output <outputs...>
+           Specifies  that workspace [4mname[24m should be shown on the specified [4moutputs[24m. Multiple outputs can
+           be listed and the first available will be used. If the workspace gets  placed  on  an  output
+           further  down  the list and an output that is higher on the list becomes available, the work‐
+           space will be moved to the higher priority output.
+
+           This command does not affect existing workspaces. To move an existing workspace, use the [4mmove[0m
+           command in combination with the [4mworkspace[24m criteria (non-empty workspaces only)  or  [4mworkspace[0m
+           command (to switch to the workspace before moving).
+
+       [1mworkspace_auto_back_and_forth [22myes|no
+           When  [4myes[24m,  repeating a workspace switch command will switch back to the prior workspace. For
+           example, if you are currently on workspace 1, switch to workspace 2, then  invoke  the  [1mwork‐[0m
+           [1mspace 2 [22mcommand again, you will be returned to workspace 1. Default is [4mno[24m.
+
+[1mCRITERIA[0m
+       A criteria is a string in the form of, for example:
+
+           [class="[Rr]egex.*" title="some title"]
+
+       The  string  contains  one or more (space separated) attribute/value pairs. They are used by some
+       commands to choose which views to execute actions on. All attributes must match for the  criteria
+       to match. Criteria is retained across commands separated by a [1m,[22m, but will be reset (and allow for
+       new criteria, if desired) for commands separated by a [1m;[22m.
+
+       Criteria  may be used with either the [1mfor_window [22mor [1massign [22mcommands to specify operations to per‐
+       form on new views. A criteria may also be used to perform specific commands (ones  that  normally
+       act upon one window) on all views that match that criteria. For example:
+
+       Focus on a window with the mark "IRC":
+
+           [con_mark="IRC"] focus
+
+       Kill all windows with the title "Emacs":
+
+           [class="Emacs"] kill
+
+       You  may  like  to use swaymsg -t get_tree for finding the values of these properties in practice
+       for your applications.
+
+       The following attributes may be matched with:
+
+       [1mall[0m
+           Matches all windows.
+
+       [1mapp_id[0m
+           Compare value against the app id. Can be a regular expression. If value is __focused__,  then
+           the  app  id must be the same as that of the currently focused window. [4mapp_id[24m are specific to
+           Wayland applications.
+
+       [1mclass[0m
+           Compare value against the window class. Can be a regular expression. If value is __focused__,
+           then the window class must be the same as that of the currently  focused  window.  [4mclass[24m  are
+           specific to X11 applications and require XWayland.
+
+       [1mcon_id[0m
+           Compare  against  the  internal  container  ID, which you can find via IPC. If value is __fo‐
+           cused__, then the id must be the same as that of the currently focused window.
+
+       [1mcon_mark[0m
+           Compare against the window marks. Can be a regular expression.
+
+       [1mfloating[0m
+           Matches floating windows.
+
+       [1mid[0m
+           Compare value against the X11 window ID. Must be numeric. id is specific to X11  applications
+           and requires XWayland.
+
+       [1minstance[0m
+           Compare  value  against  the  window instance. Can be a regular expression. If value is __fo‐
+           cused__, then the window instance must be the same as that of the currently  focused  window.
+           instance is specific to X11 applications and requires XWayland.
+
+       [1mpid[0m
+           Compare value against the window's process ID. Must be numeric.
+
+       [1mshell[0m
+           Compare  value  against the window shell, such as "xdg_shell" or "xwayland". Can be a regular
+           expression. If value is __focused__, then the shell must be the same as that of the currently
+           focused window.
+
+       [1mtiling[0m
+           Matches tiling windows.
+
+       [1mtitle[0m
+           Compare against the window title. Can be a regular expression. If value is __focused__,  then
+           the window title must be the same as that of the currently focused window.
+
+       [1murgent[0m
+           Compares  the  urgent  state of the window. Can be [4mfirst[24m, [4mlast[24m, [4mlatest[24m, [4mnewest[24m, [4moldest[24m or [4mre‐[0m
+           [4mcent[24m.
+
+       [1mwindow_role[0m
+           Compare against the window role (WM_WINDOW_ROLE). Can be a regular expression.  If  value  is
+           __focused__,  then  the window role must be the same as that of the currently focused window.
+           window_role is specific to X11 applications and requires XWayland.
+
+       [1mwindow_type[0m
+           Compare against the window type (_NET_WM_WINDOW_TYPE). Possible values  are  normal,  dialog,
+           utility,  toolbar,  splash,  menu,  dropdown_menu, popup_menu, tooltip and notification. win‐
+           dow_type is specific to X11 applications and requires XWayland.
+
+       [1mworkspace[0m
+           Compare against the workspace name for this view. Can be a regular expression. If  the  value
+           is __focused__, then all the views on the currently focused workspace matches.
+
+[1mSEE ALSO[0m
+       [1msway[22m(1) [1msway-input[22m(5) [1msway-output[22m(5) [1msway-bar[22m(5) [1msway-ipc[22m(7)
+
+                                               1980-01-01                                        [4msway[24m(5)

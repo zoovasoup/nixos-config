@@ -41,6 +41,27 @@
 
         # Other
         suwayomi-server
+
+        # wallpaper init
+        swww
+
+        # clipbloard
+        cliphist
+
+        # screeshoot
+        grimblast
+        slurp
+
+        #gtk theming
+        nwg-look
+
+        # Notifications
+        libnotify
+
+        wf-recorder
+        wl-clipboard
+        brightnessctl
+        udiskie
       ];
     in {
       isNormalUser = true;

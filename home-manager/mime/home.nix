@@ -14,6 +14,12 @@
       "image/png" = "org.gnome.Loupe.desktop";
       "image/jpeg" = "org.gnome.Loupe.desktop";
       "application/pdf" = "org.pwmt.zathura.desktop";
+      "x-scheme-handler/chrome" = "floorp.desktop";
+      "application/x-extension-htm" = "floorp.desktop";
+      "application/x-extension-html" = "floorp.desktop";
+      "application/x-extension-shtml" = "floorp.desktop";
+      "application/x-extension-xhtml" = "floorp.desktop";
+      "application/x-extension-xht" = "floorp.desktop";
     };
     associations.added = {
       "image/png" = "org.gnome.Loupe.desktop";

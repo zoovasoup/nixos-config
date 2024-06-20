@@ -7,6 +7,11 @@
 
     extraPackages = with pkgs; [
       #utils
+      wlrctl
+      blueman
+
+      #i3 stuff
+      i3status-rust
 
       #sway stuff
       swaybg
@@ -26,4 +31,10 @@
       nwg-launchers
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+  ];
+
+  programs.nm-applet.indicator = true;
 }

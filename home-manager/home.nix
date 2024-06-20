@@ -5,15 +5,18 @@
   ...
 }: {
   imports = [
-    #inputs.nixvim.homeManagerModules.nixvim
-    inputs.ags.homeManagerModules.default
     ./features/cli
-    ./hyprland/home.nix
     ./nvim/home.nix
     ./waybar/home.nix
     ./mime/home.nix
-    ./ags/home.nix
+    ./rofi/home.nix
+
+    # inputs.ags.homeManagerModules.default
+    # ./ags/home.nix
+    # ./hyprland/home.nix
+
     # ./sway/home.nix
+    # inputs.nixvim.homeManagerModules.nixvim
   ];
 
   nixpkgs = {
@@ -43,6 +46,7 @@
     ytui-music
     ytermusic
     vscodium-fhs
+    guvcview
   ];
 
   programs.pandoc = {

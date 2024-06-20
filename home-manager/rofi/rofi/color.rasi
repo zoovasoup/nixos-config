@@ -1,0 +1,18 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Colors
+    font:           "JetBrainsMono Nerd Font 10";
+ **/
+
+* {
+    background:     #000000FF;
+    background-alt: #101010FF;
+    foreground:     #93A1A1FF;
+    selected:       #285577FF;
+    active:         #98C379FF;
+    urgent:         #E06B74FF;
+    font:           "monospace 10";
+}

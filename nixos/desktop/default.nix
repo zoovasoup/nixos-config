@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./gnome.nix
-    ./hyprland.nix
+    # ./hyprland.nix
     ./display-manager.nix
     ./sway.nix
   ];
