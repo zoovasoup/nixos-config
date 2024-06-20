@@ -3,12 +3,15 @@
     enable = true;
     extraPackages = with pkgs; [
       mesa # This includes the necessary VAAPI support for AMD GPUs.
-      libva
-      libva-utils
-      amdvlk
       libGL
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    libva
+    libva-utils
+    amdvlk
+  ];
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "radeonsi"; # radeonsi is the VAAPI driver for AMD.

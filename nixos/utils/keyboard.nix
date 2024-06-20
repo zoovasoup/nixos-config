@@ -26,7 +26,7 @@
           };
 
           main = {
-            capslock = "overloadt2(arrow_caps, esc, 130)";
+            capslock = "overloadt2(arrow_caps, esc, 155)";
             a = "lettermod(shift, a, 175, 165)";
             s = "lettermod(control, r, 175, 165)";
             d = "lettermod(meta, s, 175, 165)";
@@ -44,6 +44,7 @@
 
           control = {
             "1" = "setlayout(colemak_dh)";
+            "2" = "setlayout(main)";
           };
 
           "colemak_dh:layout" = {

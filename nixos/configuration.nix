@@ -17,7 +17,10 @@
 
   users.users = {
     zvasoup = let
-      # Script to add Flatpak remotes and install apps
+      #NOTE : floorp follow nixos-unstable-small
+      # remove this after the floorp 11.14 got merged to nixos-unstable
+      newFloorp = [inputs.nixpkgs-unstable-small.legacyPackages.x86_64-linux.floorp];
+
       myApps = with pkgs; [
         # Fonts
         nerdfonts
@@ -43,13 +46,13 @@
       isNormalUser = true;
       shell = "/home/zvasoup/.nix-profile/bin/fish";
       extraGroups = ["networkmanager" "wheel" "keyd" "scanner"];
-      packages = myApps;
+      packages = myApps ++ newFloorp;
     };
   };
 
   services.flatpak = {
     packages = [
-      "one.ablaze.floorp"
+      # "one.ablaze.floorp"
       "org.learningequality.Kolibri"
       "so.libdb.dissent"
       "com.usebottles.bottles"
