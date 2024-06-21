@@ -9,13 +9,14 @@
       #utils
       wlrctl
       blueman
+      libnotify
+      # mako
 
       #i3 stuff
       i3status-rust
 
       #sway stuff
       swaybg
-      swaynotificationcenter
       swayidle
       sway-audio-idle-inhibit
       swaynag-battery

@@ -27,15 +27,15 @@
 
           main = {
             capslock = "overloadt2(arrow_caps, esc, 155)";
-            a = "lettermod(shift, a, 200, 165)";
-            s = "lettermod(control, r, 200, 165)";
-            d = "lettermod(meta, s, 200, 165)";
-            f = "lettermod(alt, t, 200, 165)";
-            j = "lettermod(alt, n, 200, 165)";
-            k = "lettermod(meta, e, 200, 165)";
-            l = "lettermod(control, i, 200, 165)";
-            ";" = "lettermod(shift, o, 200, 165)";
-            # "leftalt" = "layer(keys_3)";
+            a = "lettermod(shift, a, 100, 165)";
+            s = "lettermod(control, r, 100, 165)";
+            d = "lettermod(meta, s, 100, 165)";
+            f = "lettermod(alt, t, 100, 165)";
+            j = "lettermod(alt, n, 100, 165)";
+            k = "lettermod(meta, e, 100, 165)";
+            l = "lettermod(control, i, 100, 165)";
+            ";" = "lettermod(shift, o, 100, 165)";
+            "leftalt" = "layer(num_pad)";
             # "rightalt" = "layer(keys_2)";
             # "space" = "overloadt2(shift, space, 180)";
             "\\" = "backspace";
@@ -90,6 +90,19 @@
             k = ",";
             l = ".";
             ";" = "/";
+          };
+
+          num_pad = {
+            u = "9";
+            i = "8";
+            o = "7";
+            j = "6";
+            k = "5";
+            l = "4";
+            m = "3";
+            "," = "2";
+            "." = "1";
+            h = "0";
           };
         };
       };

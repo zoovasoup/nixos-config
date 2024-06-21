@@ -10,6 +10,7 @@
     ./waybar/home.nix
     ./mime/home.nix
     ./rofi/home.nix
+    ./swaync/home.nix
 
     # inputs.ags.homeManagerModules.default
     # ./ags/home.nix
