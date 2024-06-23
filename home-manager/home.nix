@@ -48,6 +48,9 @@
     ytermusic
     vscodium-fhs
     guvcview
+    obs-studio
+    drawing
+    gnome-feeds
   ];
 
   programs.pandoc = {

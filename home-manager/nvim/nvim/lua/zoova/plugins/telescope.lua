@@ -37,8 +37,8 @@ return {
 				},
 				mappings = {
 					i = {
-						["<C-e>"] = actions.move_selection_previous, -- move to prev result
-						["<C-n>"] = actions.move_selection_next, -- move to next result
+						-- ["<C-e>"] = actions.move_selection_previous, -- move to prev result
+						-- ["<C-n>"] = actions.move_selection_next, -- move to next result
 						["<C-o>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
 						["<C-t>"] = trouble_telescope.smart_open_with_trouble,
 						["<C-N>"] = actions.preview_scrolling_down,

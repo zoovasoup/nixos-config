@@ -8,6 +8,7 @@
     ./amd-driver.nix
     ./bootloader.nix
     ./networking.nix
+    ./bluetooth.nix
     ./nixpkgs.nix
     ./flatpak.nix
   ];

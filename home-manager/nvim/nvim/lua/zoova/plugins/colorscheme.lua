@@ -1,9 +1,16 @@
 return {
-	"lifepillar/vim-gruvbox8",
-	branch = "neovim",
+	-- {"lifepillar/vim-gruvbox8",branch = "neovim" },
+	--
+	-- "bluz71/vim-moonfly-colors",
+	-- name = "moonfly",
+	-- lazy = false,
+	-- priority = 1000,
+
+	"aktersnurra/no-clown-fiesta.nvim",
+
 	config = function()
-		-- vim.cmd.colorscheme("gruvbox8_soft")
-		vim.cmd.colorscheme("gruvbox8_hard")
+		vim.cmd.colorscheme("no-clown-fiesta")
+
 		vim.cmd.hi("SignColumn guibg=NONE")
 		-- vim.cmd.hi("CursorLineSign guibg=#3c3836")
 		vim.cmd.hi("CursorLineSign guibg=NONE")
