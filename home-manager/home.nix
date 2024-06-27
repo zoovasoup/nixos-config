@@ -49,8 +49,7 @@
     vscodium-fhs
     guvcview
     obs-studio
-    drawing
-    gnome-feeds
+    exercism
   ];
 
   programs.pandoc = {

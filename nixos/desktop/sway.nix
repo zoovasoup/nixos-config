@@ -34,7 +34,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    networkmanagerapplet
+    # wl-gammactl
+    wl-gammarelay-rs
+    polkit_gnome
   ];
 
   programs.nm-applet.indicator = true;

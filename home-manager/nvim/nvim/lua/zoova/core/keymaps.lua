@@ -63,7 +63,9 @@ keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 keymap.set("n", "<leader>n", "<cmd>lnext<CR>zz")
 keymap.set("n", "<leader>e", "<cmd>lprev<CR>zz")
-keymap.set("", "E", "<cmd>cprev<CR>zz", {})
-keymap.set("", "N", "<cmd>cnext<CR>zz", {})
+keymap.set("n", "n", "nzz")
+keymap.set("n", "N", "Nzz")
+-- keymap.set("n", "N", "<cmd>cprev<CR>zz", {})
+-- keymap.set("n", "n", "<cmd>cnext<CR>zz", {})
 
 keymap.set("", "<C-c>", "<NOP>", {})

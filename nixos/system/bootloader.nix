@@ -16,4 +16,8 @@
     "vt.global_cursor_default=0"
   ];
   boot.consoleLogLevel = 0;
+
+  boot.kernelModules = [
+    "snd-usb-audio"
+  ];
 }

@@ -27,14 +27,14 @@
 
           main = {
             capslock = "overloadt2(arrow_caps, esc, 155)";
-            a = "lettermod(shift, a, 90, 165)";
-            s = "lettermod(control, r, 90, 165)";
-            d = "lettermod(meta, s, 90, 165)";
-            f = "lettermod(alt, t, 90, 165)";
-            j = "lettermod(alt, n, 90, 165)";
-            k = "lettermod(meta, e, 90, 165)";
-            l = "lettermod(control, i, 90, 165)";
-            ";" = "lettermod(shift, o, 90, 165)";
+            a = "lettermod(shift, a, 95, 155)";
+            s = "lettermod(control, r, 95, 155)";
+            d = "lettermod(meta, s, 95, 155)";
+            f = "lettermod(alt, t, 95, 155)";
+            j = "lettermod(alt, n, 95, 155)";
+            k = "lettermod(meta, e, 95, 155)";
+            l = "lettermod(control, i, 95, 155)";
+            ";" = "lettermod(shift, o, 95, 155)";
             "leftalt" = "layer(num_pad)";
             # "rightalt" = "layer(keys_2)";
             # "space" = "overloadt2(shift, space, 180)";
