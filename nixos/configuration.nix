@@ -62,6 +62,9 @@
         wl-clipboard
         brightnessctl
         udiskie
+        sassc
+        gtk-engine-murrine
+        wget
       ];
     in {
       isNormalUser = true;

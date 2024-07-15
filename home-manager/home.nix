@@ -50,6 +50,8 @@
     guvcview
     obs-studio
     exercism
+    freecad
+    cura
   ];
 
   programs.pandoc = {
