@@ -38,6 +38,11 @@
 
         # Web development #tool
         dart-sass
+        python3Full
+
+        #keyboard stuff
+        qmk
+        vial
 
         # Other
         suwayomi-server
