@@ -17,7 +17,7 @@
     # configure layer
     keyboards = {
       default = {
-        ids = ["*"]; #all keyboard
+        ids = [" 0001:0001:a38e6885"]; #keyboard bawaan
 
         settings = {
           global = {

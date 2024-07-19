@@ -74,7 +74,7 @@
     in {
       isNormalUser = true;
       shell = "/home/zvasoup/.nix-profile/bin/fish";
-      extraGroups = ["networkmanager" "wheel" "keyd" "scanner"];
+      extraGroups = ["networkmanager" "wheel" "keyd" "scanner" "bluetooth"];
       packages = myApps ++ newFloorp;
     };
   };
