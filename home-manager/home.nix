@@ -52,6 +52,7 @@
     exercism
     freecad
     cura
+    prusa-slicer
   ];
 
   programs.pandoc = {

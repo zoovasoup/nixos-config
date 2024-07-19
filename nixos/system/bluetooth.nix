@@ -8,9 +8,12 @@ in {
     enable = true;
     settings = {
       General = {
+        name = "zvaBlue@think";
         experimental = true;
       };
-      AutoEnable = true;
+      Policy = {
+        autoEnable = true;
+      };
     };
   };
 
