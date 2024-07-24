@@ -106,6 +106,21 @@
         install -m644 data/keyd.compose $out/share/keyd/
       '';
     });
+
+    # overlay for warpd
+    warpd =
+      (
+        prev.warpd.overrideAttrs
+        (oldAttrs: {
+          src = final.fetchFromGitHub {
+            owner = "rvaiya";
+            repo = "warpd";
+            rev = "01650eabf70846deed057a77ada3c0bbb6d97d6e";
+            sha256 = "sha256-61+kJvOi4oog0+tGucc1rWemdx2vp15wlluJE+1PzTs=";
+          };
+        })
+      )
+      .override {withX = false;};
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

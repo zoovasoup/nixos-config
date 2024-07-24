@@ -70,6 +70,7 @@
         sassc
         gtk-engine-murrine
         wget
+        warpd
       ];
     in {
       isNormalUser = true;
