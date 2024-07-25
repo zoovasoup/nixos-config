@@ -19,8 +19,7 @@
     zvasoup = let
       #NOTE : floorp follow nixos-unstable-small
       # remove this after the floorp 11.14 got merged to nixos-unstable
-      newFloorp = [inputs.nixpkgs-unstable-small.legacyPackages.x86_64-linux.floorp];
-
+      # newFloorp = [inputs.nixpkgs-unstable-small.legacyPackages.x86_64-linux.floorp];
       myApps = with pkgs; [
         # Fonts
         nerdfonts
@@ -71,12 +70,13 @@
         gtk-engine-murrine
         wget
         warpd
+        floorp
       ];
     in {
       isNormalUser = true;
       shell = "/home/zvasoup/.nix-profile/bin/fish";
       extraGroups = ["networkmanager" "wheel" "keyd" "scanner" "bluetooth"];
-      packages = myApps ++ newFloorp;
+      packages = myApps;
     };
   };
 

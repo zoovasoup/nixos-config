@@ -4,9 +4,9 @@
 
   environment.systemPackages = with pkgs; [
     #extension stuff
-    gnome.gnome-tweaks
+    gnome-tweaks
     gnome.gnome-software
-    gnome.dconf-editor
+    dconf-editor
     gnome-extension-manager
     gnomeExtensions.forge
     gnomeExtensions.caffeine

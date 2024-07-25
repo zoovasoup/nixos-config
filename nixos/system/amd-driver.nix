@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       mesa # This includes the necessary VAAPI support for AMD GPUs.
@@ -18,7 +18,7 @@
   };
 
   # To enable Vulkan support for 32-bit applications, also add:
-  hardware.opengl.extraPackages32 = [
+  hardware.graphics.extraPackages32 = [
     pkgs.driversi686Linux.amdvlk
   ];
 
