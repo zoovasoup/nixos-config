@@ -57,7 +57,7 @@ autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexi
 
 vim.cmd('let $TZ = "Asia/Bangkok"')
 
-vim.opt.conceallevel = 2
+-- vim.opt.conceallevel = 2
 vim.opt.concealcursor = "nc"
 
 -- vim.o.foldlevel = 4

@@ -44,15 +44,15 @@
   home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
-    ytui-music
-    ytermusic
+    yt-dlp
     vscodium-fhs
     guvcview
     obs-studio
     exercism
     freecad
-    cura
-    prusa-slicer
+    # cura
+    # prusa-slicer
+    vlc
   ];
 
   programs.pandoc = {

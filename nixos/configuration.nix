@@ -37,7 +37,8 @@
 
         # Web development #tool
         dart-sass
-        python3Full
+        python311Packages.sip4
+        # python
 
         #keyboard stuff
         qmk
@@ -71,6 +72,7 @@
         wget
         warpd
         floorp
+        # cura
       ];
     in {
       isNormalUser = true;

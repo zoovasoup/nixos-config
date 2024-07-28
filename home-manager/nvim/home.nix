@@ -15,7 +15,6 @@
       lua-language-server
 
       # HTML #lsp
-      nodePackages_latest.vscode-html-languageserver-bin
       emmet-ls
 
       # CSS #lsp
