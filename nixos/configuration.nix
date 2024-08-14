@@ -17,9 +17,6 @@
 
   users.users = {
     zvasoup = let
-      #NOTE : floorp follow nixos-unstable-small
-      # remove this after the floorp 11.14 got merged to nixos-unstable
-      # newFloorp = [inputs.nixpkgs-unstable-small.legacyPackages.x86_64-linux.floorp];
       myApps = with pkgs; [
         # Fonts
         nerdfonts

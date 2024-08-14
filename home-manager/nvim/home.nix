@@ -19,7 +19,6 @@
 
       # CSS #lsp
       tailwindcss-language-server
-      nodePackages_latest.vscode-css-languageserver-bin
 
       # GraphQL #lsp
       nodePackages_latest.graphql-language-service-cli
