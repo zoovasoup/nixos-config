@@ -82,6 +82,7 @@
   services.flatpak = {
     packages = [
       # "one.ablaze.floorp"
+      "io.github.zen_browser.zen"
       "org.learningequality.Kolibri"
       "so.libdb.dissent"
       "com.usebottles.bottles"
