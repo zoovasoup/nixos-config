@@ -19,11 +19,20 @@
     gnomeExtensions.bluetooth-quick-connect
     # gnomeExtensions.rounded-window-corners
     gnomeExtensions.paperwm
+    gnomeExtensions.valent
+    gnomeExtensions.open-bar
+    gnomeExtensions.arc-menu
+    gnomeExtensions.tiling-shell
+    gnomeExtensions.quick-settings-tweaker
+    gnomeExtensions.rounded-window-corners-reborn
+    gnomeExtensions.dash-to-panel
 
     #dependencies
     gjs
     vte
     libhandy
+    valent
+    tdrop
 
     #gnome apps
     gnome-solanum
