@@ -69,6 +69,8 @@
         wget
         warpd
         floorp
+        teams
+        teams-for-linux
         # cura
       ];
     in {
