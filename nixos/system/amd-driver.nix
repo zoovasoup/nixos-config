@@ -11,6 +11,10 @@
     libva
     libva-utils
     amdvlk
+
+    # ffmpeg-full
+    # openh264
+    mediastreamer-openh264
   ];
 
   environment.sessionVariables = {
