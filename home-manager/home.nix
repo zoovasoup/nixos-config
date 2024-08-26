@@ -8,7 +8,7 @@
     ./features/cli
     ./nvim/home.nix
     ./waybar/home.nix
-    ./mime/home.nix
+    # ./mime/home.nix
     ./rofi/home.nix
     ./swaync/home.nix
 

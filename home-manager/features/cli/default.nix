@@ -68,4 +68,12 @@
   programs.mpv = {
     enable = true;
   };
+
+  programs.wezterm = {
+    enable = true;
+  };
+
+  programs.kitty = {
+    enable = true;
+  };
 }

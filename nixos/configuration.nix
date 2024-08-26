@@ -71,6 +71,7 @@
         floorp
         teams
         teams-for-linux
+        whatsapp-for-linux
 
         # cura
       ];
@@ -85,7 +86,7 @@
   services.flatpak = {
     packages = [
       # "one.ablaze.floorp"
-      "io.github.zen_browser.zen"
+      # "io.github.zen_browser.zen"
       "org.learningequality.Kolibri"
       "so.libdb.dissent"
       "com.usebottles.bottles"
@@ -94,10 +95,16 @@
       "io.gitlab.news_flash.NewsFlash"
       "org.gaphor.Gaphor"
       "com.belmoussaoui.Obfuscate"
+      "io.github.spacingbat3.webcord"
+      "com.discordapp.Discord"
+      "com.github.tchx84.Flatseal"
+      "org.freedesktop.Platform.ffmpeg-full/x86_64/23.08"
     ];
   };
 
   # xdg.portal.wlr.enable = lib.mkForce true;
+
+  programs.firejail.enable = true;
 
   xdg.portal = {
     enable = true;
