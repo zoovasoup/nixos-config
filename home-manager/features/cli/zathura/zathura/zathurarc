@@ -36,17 +36,17 @@ set statusbar-v-padding 0
 set page-padding 1
 map u scroll half-up
 map d scroll half-down
-map E navigate previous
-map N navigate next
+# map E navigate previous
+# map N navigate next
 map D toggle_page_mode
 map r reload
 map R rotate
 map k zoom in
 map h zoom out
 map <C-i> recolor
-set recolor                     true
+# set recolor                     true
 map p print
-map n scroll down
-map e scroll up
-map m scroll left 
-map i scroll right
+# map n scroll down
+# map e scroll up
+# map m scroll left 
+# map i scroll right

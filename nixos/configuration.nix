@@ -84,6 +84,7 @@
       packages = myApps;
     };
   };
+  programs.steam.enable = true;
 
   services.flatpak = {
     packages = [

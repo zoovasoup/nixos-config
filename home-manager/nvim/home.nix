@@ -26,6 +26,9 @@
       # Svelte #lsp
       nodePackages_latest.svelte-language-server
 
+      #latex #lsp
+      ltex-ls
+
       # Python #lsp #linter
       pyright
       pylint

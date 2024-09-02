@@ -107,6 +107,15 @@ return {
 			capabilities = capabilities,
 		})
 
+		lspconfig.ltex.setup({
+			capabilities = capabilities,
+			settings = {
+				ltex = {
+					language = "",
+				},
+			},
+		})
+
 		lspconfig.cssls.setup({
 			capabilities = capabilities,
 		})
