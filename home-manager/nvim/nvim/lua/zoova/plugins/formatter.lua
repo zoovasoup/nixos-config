@@ -20,6 +20,8 @@ return {
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				nix = { "alejandra" },
+				tex = { "latexindent" },
+
 				-- python = { "isort", "black" },
 			},
 			format_on_save = {

@@ -9,6 +9,7 @@ return {
 	opts = {
 		highlight = {
 			enable = true,
+			disable = { "latex" },
 		},
 		additional_vim_regex_highlighting = { "org" },
 		-- enable indentation
@@ -37,6 +38,7 @@ return {
 			"c",
 			"nix",
 			"org",
+			"latex",
 		},
 		incremental_selection = {
 			enable = true,

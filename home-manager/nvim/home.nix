@@ -2,6 +2,10 @@
   programs.neovim = {
     enable = true;
     extraPackages = with pkgs; [
+      #treesitter
+      tree-sitter
+      gcc
+
       # Nix #lsp
       nixd
       nil
