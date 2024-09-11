@@ -53,6 +53,8 @@
     # cura
     # prusa-slicer
     vlc
+    wpsoffice
+    onlyoffice-bin_latest
   ];
 
   programs.pandoc = {

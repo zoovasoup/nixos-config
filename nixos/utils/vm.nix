@@ -17,7 +17,7 @@
     spice-protocol
     win-virtio
     win-spice
-    gnome.adwaita-icon-theme
+    # gnome.adwaita-icon-theme
     amdvlk # AMD Vulkan driver for integrated graphics
     mesa # Open-source graphics driver for the integrated GPU
     usbutils # For managing and listing USB devices
@@ -47,7 +47,7 @@
     enableRedistributableFirmware = true;
     amdgpu.amdvlk.enable = true;
     amdgpu.opencl.enable = true;
-    opengl.enable = true;
+    # opengl.enable = true;
   };
 
   # Enabling power management and performance optimizations for laptops

@@ -75,6 +75,9 @@
         kdenlive
         atlauncher
 
+        corefonts
+        vistafonts
+
         # cura
       ];
     in {
