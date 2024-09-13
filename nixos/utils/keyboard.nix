@@ -26,25 +26,63 @@
           };
 
           main = {
-            capslock = "overloadt2(arrow_caps, esc, 155)";
-            a = "lettermod(shift, a, 95, 155)";
-            s = "lettermod(control, r, 95, 155)";
-            d = "lettermod(meta, s, 95, 155)";
-            f = "lettermod(alt, t, 95, 155)";
-            j = "lettermod(alt, n, 95, 155)";
-            k = "lettermod(meta, e, 95, 155)";
-            l = "lettermod(control, i, 95, 155)";
-            ";" = "lettermod(shift, o, 95, 155)";
-            "leftalt" = "layer(num_pad)";
+            # capslock = "overloadt2(arrow_caps, esc, 155)";
+            # a = "lettermod(shift, a, 95, 155)";
+            # s = "lettermod(control, r, 95, 155)";
+            # d = "lettermod(meta, s, 95, 155)";
+            # f = "lettermod(alt, t, 95, 155)";
+            # j = "lettermod(alt, n, 95, 155)";
+            # k = "lettermod(meta, e, 95, 155)";
+            # l = "lettermod(control, i, 95, 155)";
+            # ";" = "lettermod(shift, o, 95, 155)";
+            # "leftalt" = "layer(num_pad)";
             # "rightalt" = "layer(keys_2)";
             # "space" = "overloadt2(shift, space, 180)";
-            "\\" = "backspace";
-            "backspace" = "\\";
+            # "\\" = "backspace";
+            # "backspace" = "\\";
+            # "control" = "layer(control)";
           };
 
           control = {
             "1" = "setlayout(colemak_dh)";
-            "2" = "setlayout(main)";
+            "2" = "setlayout(qwerty)";
+          };
+
+          "qwerty:layout" = {
+            q = "q";
+            w = "w";
+            e = "e";
+            r = "r";
+            t = "t";
+            y = "y";
+            u = "u";
+            i = "i";
+            o = "o";
+            p = "p";
+            g = "g";
+            h = "h";
+            z = "z";
+            x = "x";
+            c = "c";
+            v = "v";
+            b = "b";
+            n = "n";
+            m = "m";
+
+            capslock = "overloadt2(arrow_caps, esc, 155)";
+            a = "lettermod(shift, a, 95, 155)";
+            s = "lettermod(control, s, 95, 155)";
+            d = "lettermod(meta, d, 95, 155)";
+            f = "lettermod(alt, f, 95, 155)";
+            j = "lettermod(alt, j, 95, 155)";
+            k = "lettermod(meta, k, 95, 155)";
+            l = "lettermod(control, l, 95, 155)";
+            ";" = "lettermod(shift, ;, 95, 155)";
+            "leftalt" = "layer(num_pad)";
+            "\\" = "backspace";
+            "backspace" = "\\";
+            "control" = "layer(control)";
+            "esc" = "capslock";
           };
 
           "colemak_dh:layout" = {
@@ -67,6 +105,23 @@
             b = "z";
             n = "k";
             m = "h";
+
+            capslock = "overloadt2(arrow_caps, esc, 155)";
+            a = "lettermod(shift, a, 95, 155)";
+            s = "lettermod(control, r, 95, 155)";
+            d = "lettermod(meta, s, 95, 155)";
+            f = "lettermod(alt, t, 95, 155)";
+            j = "lettermod(alt, n, 95, 155)";
+            k = "lettermod(meta, e, 95, 155)";
+            l = "lettermod(control, i, 95, 155)";
+            ";" = "lettermod(shift, o, 95, 155)";
+            "leftalt" = "layer(num_pad)";
+            # "rightalt" = "layer(keys_2)";
+            # "space" = "overloadt2(shift, space, 180)";
+            "\\" = "backspace";
+            "backspace" = "\\";
+            "control" = "layer(control)";
+            "esc" = "capslock";
           };
 
           arrow_caps = {
