@@ -78,6 +78,15 @@
         corefonts
         vistafonts
 
+        temurin-jre-bin-21
+        javaPackages.openjfx21
+        jdk21
+        cairo
+        gnome2.pango
+        freetype
+        winetricks
+        bottles
+
         # cura
       ];
     in {
@@ -87,15 +96,15 @@
       packages = myApps;
     };
   };
+
   programs.steam.enable = true;
 
   services.flatpak = {
     packages = [
       # "one.ablaze.floorp"
-      # "io.github.zen_browser.zen"
+      "io.github.zen_browser.zen"
       "org.learningequality.Kolibri"
       "so.libdb.dissent"
-      "com.usebottles.bottles"
       "app.ytmdesktop.ytmdesktop"
       "com.github.mdh34.quickdocs"
       "io.gitlab.news_flash.NewsFlash"
