@@ -4,6 +4,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"mfussenegger/nvim-jdtls",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		-- { "folke/neodev.nvim", opts = {} },
 		{ "folke/neoconf.nvim", opts = {} },
@@ -104,6 +105,10 @@ return {
 		})
 
 		lspconfig.tsserver.setup({
+			capabilities = capabilities,
+		})
+
+		lspconfig.jdtls.setup({
 			capabilities = capabilities,
 		})
 

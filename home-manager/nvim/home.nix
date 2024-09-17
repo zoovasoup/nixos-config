@@ -30,6 +30,9 @@
       # Svelte #lsp
       nodePackages_latest.svelte-language-server
 
+      # Java #lsp
+      jdt-language-server
+
       #latex #lsp
       ltex-ls
 

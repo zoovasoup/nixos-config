@@ -86,6 +86,9 @@
         freetype
         winetricks
         bottles
+        sdkmanager
+        zip
+        gradle
 
         # cura
       ];
