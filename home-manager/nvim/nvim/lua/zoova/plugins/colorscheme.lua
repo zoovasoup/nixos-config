@@ -5,20 +5,25 @@ return {
 	-- name = "moonfly",
 	-- lazy = false,
 	-- priority = 1000,
-
-	"aktersnurra/no-clown-fiesta.nvim",
-
+	--
+	"olivercederborg/poimandres.nvim",
 	config = function()
-		vim.cmd.colorscheme("no-clown-fiesta")
-
-		vim.cmd.hi("SignColumn guibg=NONE")
-		-- vim.cmd.hi("CursorLineSign guibg=#3c3836")
-		vim.cmd.hi("CursorLineSign guibg=NONE")
-		vim.cmd.hi("FoldColumn guibg=NONE")
-		-- vim.cmd.hi("CursorLineFold guibg=#3c3836")
-		vim.cmd.hi("CursorLineFold guibg=NONE")
-		vim.cmd.hi("LineNr guibg=NONE")
-		vim.cmd.hi("CursorLineNr guibg=NONE")
-		vim.cmd.hi("NormalFloat guibg=NONE")
+		vim.cmd.colorscheme("poimandres")
 	end,
+
+	-- "aktersnurra/no-clown-fiesta.nvim",
+	--
+	-- config = function()
+	-- 	vim.cmd.colorscheme("no-clown-fiesta")
+	--
+	-- 	vim.cmd.hi("SignColumn guibg=NONE")
+	-- 	-- vim.cmd.hi("CursorLineSign guibg=#3c3836")
+	-- 	vim.cmd.hi("CursorLineSign guibg=NONE")
+	-- 	vim.cmd.hi("FoldColumn guibg=NONE")
+	-- 	-- vim.cmd.hi("CursorLineFold guibg=#3c3836")
+	-- 	vim.cmd.hi("CursorLineFold guibg=NONE")
+	-- 	vim.cmd.hi("LineNr guibg=NONE")
+	-- 	vim.cmd.hi("CursorLineNr guibg=NONE")
+	-- 	vim.cmd.hi("NormalFloat guibg=NONE")
+	-- end,
 }
