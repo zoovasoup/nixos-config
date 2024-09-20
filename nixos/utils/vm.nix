@@ -21,10 +21,24 @@
     amdvlk # AMD Vulkan driver for integrated graphics
     mesa # Open-source graphics driver for the integrated GPU
     usbutils # For managing and listing USB devices
+
+    qemu
+    gnome.gnome-boxes
   ];
 
   # Kernel parameters to enable IOMMU for AMD processors
   boot.kernelParams = ["amd_iommu=on" "iommu=pt"];
+
+  virtualisation.vmware.host.enable = true;
+
+  users.extraGroups.vmware.members = ["zva"];
+
+  virtualisation.vmware.host.extraPackages = with pkgs; [
+    open-vm-tools
+  ];
+
+  virtualisation.vmware.guest.enable = true;
+  # virtualisation.vmware.guest.enable = true;
 
   # Enabling and configuring libvirt for virtualization
   virtualisation = {
