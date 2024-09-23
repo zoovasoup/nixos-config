@@ -126,6 +126,8 @@
 
   programs.firejail.enable = true;
 
+  programs.adb.enable = true;
+
   xdg.portal = {
     enable = true;
     # extraPortals = with pkgs; [

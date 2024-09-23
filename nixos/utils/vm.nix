@@ -24,6 +24,11 @@
 
     qemu
     gnome.gnome-boxes
+    glib
+    glib-networking
+    gvfs
+    dconf
+    libproxy
   ];
 
   # Kernel parameters to enable IOMMU for AMD processors

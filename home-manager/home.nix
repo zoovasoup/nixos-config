@@ -55,6 +55,9 @@
     vlc
     wpsoffice
     onlyoffice-bin_latest
+    gromit-mpx
+    annotator
+    droidcam
   ];
 
   programs.pandoc = {
