@@ -6,9 +6,14 @@ return {
 	-- lazy = false,
 	-- priority = 1000,
 	--
-	"olivercederborg/poimandres.nvim",
+	"bluz71/vim-moonfly-colors",
+	name = "moonfly",
+	lazy = false,
+	priority = 1000,
+
+	-- "olivercederborg/poimandres.nvim",
 	config = function()
-		vim.cmd.colorscheme("poimandres")
+		vim.cmd.colorscheme("moonfly")
 	end,
 
 	-- "aktersnurra/no-clown-fiesta.nvim",
