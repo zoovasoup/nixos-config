@@ -58,6 +58,8 @@
     gromit-mpx
     annotator
     droidcam
+    obsidian
+    davinci-resolve
   ];
 
   programs.pandoc = {
