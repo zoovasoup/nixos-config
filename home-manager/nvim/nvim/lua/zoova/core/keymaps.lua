@@ -38,10 +38,10 @@ keymap.set("n", "<leader>N", "<C-w>j")
 keymap.set("n", "<leader>E", "<C-w>k")
 
 --buffer sizing
-keymap.set("n", "=", "<cmd>vertical resize +10<cr>") -- make the window biger vertically
-keymap.set("n", "-", "<cmd>vertical resize -10<cr>") -- make the window smaller vertically
-keymap.set("n", "+", "<cmd>horizontal resize +5<cr>") -- make the window bigger horizontally by pressing shift and =
-keymap.set("n", "_", "<cmd>horizontal resize -5<cr>") -- make the window smaller horizontally by pressing shift and -
+-- keymap.set("n", "=", "<cmd>vertical resize +10<cr>") -- make the window biger vertically
+-- keymap.set("n", "-", "<cmd>vertical resize -10<cr>") -- make the window smaller vertically
+-- keymap.set("n", "+", "<cmd>horizontal resize +5<cr>") -- make the window bigger horizontally by pressing shift and =
+-- keymap.set("n", "_", "<cmd>horizontal resize -5<cr>") -- make the window smaller horizontally by pressing shift and -
 
 keymap.set("v", "N", ":m '>+1<CR>gv=gv")
 keymap.set("v", "E", ":m '<-2<CR>gv=gv")

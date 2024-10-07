@@ -15,7 +15,9 @@ return {
 				org_tags_column = -10,
 				org_highlight_latex_and_related = "native",
 				org_todo_keywords = { "TODO", "ASSIGNMEN", "PENDING", "|", "DONE" },
-				org_hide_leading_stars = true,
+				org_hide_leading_stars = false,
+				org_startup_indented = false,
+				org_adapt_indentation = false,
 				org_custom_exports = {
 					t = {
 						label = "Export to PDF using pdftex",
@@ -90,9 +92,21 @@ return {
 						},
 					},
 				},
+				-- ui = {
+				-- 	node_buffer = {
+				-- 		show_keybindings = true,
+				-- 	},
 				ui = {
 					node_buffer = {
-						show_keybindings = true,
+						open = function()
+							return vim.api.nvim_open_win(0, false, {
+								relative = "editor",
+								row = 10,
+								col = 10,
+								width = 50,
+								height = 20,
+							})
+						end,
 					},
 				},
 			})

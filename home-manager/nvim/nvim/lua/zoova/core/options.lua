@@ -49,6 +49,8 @@ vim.cmd.autocmd("VimResized * :wincmd =")
 opt.incsearch = true
 opt.scrolloff = 7
 
+opt.timeoutlen = 2000
+
 vim.g.terminal_typer = "foot"
 
 vim.cmd([[
@@ -59,6 +61,23 @@ vim.cmd('let $TZ = "Asia/Bangkok"')
 
 vim.opt.conceallevel = 0
 vim.opt.concealcursor = "nc"
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "org",
+	callback = function()
+		vim.opt_local.conceallevel = 2
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	callback = function()
+		local bufname = vim.api.nvim_buf_get_name(0)
+		if bufname:match("org%-roam%-select") then
+			vim.opt_local.wrap = false
+		end
+	end,
+})
 
 -- vim.o.foldlevel = 4
 -- vim.o.foldmethod = "expr"
