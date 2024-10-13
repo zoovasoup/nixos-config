@@ -75,6 +75,7 @@
         kdenlive
         atlauncher
 
+        jdt-language-server
         corefonts
         vistafonts
 

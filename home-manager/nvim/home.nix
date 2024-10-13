@@ -43,6 +43,7 @@
       # General LSP #lsp
       vscode-langservers-extracted
       ltex-ls
+      jdt-language-server
 
       # Formatter/Linter #formatter #linter
       nodePackages_latest.prettier

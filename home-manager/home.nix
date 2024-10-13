@@ -52,6 +52,7 @@
     freecad
     # cura
     # prusa-slicer
+    partition-manager
     vlc
     wpsoffice
     onlyoffice-bin_latest
@@ -60,6 +61,7 @@
     droidcam
     obsidian
     davinci-resolve
+    filelight
   ];
 
   programs.pandoc = {

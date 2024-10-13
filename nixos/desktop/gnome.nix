@@ -26,6 +26,7 @@
     gnomeExtensions.quick-settings-tweaker
     gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.dash-to-panel
+    gnomeExtensions.pop-shell
 
     #dependencies
     gjs
