@@ -56,7 +56,7 @@
     vlc
     wpsoffice
     onlyoffice-bin_latest
-    gromit-mpx
+    # gromit-mpx
     annotator
     droidcam
     obsidian

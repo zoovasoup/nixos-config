@@ -90,6 +90,13 @@
         sdkmanager
         zip
         gradle
+        discord
+        vesktop
+        ghidra
+        # ida-free
+        # zed-editor
+        gamemode
+        mangohud
 
         # cura
       ];
@@ -101,10 +108,16 @@
     };
   };
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+  };
 
   services.flatpak = {
     packages = [
+      "net.christianbeier.Gromit-MPX"
       # "one.ablaze.floorp"
       "io.github.zen_browser.zen"
       "org.learningequality.Kolibri"
@@ -115,7 +128,6 @@
       "org.gaphor.Gaphor"
       "com.belmoussaoui.Obfuscate"
       "io.github.spacingbat3.webcord"
-      "com.discordapp.Discord"
       "com.github.tchx84.Flatseal"
       "org.freedesktop.Platform.ffmpeg-full/x86_64/23.08"
       "us.zoom.Zoom"
