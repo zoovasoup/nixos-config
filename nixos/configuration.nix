@@ -97,6 +97,8 @@
         # zed-editor
         gamemode
         mangohud
+        swiProlog
+        swiPrologWithGui
 
         # cura
       ];

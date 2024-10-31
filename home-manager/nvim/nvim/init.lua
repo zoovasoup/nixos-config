@@ -1,5 +1,7 @@
 require("zoova.core")
 require("zoova.lazy")
+-- require("zoova.plugins.lspconfig.prolog_lsp")
+-- require("lspconfig").prolog_lsp.setup({})
 
 -- Title:"test"
 -- TODO: adding nvim-orgmode

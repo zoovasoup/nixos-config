@@ -27,6 +27,8 @@
     gnomeExtensions.rounded-window-corners-reborn
     gnomeExtensions.dash-to-panel
     gnomeExtensions.pop-shell
+    gnomeExtensions.custom-hot-corners-extended
+    gnomeExtensions.smile-complementary-extension
 
     #dependencies
     gjs

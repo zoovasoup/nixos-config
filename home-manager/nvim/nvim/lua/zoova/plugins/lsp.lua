@@ -12,6 +12,8 @@ return {
 	},
 	config = function()
 		-- import cmp-nvim-lsp plugin
+		-- trying to config prolog lsp
+		--
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -146,6 +148,8 @@ return {
 			capabilities = capabilities,
 			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
 		})
+
+		require("lspconfig").prolog_ls.setup({})
 
 		lspconfig.svelte.setup({
 			capabilities = capabilities,
