@@ -100,6 +100,11 @@
         swiProlog
         swiPrologWithGui
 
+        scid
+        scid-vs-pc
+        xboard
+        libwacom
+
         # cura
       ];
     in {
