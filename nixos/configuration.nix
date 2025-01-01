@@ -104,15 +104,39 @@
         scid-vs-pc
         xboard
         libwacom
+        tetrio-desktop
+        piper
+        openrazer-daemon
+        polychromatic
+        gh
+        docker
+        docker-compose
+        docker-compose-language-service
+        postgresql
+        google-chrome
+        lazygit
+        direnv
+        presenterm
+        slides
+        graph-easy
 
         # cura
       ];
     in {
       isNormalUser = true;
       shell = "/home/zvasoup/.nix-profile/bin/fish";
-      extraGroups = ["networkmanager" "wheel" "keyd" "scanner" "bluetooth" "vmware"];
+      extraGroups = ["networkmanager" "wheel" "keyd" "scanner" "bluetooth" "vmware" "openrazer" "docker"];
       packages = myApps;
     };
+  };
+
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
+  hardware.openrazer = {
+    enable = true;
   };
 
   programs.steam = {
@@ -121,6 +145,8 @@
       proton-ge-bin
     ];
   };
+
+  virtualisation.docker.enable = true;
 
   services.flatpak = {
     packages = [
@@ -138,7 +164,6 @@
       "com.github.tchx84.Flatseal"
       "org.freedesktop.Platform.ffmpeg-full/x86_64/23.08"
       "us.zoom.Zoom"
-      "com.google.Chrome"
     ];
   };
 

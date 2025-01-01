@@ -11,5 +11,6 @@
     ./bluetooth.nix
     ./nixpkgs.nix
     ./flatpak.nix
+    ./fingerprint.nix
   ];
 }
