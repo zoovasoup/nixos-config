@@ -139,6 +139,79 @@ return {
 			capabilities = capabilities,
 		})
 
+		-- lspconfig.jedi_language_server.setup({
+		-- 	cmd = {
+		-- 		"/nix/store/ji3v7d0sh9hy29i2klagcvqm7jqf7f7m-python3.12-jedi-language-server-0.41.4/bin/jedi-language-server",
+		-- 	},
+		-- 	settings = {
+		-- 		python = {
+		-- 			analysis = {
+		-- 				autoImportCompletions = true,
+		-- 				diagnosticMode = "workspace",
+		-- 				typeCheckingMode = "basic",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+		-- lspconfig.basedpyright.setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "python" },
+		-- })
+
+		-- lspconfig.pyright.setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "python" },
+		-- 	settings = {
+		-- 		python = {
+		-- 			analysis = {
+		-- 				autoSearchPaths = true,
+		-- 				diagnosticMode = "openFilesOnly",
+		-- 				useLibraryCodeForTypes = true,
+		-- 				autoImportCompletions = true,
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+
+		lspconfig.sqls.setup({
+			capabilities = capabilities,
+		})
+
+		lspconfig.jsonls.setup({
+			capabilities = capabilities,
+		})
+
+		lspconfig.yamlls.setup({
+			capabilities = capabilities,
+		})
+		lspconfig.pylsp.setup({
+			settings = {
+				pylsp = {
+					plugins = {
+						-- Disable flake8 plugin entirely
+						flake8 = {
+							enabled = false, -- Disable flake8 plugin
+						},
+						-- Disable pyflakes import checking
+						pyflakes = {
+							enabled = false, -- Disable pyflakes plugin to avoid import checking
+						},
+						-- Disable Jedi import checking
+						jedi = {
+							auto_import_modules = {},
+							extra_paths = {},
+						},
+					},
+					-- Disable import errors by setting reportMissingImports to false
+					reportMissingImports = false,
+				},
+			},
+		})
+
+		lspconfig.autotools.setup({
+			capabilities = capabilities,
+		})
+
 		lspconfig.emmet_ls.setup({
 			capabilities = capabilities,
 			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },

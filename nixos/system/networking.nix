@@ -24,4 +24,14 @@
     enable = true;
     arguments = ["-config" "nixThinkpad-8f1153.dns.nextdns.io"];
   };
+
+  services.create_ap = {
+    enable = true;
+    settings = {
+      INTERNET_IFACE = "eth0";
+      WIFI_IFACE = "wlan0";
+      SSID = "zvaThinkpad";
+      PASSPHRASE = "12345678";
+    };
+  };
 }

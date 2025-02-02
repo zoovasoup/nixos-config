@@ -39,6 +39,7 @@
       # Python #lsp #linter
       pyright
       pylint
+      basedpyright
 
       # General LSP #lsp
       vscode-langservers-extracted
@@ -49,6 +50,7 @@
       nodePackages_latest.prettier
       stylua
       eslint_d
+      pyright
     ];
   };
 

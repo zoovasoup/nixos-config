@@ -13,10 +13,33 @@
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
+  nixpkgs.config.permittedInsecurePackages = ["openssl-1.1.1w"];
+
   #TODO: adding ueburzug++ for yazi and other dependencies for preview (pdf and stuff)
 
   users.users = {
     zvasoup = let
+      wkhtmltopdf_custom = pkgs.wkhtmltopdf.overrideAttrs (oldAttrs: rec {
+        version = "0.12.5"; # Your desired version
+        src = pkgs.fetchurl {
+          # url = "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.buster_amd64.deb";
+          # hash = "sha256-36tVBhBER+7yUw0a25hA7jpn8wyqrV6by4dD7y+UIb0=";
+
+          url = "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb";
+          hash = "sha256-20j6GgQzCcS/6Mjg443AbBg/ghWZ3YjU486kfFpdTNM=";
+
+          # url = "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_amd64.deb";
+          # hash = "sha256-T3I7JpGthjip35YOBCHTRtcxUIPjWDozTzM2IoDduhU=";
+        };
+
+        buildInputs =
+          oldAttrs.buildInputs
+          ++ [
+            pkgs.openssl_1_1
+            pkgs.libjpeg8
+          ];
+      });
+
       myApps = with pkgs; [
         # Fonts
         nerdfonts
@@ -119,6 +142,25 @@
         presenterm
         slides
         graph-easy
+        gcc
+        jetbrains.pycharm-community
+        postgresql
+        odoo
+        python312
+        python312Packages.pip
+        pyenv
+        gnumake
+        gcc
+        gnumake
+        zlib
+        libffi
+        readline
+        bzip2
+        openssl
+        ncurses
+        virtualenv
+        python312Packages.jedi-language-server
+        python312Packages.python-lsp-server
 
         # cura
       ];
@@ -126,9 +168,15 @@
       isNormalUser = true;
       shell = "/home/zvasoup/.nix-profile/bin/fish";
       extraGroups = ["networkmanager" "wheel" "keyd" "scanner" "bluetooth" "vmware" "openrazer" "docker"];
-      packages = myApps;
+      packages =
+        myApps
+        ++ [
+          wkhtmltopdf_custom
+        ];
     };
   };
+
+  services.postgresql.enable = true;
 
   virtualisation.docker.rootless = {
     enable = true;
@@ -187,6 +235,17 @@
     WantedBy = ["default.target"];
     Requisite = "gnome-session-initialized.target";
     After = ["gnome-session-initialized.target"];
+  };
+
+  environment.sessionVariables = {
+    PYENV_ROOT = "$HOME/.pyenv";
+    # pyenv flags to be able to install Python
+    CPPFLAGS = "-I${pkgs.zlib.dev}/include -I${pkgs.libffi.dev}/include -I${pkgs.readline.dev}/include -I${pkgs.bzip2.dev}/include -I${pkgs.openssl.dev}/include";
+    CXXFLAGS = "-I${pkgs.zlib.dev}/include -I${pkgs.libffi.dev}/include -I${pkgs.readline.dev}/include -I${pkgs.bzip2.dev}/include -I${pkgs.openssl.dev}/include";
+    CFLAGS = "-I${pkgs.openssl.dev}/include";
+    LDFLAGS = "-L${pkgs.zlib.out}/lib -L${pkgs.libffi.out}/lib -L${pkgs.readline.out}/lib -L${pkgs.bzip2.out}/lib -L${pkgs.openssl.out}/lib";
+    CONFIGURE_OPTS = "-with-openssl=${pkgs.openssl.dev}";
+    PYENV_VIRTUALENV_DISABLE_PROMPT = "1";
   };
 
   # modules.battery-check.enable = true;
